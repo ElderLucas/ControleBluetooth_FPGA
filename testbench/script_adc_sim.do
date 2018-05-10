@@ -31,6 +31,7 @@ view source
 # Detach wave as a separate window (undock)
 view wave -undock
 
+
 # 7 - Add wave
 add wave /ADC128S022_TB/CLK
 add wave /ADC128S022_TB/RST
@@ -40,33 +41,30 @@ add wave /ADC128S022_TB/DATA_VALID_S
 add wave /ADC128S022_TB/ADC_CH_ADDRESS_S
 add wave /ADC128S022_TB/ADC_DATAOUT_S
 
-add wave /adc128s022_tb/utt/r_counter_clock
-add wave /adc128s022_tb/utt/r_sclk_rise
-add wave /adc128s022_tb/utt/r_sclk_fall
-add wave /adc128s022_tb/utt/r_counter_clock_ena
+#add wave /adc128s022_tb/utt/r_counter_clock
+#add wave /adc128s022_tb/utt/r_sclk_rise
+#add wave /adc128s022_tb/utt/r_sclk_fall
+#add wave /adc128s022_tb/utt/r_counter_clock_ena
+#add wave /adc128s022_tb/utt/r_counter_data
+#add wave /adc128s022_tb/utt/r_tc_counter_data
+#add wave /adc128s022_tb/utt/r_conversion_running
+#add wave /adc128s022_tb/utt/r_miso
+#add wave /adc128s022_tb/utt/r_conv_ena
+#add wave /adc128s022_tb/utt/r_adc_ch
+#add wave /adc128s022_tb/utt/r_adc_data
+
+add wave /adc128s022_tb/SCLKC_S
+add wave /adc128s022_tb/SS_S
+add wave /adc128s022_tb/MOSI_S
+add wave /adc128s022_tb/MISO_S
 add wave /adc128s022_tb/utt/r_counter_data
-add wave /adc128s022_tb/utt/r_tc_counter_data
-add wave /adc128s022_tb/utt/r_conversion_running
-add wave /adc128s022_tb/utt/r_miso
-add wave /adc128s022_tb/utt/r_conv_ena
-add wave /adc128s022_tb/utt/r_adc_ch
-add wave /adc128s022_tb/utt/r_adc_data
+add wave /adc128s022_tb/utt/r_sclk_fall
+
+add wave -color #ff2255 -format Analog-Step -height 74 -max 3.0 -min -4.0 /adc128s022_tb/ADC_CH_ADDRESS_S
 
 
 #add wave *
 #add wave /sttran/count_v
-
-add wave /CLK
-add wave /RST
-#add wave /tx_uart
-#add wave /rx_uart
-#add wave /data_vld
-#add wave /data_out
-#add wave /frame_error
-#add wave /data_send
-#add wave /busy
-#add wave /data_in
-#add wave /uart_tb/utt/uart_tx_i/tx_clk_en
 
 # 8 - Add wave
 #force -deposit /rst_n 0 0, 1 {45 ns}
@@ -82,3 +80,5 @@ set Top_Level_Name tb
 view structure
 view signals
 run –all
+
+run 900us

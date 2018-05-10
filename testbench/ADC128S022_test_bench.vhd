@@ -36,7 +36,7 @@ architecture FULL of ADC128S022_TB is
 	signal SCLKC_S	 		:std_logic;
 	signal SS_S	 			:std_logic;
 	signal MOSI_S	 		:std_logic;
-	signal MISO_S 	 		:std_logic;
+	signal MISO_S 	 		:std_logic := '1';
 
     constant clk_period  : time := 20 ns;
 	constant uart_period : time := 8680.56 ns;
@@ -80,34 +80,69 @@ begin
 		CONV_ENB_S <= '0';
 		CONV_CH_SEL_S <= "000";
 		wait for 100 ns;
-    	RST <= '1';
-		CONV_CH_SEL_S <= "001";
-
+		CONV_CH_SEL_S <= "000";
+		RST <= '1';
 		wait until rising_edge(CLK);
-
 		rx_uart <= '0'; -- start bit
 		CONV_ENB_S <= '1';
 
-		wait for uart_period;
 
-		for i in 0 to (data_value'LENGTH-1) loop
-			rx_uart <= data_value(i); -- data bits
-			wait for uart_period;
+		wait for 150 us;
+		CONV_CH_SEL_S <= "001";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "010";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "011";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "100";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "101";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "110";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "111";
+
+		wait for 150 us;
+		CONV_CH_SEL_S <= "000";
+
+		--wait for uart_period;
+
+		--rx_uart <= '1'; -- stop bit
+		--wait for uart_period;
+
+		--rx_uart <= '0'; -- start bit
+		--wait for uart_period;
+
+		--for i in 0 to (data_value2'LENGTH-1) loop
+		--	rx_uart <= data_value2(i); -- data bits
+		--	wait for uart_period;
+		--end loop;
+
+		--rx_uart <= '1'; -- stop bit
+		--wait for uart_period;
+		wait;
+
+	end process;
+
+
+	test_miso_adc : process
+	begin
+
+		if(RST='0') then
+			MISO_S <= '1';
+		end if;
+
+		--wait for uart_period;
+		for i in 0 to 1000 loop
+			MISO_S <= not MISO_S;
+			wait for 5900 ns;
 		end loop;
-
-		rx_uart <= '1'; -- stop bit
-		wait for uart_period;
-
-		rx_uart <= '0'; -- start bit
-		wait for uart_period;
-
-		for i in 0 to (data_value2'LENGTH-1) loop
-			rx_uart <= data_value2(i); -- data bits
-			wait for uart_period;
-		end loop;
-
-		rx_uart <= '1'; -- stop bit
-		wait for uart_period;
 
 		wait;
 
