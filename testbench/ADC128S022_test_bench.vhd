@@ -76,12 +76,12 @@ begin
 
 	test_enb_adc : process
 	begin
-		RST <= '0';
+		RST <= '1';
 		CONV_ENB_S <= '0';
 		CONV_CH_SEL_S <= "000";
 		wait for 100 ns;
 		CONV_CH_SEL_S <= "000";
-		RST <= '1';
+		RST <= '0';
 		wait until rising_edge(CLK);
 		rx_uart <= '0'; -- start bit
 		CONV_ENB_S <= '1';

@@ -1,0 +1,148 @@
+--------------------------------------------------------------------------------
+-- PROJECT: SIMPLE UART FOR FPGA
+--------------------------------------------------------------------------------
+-- MODULE:  TESTBANCH OF UART TOP MODULE
+-- AUTHORS: Jakub Cabal <jakubcabal@gmail.com>
+-- LICENSE: The MIT License (MIT), please read LICENSE file
+-- WEBSITE: https://github.com/jakubcabal/uart_for_fpga
+--------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity TOPO_TB is
+end TOPO_TB;
+
+architecture FULL of TOPO_TB is
+
+	signal CLK           	: std_logic := '0';
+	signal RST           	: std_logic := '0';
+
+    signal led_out_s 	    :std_logic_vector(7 downto 0);
+    signal SCLK_OUT_s           	: std_logic := '0';
+    signal SS_OUT_s           	: std_logic := '0';
+    signal MOSI_OUT_s           	: std_logic := '0';
+    signal MISO_IN_s           	: std_logic := '0';
+
+    constant clk_period  : time := 20 ns;
+
+    signal tx_uart       : std_logic;
+    signal rx_uart       : std_logic := '1';
+
+    constant clk_period  : time := 20 ns;
+    constant uart_period : time := 8680.56 ns;
+
+begin
+
+	utt: entity work.topo
+	generic map (
+        CLK_FREQ    => 50e6,
+        BAUD_RATE   => 115200,
+        PARITY_BIT  => "none"
+    )
+	port map (
+		CLK	=> CLK,
+        RST => RST,
+
+        UART_TXD    => tx_uart,
+        UART_RXD    => rx_uart,
+
+        LED_OUT => led_out_s,
+
+        SCLK_OUT => SCLK_OUT_s,
+        SS_OUT=> SS_OUT_s,
+        MOSI_OUT=> MOSI_OUT_s,
+        MISO_IN=> MISO_IN_s
+
+	);
+
+
+	clk_process : process
+	begin
+		CLK <= '0';
+		wait for clk_period/2;
+		CLK <= '1';
+		wait for clk_period/2;
+	end process;
+
+
+	test_states : process
+	begin
+		RST <= '0';
+		wait for 100 ns;
+		RST <= '1';
+		wait;
+
+	end process;
+
+
+    -- UART Simulation
+    test_rx_uart : process
+    begin
+        rx_uart <= '1';
+        RST <= '1';
+        wait for 100 ns;
+        RST <= '0';
+        wait until rising_edge(CLK);
+        rx_uart <= '0'; -- start bit
+        wait for uart_period;
+
+        for i in 0 to (data_value'LENGTH-1) loop
+            rx_uart <= data_value(i); -- data bits
+            wait for uart_period;
+        end loop;
+
+        rx_uart <= '1'; -- stop bit
+        wait for uart_period;
+
+        rx_uart <= '0'; -- start bit
+        wait for uart_period;
+
+        for i in 0 to (data_value2'LENGTH-1) loop
+            rx_uart <= data_value2(i); -- data bits
+            wait for uart_period;
+        end loop;
+
+        rx_uart <= '1'; -- stop bit
+        wait for uart_period;
+        wait;
+    end process;
+
+    test_tx_uart : process
+    begin
+        data_send <= '0';
+        RST <= '1';
+        wait for 100 ns;
+        RST <= '0';
+
+        wait until rising_edge(CLK);
+
+        data_send <= '1';
+        data_in <= data_value;
+
+        wait until rising_edge(CLK);
+
+        data_send <= '0';
+
+        wait until rising_edge(CLK);
+
+        wait for 80 us;
+        wait until rising_edge(CLK);
+
+        data_send <= '1';
+        data_in <= data_value2;
+
+        wait until rising_edge(CLK);
+
+        data_send <= '0';
+
+        wait until rising_edge(CLK);
+
+        wait;
+
+    end process;
+
+
+
+end FULL;

@@ -29,6 +29,9 @@ entity topo is
         UART_TXD    : out std_logic; -- serial transmit data
         UART_RXD    : in  std_logic; -- serial receive data
 
+        -- LED SMD
+        LED_OUT    : out std_logic_vector(7 downto 0); -- input data
+
         -- ADC128S22 SERIAL INTERFACE
         SCLK_OUT    : out std_logic;
         SS_OUT      : out std_logic;
@@ -64,7 +67,19 @@ architecture full of topo is
     signal DATA_VLD            : std_logic; -- when DATA_VLD = 1, output data are valid
     signal FRAME_ERROR         : std_logic;  -- when FRAME_ERROR = 1, stop bit was invalid
 
-    signal 
+    signal CONV_CH_SEL_S 	   :std_logic_vector(2 downto 0);
+    signal CONV_ENB_S    	   :std_logic;
+    signal DATA_VALID_S	 	:std_logic;
+    signal ADC_CH_ADDRESS_S	:std_logic_vector(2 downto 0);
+    signal ADC_DATAOUT_S	:std_logic_vector(11 downto 0);
+
+
+    signal timer_1seg_s     : std_logic;
+    signal Busy_s           : std_logic;
+    signal DATA_OUT_S       : std_logic_vector(1 downto 0);
+
+    signal RST_s            : std_logic := '1';
+
 
 begin
 
@@ -75,7 +90,7 @@ begin
     uart_clk_cnt_p : process (CLK)
     begin
         if (rising_edge(CLK)) then
-            if (RST = '1') then
+            if (RST_s = '1') then
                 uart_clk_cnt <= (others => '0');
             else
                 if (uart_clk_cnt = CLK_CNT_MAX) then
@@ -90,7 +105,7 @@ begin
     uart_clk_en_reg_p : process (CLK)
     begin
         if (rising_edge(CLK)) then
-            if (RST = '1') then
+            if (RST_s = '1') then
                 uart_clk_en <= '0';
             elsif (uart_clk_cnt = CLK_CNT_MAX) then
                 uart_clk_en <= '1';
@@ -108,7 +123,7 @@ begin
         uart_rxd_shreg_p : process (CLK)
         begin
             if (rising_edge(CLK)) then
-                if (RST = '1') then
+                if (RST_s = '1') then
                     uart_rxd_shreg <= (others => '1');
                 else
                     uart_rxd_shreg <= UART_RXD & uart_rxd_shreg(3 downto 1);
@@ -119,7 +134,7 @@ begin
         uart_rxd_debounced_reg_p : process (CLK)
         begin
             if (rising_edge(CLK)) then
-                if (RST = '1') then
+                if (RST_s = '1') then
                     uart_rxd_debounced <= '1';
                 else
                     uart_rxd_debounced <= uart_rxd_shreg(0) OR
@@ -144,7 +159,7 @@ begin
     )
     port map (
         CLK         => CLK,
-        RST         => RST,
+        RST         => RST_s,
         -- UART INTERFACE
         UART_CLK_EN => uart_clk_en,
         UART_TXD    => UART_TXD,
@@ -164,7 +179,7 @@ begin
     )
     port map (
         CLK         => CLK,
-        RST         => RST,
+        RST         => RST_s,
         -- UART INTERFACE
         UART_CLK_EN => uart_clk_en,
         UART_RXD    => uart_rxd_debounced,
@@ -183,7 +198,7 @@ begin
 	)
 	port map (
 	    i_clk	=> CLK,
-	    i_rstb  => RST,
+	    i_rstb  => RST_s,
 
 	    i_conv_ena => CONV_ENB_S, 			-- enable ADC convesion
 	    i_adc_ch => CONV_CH_SEL_S,			-- ADC channel 0-7
@@ -194,7 +209,7 @@ begin
 	    o_sclk => SCLKC_S,
 	    o_ss => SS_S,
 	    o_mosi =>MOSI_S,
-	    i_miso => MISO_S
+	    i_miso => MISO_IN
 	);
 
 
@@ -202,16 +217,46 @@ begin
     -- Master controle
     -- -------------------------------------------------------------------------
     controlador : entity work.masterCTRL
-    generic map (
-        CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
-    )
-    port map (
-        clk	=> CLK,
-        reset  => RST,
-        data_in => DATA_IN, 			-- enable ADC convesion
-        data_out => STATE_S
-    );
+	generic map (
+	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
+	)
+	port map (
+		clk	=> CLK,
+		data_in => timer_1seg_s,
+		reset  => RST_s,
+		enb_adc_conv => CONV_ENB_S,
+		ch_adc_conv => CONV_CH_SEL_S,
+		busy => Busy_s,
+		data_out => LED_OUT(1 downto 0)
+	);
 
 
+    -- ADC128S22
+    SCLK_OUT   <=  SCLKC_S;
+    SS_OUT     <=  SS_S;
+    MOSI_OUT   <=  MOSI_S;
+
+
+
+    -- -------------------------------------------------------------------------
+    -- Timer de 1s
+    -- -------------------------------------------------------------------------
+    tic_1segundo: entity work.timer
+	generic map (
+	    CLK_FREQ   => 50e6  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
+	)
+	port map (
+		clk	=> CLK,
+		RST  => RST_s,
+		TIMER_1SEG => timer_1seg_s
+	);
+
+    LED_OUT(7) <= timer_1seg_s;
+    LED_OUT(5 downto 2) <= (others => '1');
+    LED_OUT(6) <= CONV_ENB_S;
+
+    --LED_OUT(2 downto 0) <= ADC_CH_ADDRESS_S;
+
+    RST_s <= not RST;
 
 end full;

@@ -43,10 +43,11 @@ begin
     --##########################################################################
     p_conversion_control : process(i_clk,i_rstb)
     begin
-        if(i_rstb='0') then
+        if(i_rstb='1') then
             r_conv_ena             <= '0';
             r_conversion_running   <= '0';
             r_counter_clock_ena    <= '0';
+
         elsif(rising_edge(i_clk)) then
             r_conv_ena <= i_conv_ena;
             if(r_conv_ena='1') then
@@ -63,7 +64,7 @@ begin
     --##########################################################################
     p_counter_data : process(i_clk,i_rstb)
     begin
-        if(i_rstb='0') then
+        if(i_rstb='1') then
             r_counter_data       <= 0;
             r_tc_counter_data    <= '0';
         elsif(rising_edge(i_clk)) then
@@ -98,7 +99,7 @@ begin
     --##########################################################################
     p_serial_input : process(i_clk,i_rstb)
     begin
-        if(i_rstb='0') then
+        if(i_rstb='1') then
             r_miso               <= '0';
             r_adc_ch             <= (others=>'0');
             r_adc_data           <= (others=>'0');
@@ -131,7 +132,7 @@ begin
     --##########################################################################
     p_serial_output : process(i_clk,i_rstb)
     begin
-        if(i_rstb='0') then
+        if(i_rstb='1') then
             o_ss                 <= '1';
             o_mosi               <= '1';
             o_sclk               <= '1';
@@ -177,7 +178,7 @@ begin
     --##########################################################################
     p_counter_clock : process(i_clk,i_rstb)
     begin
-        if(i_rstb='0') then
+        if(i_rstb='1') then
             r_counter_clock <= 0;
             r_sclk_rise <= '0';
             r_sclk_fall <= '0';
