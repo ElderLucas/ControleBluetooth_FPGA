@@ -32,7 +32,7 @@ end TIMER;
 -- -------------------------------------------------------------------------
 architecture FULL of TIMER is
 
-	constant COUNTER_1SEG_TIMER : integer := 500000;
+	constant COUNTER_1SEG_TIMER : integer := 5000;--500000;
 
     signal timer_1seg_cnt       : unsigned(24 downto 0) := "0000000000000000000000000";
 

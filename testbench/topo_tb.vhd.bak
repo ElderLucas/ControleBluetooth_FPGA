@@ -27,11 +27,8 @@ architecture FULL of TOPO_TB is
 
     constant clk_period  : time := 20 ns;
 
-    signal tx_uart       : std_logic;
-    signal rx_uart       : std_logic := '1';
-
-    constant clk_period  : time := 20 ns;
-    constant uart_period : time := 8680.56 ns;
+	signal miso_reg_s 	    :std_logic_vector(7 downto 0);
+	signal count_miso		:integer;
 
 begin
 
@@ -45,15 +42,15 @@ begin
 		CLK	=> CLK,
         RST => RST,
 
-        UART_TXD    => tx_uart,
-        UART_RXD    => rx_uart,
+		UART_TXD => open,
+		UART_RXD  => '1',
 
         LED_OUT => led_out_s,
 
         SCLK_OUT => SCLK_OUT_s,
         SS_OUT=> SS_OUT_s,
         MOSI_OUT=> MOSI_OUT_s,
-        MISO_IN=> MISO_IN_s
+        MISO_IN=> miso_reg_s(7)
 
 	);
 
@@ -73,76 +70,29 @@ begin
 		wait for 100 ns;
 		RST <= '1';
 		wait;
-
 	end process;
 
 
-    -- UART Simulation
-    test_rx_uart : process
+	values_gen : process
     begin
-        rx_uart <= '1';
-        RST <= '1';
-        wait for 100 ns;
-        RST <= '0';
-        wait until rising_edge(CLK);
-        rx_uart <= '0'; -- start bit
-        wait for uart_period;
 
-        for i in 0 to (data_value'LENGTH-1) loop
-            rx_uart <= data_value(i); -- data bits
-            wait for uart_period;
-        end loop;
+        if RST = '1' then
+			miso_reg_s <= "01001111";
+        else
+			if SS_OUT_s = '0' then
+				wait until rising_edge(CLK);
+				count_miso <= count_miso + 1;
 
-        rx_uart <= '1'; -- stop bit
-        wait for uart_period;
-
-        rx_uart <= '0'; -- start bit
-        wait for uart_period;
-
-        for i in 0 to (data_value2'LENGTH-1) loop
-            rx_uart <= data_value2(i); -- data bits
-            wait for uart_period;
-        end loop;
-
-        rx_uart <= '1'; -- stop bit
-        wait for uart_period;
-        wait;
+				if(count_miso = 7)then
+					count_miso <= 0;
+					miso_reg_s <= "01001111";
+				else
+					count_miso <= count_miso + 1;
+					miso_reg_s <= miso_reg_s(6 downto 0) & '0';
+				end if;
+			end if;
+        end if;
     end process;
-
-    test_tx_uart : process
-    begin
-        data_send <= '0';
-        RST <= '1';
-        wait for 100 ns;
-        RST <= '0';
-
-        wait until rising_edge(CLK);
-
-        data_send <= '1';
-        data_in <= data_value;
-
-        wait until rising_edge(CLK);
-
-        data_send <= '0';
-
-        wait until rising_edge(CLK);
-
-        wait for 80 us;
-        wait until rising_edge(CLK);
-
-        data_send <= '1';
-        data_in <= data_value2;
-
-        wait until rising_edge(CLK);
-
-        data_send <= '0';
-
-        wait until rising_edge(CLK);
-
-        wait;
-
-    end process;
-
 
 
 end FULL;

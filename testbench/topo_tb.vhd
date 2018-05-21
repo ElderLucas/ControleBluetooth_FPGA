@@ -47,7 +47,7 @@ begin
         SCLK_OUT => SCLK_OUT_s,
         SS_OUT=> SS_OUT_s,
         MOSI_OUT=> MOSI_OUT_s,
-        MISO_IN=> MISO_IN_s
+        MISO_IN=> '1'
 
 	);
 
@@ -63,9 +63,9 @@ begin
 
 	test_states : process
 	begin
-		RST <= '1';
-		wait for 100 ns;
 		RST <= '0';
+		wait for 100 ns;
+		RST <= '1';
 		wait;
 
 	end process;

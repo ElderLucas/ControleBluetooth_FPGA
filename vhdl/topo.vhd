@@ -11,6 +11,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.MATH_REAL.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
 
 -- UART FOR FPGA REQUIRES: 1 START BIT, 8 DATA BITS, 1 STOP BIT!!!
 -- OTHER PARAMETERS CAN BE SET USING GENERICS.
@@ -52,23 +54,23 @@ architecture full of topo is
     signal uart_rxd_debounced : std_logic;
 
     -- DATA ADC SIGNALS
-    signal SCLKC_S	 		   :std_logic;
-    signal SS_S	 			   :std_logic;
-    signal MOSI_S	 		   :std_logic;
-    signal MISO_S 	 		   :std_logic := '1';
+    signal SCLKC_S	 		:std_logic;
+    signal SS_S	 			:std_logic;
+    signal MOSI_S	 		:std_logic;
+    signal MISO_S 	 		:std_logic := '1';
 
     -- USER DATA INPUT INTERFACE
-    signal DATA_IN             : std_logic_vector(7 downto 0); -- input data
-    signal DATA_SEND           : std_logic; -- when DATA_SEND = 1, input data are valid and will be transmit
-    signal BUSY                : std_logic; -- when BUSY = 1, transmitter is busy and you must not set DATA_SEND to 1
+    signal DATA_IN          : std_logic_vector(7 downto 0); -- input data
+    signal DATA_SEND        : std_logic; -- when DATA_SEND = 1, input data are valid and will be transmit
+    signal BUSY             : std_logic; -- when BUSY = 1, transmitter is busy and you must not set DATA_SEND to 1
 
     -- USER DATA OUTPUT INTERFACE
-    signal DATA_OUT            : std_logic_vector(7 downto 0); -- output data
-    signal DATA_VLD            : std_logic; -- when DATA_VLD = 1, output data are valid
-    signal FRAME_ERROR         : std_logic;  -- when FRAME_ERROR = 1, stop bit was invalid
+    signal DATA_OUT         : std_logic_vector(7 downto 0); -- output data
+    signal DATA_VLD         : std_logic; -- when DATA_VLD = 1, output data are valid
+    signal FRAME_ERROR      : std_logic;  -- when FRAME_ERROR = 1, stop bit was invalid
 
-    signal CONV_CH_SEL_S 	   :std_logic_vector(2 downto 0);
-    signal CONV_ENB_S    	   :std_logic;
+    signal CONV_CH_SEL_S 	:std_logic_vector(2 downto 0);
+    signal CONV_ENB_S    	:std_logic;
     signal DATA_VALID_S	 	:std_logic;
     signal ADC_CH_ADDRESS_S	:std_logic_vector(2 downto 0);
     signal ADC_DATAOUT_S	:std_logic_vector(11 downto 0);
@@ -80,13 +82,29 @@ architecture full of topo is
 
     signal RST_s            : std_logic := '1';
 
+    -------------- Average CHA 1
+    signal load_adc_ch0_s       : std_logic := '0';
+    signal load_adc_ch1_s       : std_logic := '0';
+    signal load_adc_ch2_s       : std_logic := '0';
+
+    signal adc_data_ch0_s       : integer := 0;
+    signal adc_data_ch1_s       : integer := 0;
+    signal adc_data_ch2_s       : integer := 0;
+
+    signal avg_adc_data_ch0_s   : integer := 0;
+    signal avg_adc_data_ch1_s   : integer := 0;
+    signal avg_adc_data_ch2_s   : integer := 0;
+
+    signal enb_data_ch0_out     : std_logic := '0';
+    signal enb_data_ch1_out     : std_logic := '0';
+    signal enb_data_ch2_out     : std_logic := '0';
+
 
 begin
 
     -- -------------------------------------------------------------------------
     -- UART CLOCK COUNTER AND CLOCK ENABLE FLAG
     -- -------------------------------------------------------------------------
-
     uart_clk_cnt_p : process (CLK)
     begin
         if (rising_edge(CLK)) then
@@ -169,10 +187,9 @@ begin
         BUSY        => BUSY
     );
 
-    -- -------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     -- UART RECEIVER
-    -- -------------------------------------------------------------------------
-
+    ----------------------------------------------------------------------------
     uart_rx_i: entity work.UART_RX
     generic map (
         PARITY_BIT  => PARITY_BIT
@@ -202,15 +219,69 @@ begin
 
 	    i_conv_ena => CONV_ENB_S, 			-- enable ADC convesion
 	    i_adc_ch => CONV_CH_SEL_S,			-- ADC channel 0-7
+
+        -- AD Converted Data
 	    o_adc_data_valid => DATA_VALID_S, 	-- conversion valid pulse
 	    o_adc_ch => ADC_CH_ADDRESS_S,  		-- ADC converted channel
 	    o_adc_data => ADC_DATAOUT_S,        -- adc parallel data
+
 	    -- ADC serial interface
 	    o_sclk => SCLKC_S,
 	    o_ss => SS_S,
-	    o_mosi =>MOSI_S,
+	    o_mosi => MOSI_S,
 	    i_miso => MISO_IN
 	);
+
+    ----------------------------------------------------------------------------
+    -- ADC CH0 -- V SENSE
+    ----------------------------------------------------------------------------
+    channel_0: entity work.moving_average
+    generic map (
+        SAMPLES_COUNT    => 10
+    )
+    port map(
+        CLK     => CLK,
+        RST     => RST_s,
+        load    => load_adc_ch0_s,
+        sample  => adc_data_ch0_s, --to_integer(channel_1_sample),
+        average => avg_adc_data_ch0_s,
+        enb_data_out => enb_data_ch0_out
+    );
+    ----------------------------------------------------------------------------
+
+    ----------------------------------------------------------------------------
+    -- ADC CH1 -- DUT_IS
+    ----------------------------------------------------------------------------
+    channel_1: entity work.moving_average
+    generic map (
+        SAMPLES_COUNT    => 10
+    )
+    port map(
+        CLK     => CLK,
+        RST     => RST_s,
+        load    => load_adc_ch1_s,
+        sample  => adc_data_ch1_s, --to_integer(channel_1_sample),
+        average => avg_adc_data_ch1_s,
+        enb_data_out => enb_data_ch1_out
+    );
+    ----------------------------------------------------------------------------
+
+    ----------------------------------------------------------------------------
+    -- ADC CH2 -- I_DUT
+    ----------------------------------------------------------------------------
+    channel_2: entity work.moving_average
+    generic map (
+        SAMPLES_COUNT    => 10
+    )
+    port map(
+        CLK     => CLK,
+        RST     => RST_s,
+        load    => load_adc_ch2_s,
+        sample  => adc_data_ch2_s, --to_integer(channel_1_sample),
+        average => avg_adc_data_ch2_s,
+        enb_data_out => enb_data_ch2_out
+    );
+    ----------------------------------------------------------------------------
 
 
     -- -------------------------------------------------------------------------
@@ -236,8 +307,6 @@ begin
     SS_OUT     <=  SS_S;
     MOSI_OUT   <=  MOSI_S;
 
-
-
     -- -------------------------------------------------------------------------
     -- Timer de 1s
     -- -------------------------------------------------------------------------
@@ -251,12 +320,69 @@ begin
 		TIMER_1SEG => timer_1seg_s
 	);
 
+    ----------------------------------------------------------------------------
+    -- PROC SELEC AVERAGE BY AD CHANNEL ADDRESS
+    ----------------------------------------------------------------------------
+    select_adc_channel_proc : process (CLK, RST_s) begin
+        if (rising_edge(CLK)) then
+            if (RST_s = '1') then
+                load_adc_ch0_s <= '0';
+                load_adc_ch1_s <= '0';
+                load_adc_ch2_s <= '0';
+
+                adc_data_ch0_s <= 0;
+                adc_data_ch1_s <= 0;
+                adc_data_ch2_s <= 0;
+            else
+                if DATA_VALID_S = '1' then
+                    if ADC_CH_ADDRESS_S = "000" then
+                        --data ch0
+                        adc_data_ch0_s <= conv_integer(ADC_DATAOUT_S);--to_integer(unsigned(ADC_DATAOUT_S));  --to_unsigned(va, A'length); -- conv_integer(ADC_DATAOUT_S);-- to_integer(ADC_DATAOUT_S);
+                        adc_data_ch1_s <= 0;
+                        adc_data_ch2_s <= 0;
+                        -- enable ch0
+                        load_adc_ch0_s <= '1';
+                        load_adc_ch1_s <= '0';
+                        load_adc_ch2_s <= '0';
+
+                    elsif ADC_CH_ADDRESS_S = "001" then
+                        --data ch1
+                        adc_data_ch0_s <= 0;
+                        adc_data_ch1_s <= conv_integer(ADC_DATAOUT_S);--to_integer(ADC_DATAOUT_S);
+                        adc_data_ch2_s <= 0;
+                        -- enable ch1
+                        load_adc_ch0_s <= '0';
+                        load_adc_ch1_s <= '1';
+                        load_adc_ch2_s <= '0';
+
+                    elsif ADC_CH_ADDRESS_S = "010" then
+                        --data ch2
+                        adc_data_ch0_s <= 0;
+                        adc_data_ch1_s <= 0;
+                        adc_data_ch2_s <= conv_integer(ADC_DATAOUT_S);--to_integer(ADC_DATAOUT_S);
+                        -- enable ch2
+                        load_adc_ch0_s <= '0';
+                        load_adc_ch1_s <= '0';
+                        load_adc_ch2_s <= '1';
+
+                    end if;
+
+                else
+                    load_adc_ch0_s <= '0';
+                    load_adc_ch1_s <= '0';
+                    load_adc_ch2_s <= '0';
+                end if;
+            end if;
+        end if;
+    end process;
+
+    ----------------------------------------------------------------------------
+    --
+    ----------------------------------------------------------------------------
     LED_OUT(7) <= timer_1seg_s;
     LED_OUT(5 downto 2) <= (others => '1');
     LED_OUT(6) <= CONV_ENB_S;
-
-    --LED_OUT(2 downto 0) <= ADC_CH_ADDRESS_S;
-
+    -- Inversão do Reset para a lógica dos blocos ativos em '1'
     RST_s <= not RST;
 
 end full;

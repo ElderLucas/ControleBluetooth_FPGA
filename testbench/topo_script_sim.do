@@ -68,7 +68,7 @@ add wave /topo_tb/utt/CONV_ENB_S
 add wave /topo_tb/utt/DATA_VALID_S
 add wave /topo_tb/utt/CONV_CH_SEL_S
 add wave /topo_tb/utt/Busy_s
-add wave /topo_tb/utt/DATA_OUT_S
+add wave /topo_tb/utt/ADC_DATAOUT_S
 add wave -noupdate -divider {SERIAL ADC}
 add wave /topo_tb/utt/SCLKC_S
 add wave /topo_tb/utt/SS_S
@@ -78,6 +78,22 @@ add wave /topo_tb/utt/MISO_S
 add wave -noupdate -divider {MAQUINA DE ESTADOS MASTER}
 add wave /topo_tb/utt/controlador/state
 
+add wave -noupdate -divider { SAIDAS PARA AVERAGE }
+add wave /topo_tb/utt/adc_data_ch0_s
+add wave /topo_tb/utt/adc_data_ch1_s
+add wave /topo_tb/utt/adc_data_ch2_s
+
+add wave /topo_tb/utt/load_adc_ch0_s
+add wave /topo_tb/utt/load_adc_ch1_s
+add wave /topo_tb/utt/load_adc_ch2_s
+
+add wave -noupdate -divider { CALCULADOR DE MEDIA }
+add wave /topo_tb/utt/avg_adc_data_ch0_s
+add wave /topo_tb/utt/enb_data_ch0_out
+add wave /topo_tb/utt/avg_adc_data_ch1_s
+add wave /topo_tb/utt/enb_data_ch1_out
+add wave /topo_tb/utt/avg_adc_data_ch2_s
+add wave /topo_tb/utt/enb_data_ch2_out
 
 #add wave -color #ff2255 -format Analog-Step -height 74 -max 3.0 -min -4.0 /adc128s022_tb/ADC_CH_ADDRESS_S
 

@@ -26,7 +26,7 @@ architecture rtl of masterCTRL is
 	type state_type is (s0, s1, s2, s3);
 
 	-- Controle de Teste do Módulo Alimentação
-	type state_type_master is (Idle, Teste, Comando, SucessoTeste, ErroTeste, convADC_Ch0, convADC_Ch1, convADC_Ch2);
+	type state_type_master is (Idle, convADC_Ch0, convADC_Ch1, convADC_Ch2);
 
 	-- Register to hold the current state
 	signal state   : state_type_master;
@@ -37,30 +37,30 @@ architecture rtl of masterCTRL is
 	-- Erro simulado
 	signal erro_s : std_logic := '0'; -- '0' Ok / '1' - Erro
 
+	-- enb_data_in
+	signal enb_data_in : std_logic := '0';
+
 begin
+
+	enb_data_in <= data_in;
+
 	-- Logic to advance to the next state
-	process (clk, reset)
+	controle_ad_proc : process (clk, reset)
 	begin
 		if reset = '1' then
 			state <= Idle;
 		elsif (rising_edge(clk)) then
 			case state is
 				when Idle=>
-					if data_in = '1' then
-						state <= Teste;
-					else
-						state <= Idle;
-					end if;
-				when Teste=>
-					if data_in = '1' then
+					if enb_data_in = '1' then
 						state <= convADC_Ch0;
 					else
-						state <= Teste;
+						state <= Idle;
 					end if;
 
 				-- ADC CH 0
 				when convADC_Ch0=>
-					if data_in = '1' then
+					if enb_data_in = '1' then
 						state <= convADC_Ch1;
 					else
 						state <= convADC_Ch0;
@@ -68,7 +68,7 @@ begin
 
 				-- ADC CH 1
 				when convADC_Ch1=>
-					if data_in = '1' then
+					if enb_data_in = '1' then
 						state <= convADC_Ch2;
 					else
 						state <= convADC_Ch1;
@@ -76,33 +76,10 @@ begin
 
 				-- ADC CH 2
 				when convADC_Ch2=>
-					if data_in = '1' then
-						state <= Comando;
+					if enb_data_in = '1' then
+						state <= convADC_Ch0;
 					else
 						state <= convADC_Ch2;
-					end if;
-
-				when Comando=>
-					if data_in = '1' and erro_s = '0' then
-						state <= SucessoTeste;
-					elsif data_in = '1' and erro_s = '1' then
-						state <= ErroTeste;
-					else
-						state <= Comando;
-					end if;
-
-				when SucessoTeste =>
-					if data_in = '1' then
-						state <= Idle;
-					else
-						state <= SucessoTeste;
-					end if;
-
-				when ErroTeste =>
-					if data_in = '0' then
-						state <= ErroTeste;
-					else
-						state <= ErroTeste;
 					end if;
 
 			end case;
@@ -120,18 +97,6 @@ begin
 				enb_adc_conv <= '0';
 				ch_adc_conv <= "000";
 
-			when Teste =>
-				data_out <= "01";
-				busy <= '1';
-				--ADC Controle
-				enb_adc_conv <= '0';
-
-			when Comando =>
-				data_out <= "10";
-				busy <= '1';
-				--ADC Controle
-				enb_adc_conv <= '0';
-
 			when convADC_Ch0 =>
 				--ADC Controle
 				enb_adc_conv <= '1';
@@ -146,18 +111,6 @@ begin
 				--ADC Controle
 				enb_adc_conv <= '1';
 				ch_adc_conv <= "010";
-
-			when SucessoTeste =>
-				data_out <= "11";
-				busy <= '1';
-				--ADC Controle
-				enb_adc_conv <= '0';
-
-			when ErroTeste =>
-				--ADC Controle
-				enb_adc_conv <= '0';
-				data_out <= "00";
-				busy <= '1';
 
 		end case;
 	end process;
