@@ -14,14 +14,15 @@ vlib work
 vmap work ./work
 
 # 4 - Now it's time to compile the sources
-vcom -check_synthesis ../vhdl/UART_PARITY.vhd
-vcom -check_synthesis ../vhdl/UART_TX.vhd
-vcom -check_synthesis ../vhdl/UART_RX.vhd
-vcom -check_synthesis ../vhdl/UART.vhd
+vcom -check_synthesis ../vhdl/uart_parity.vhd
+vcom -check_synthesis ../vhdl/uart_tx.vhd
+vcom -check_synthesis ../vhdl/uart_rx.vhd
+vcom -check_synthesis ../vhdl/uart.vhd
 
 vcom -check_synthesis ../vhdl/timer.vhd
 vcom -check_synthesis ../vhdl/masterCTRL.vhd
 vcom -check_synthesis ../vhdl/ADC128S022.vhd
+vcom -check_synthesis ../vhdl/moving_average.vhd
 vcom -check_synthesis ../vhdl/topo.vhd
 
 # Simulação ModelSim

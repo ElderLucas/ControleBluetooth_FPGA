@@ -8,14 +8,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "LED_OUT[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LED_OUT[1]",
-					"strict" : false
-				},
-				{
 					"name" : "LED_OUT[6]",
 					"strict" : false
 				},

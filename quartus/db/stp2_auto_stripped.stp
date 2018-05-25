@@ -1,4 +1,4 @@
-<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: 10CL025(Y|Z)/EP3C25/EP4CE22 (0x020F30DD)" sof_file="../output_files/ControleBluetooth_FPGA.sof">
+<session jtag_chain="USB-Blaster [1-4]" jtag_device="@1: 10CL025(Y|Z)/EP3C25/EP4CE22 (0x020F30DD)" sof_file="../output_files/ControleBluetooth_FPGA.sof">
   <display_tree gui_logging_enabled="0">
     <display_branch instance="auto_signaltap_0" log="USE_GLOBAL_TEMP" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
   </display_tree>

@@ -7,9 +7,9 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dc:/Projetos/Descriptware/ControleBluetooth_FPGA/testbench
+Z0 d/home/elder/ControleBluetooth_FPGA/testbench
 Eadc_serial_control
-Z1 w1526384229
+Z1 w1526987804
 Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -22,9 +22,9 @@ V3cn1WN>?:9JXZS`2Y9Jg51
 !s100 eAi6C04bI=bI@DCbXoe5c0
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1526663489
+Z8 !s110 1527255718
 !i10b 1
-Z9 !s108 1526663489.000000
+Z9 !s108 1527255718.000000
 Z10 !s90 -reportprogress|300|-check_synthesis|../vhdl/ADC128S022.vhd|
 Z11 !s107 ../vhdl/ADC128S022.vhd|
 !i113 1
@@ -49,55 +49,13 @@ R11
 !i113 1
 R12
 R13
-Eaverage_tb
-Z15 w1526582597
-R2
-R3
-R4
-R0
-Z16 8../testbench/average_tb.vhd
-Z17 F../testbench/average_tb.vhd
-l0
-L14
-VRO7FHdgE5WN9g<c][7IQ82
-!s100 6HJ_YXYhLmV5;B]g3mGSO2
-R7
-32
-Z18 !s110 1526644167
-!i10b 1
-Z19 !s108 1526644167.000000
-Z20 !s90 -reportprogress|300|-check_synthesis|../testbench/average_tb.vhd|
-Z21 !s107 ../testbench/average_tb.vhd|
-!i113 1
-R12
-R13
-Afull
-Z22 DEx4 work 14 moving_average 0 22 flD=30I@NT0kUB^zhVg^z3
-R2
-R3
-R4
-DEx4 work 10 average_tb 0 22 RO7FHdgE5WN9g<c][7IQ82
-l37
-L17
-Vi5?IWznD@ZaHmTCIkmF8[3
-!s100 <cj8[CHN2GfcK6E8[<;`12
-R7
-32
-R18
-!i10b 1
-R19
-R20
-R21
-!i113 1
-R12
-R13
 Emasterctrl
-Z23 w1526652284
+R1
 R3
 R4
 R0
-Z24 8../vhdl/masterCTRL.vhd
-Z25 F../vhdl/masterCTRL.vhd
+Z15 8../vhdl/masterCTRL.vhd
+Z16 F../vhdl/masterCTRL.vhd
 l0
 L8
 V8SAGcNNVB>0>NCN?FKLC41
@@ -107,15 +65,15 @@ R7
 R8
 !i10b 1
 R9
-Z26 !s90 -reportprogress|300|-check_synthesis|../vhdl/masterCTRL.vhd|
-Z27 !s107 ../vhdl/masterCTRL.vhd|
+Z17 !s90 -reportprogress|300|-check_synthesis|../vhdl/masterCTRL.vhd|
+Z18 !s107 ../vhdl/masterCTRL.vhd|
 !i113 1
 R12
 R13
 Artl
 R3
 R4
-Z28 DEx4 work 10 masterctrl 0 22 8SAGcNNVB>0>NCN?FKLC41
+Z19 DEx4 work 10 masterctrl 0 22 8SAGcNNVB>0>NCN?FKLC41
 l43
 L23
 V7G90HT^=WLb0h7PBZ2`kO3
@@ -125,145 +83,142 @@ R7
 R8
 !i10b 1
 R9
-R26
-R27
+R17
+R18
 !i113 1
 R12
 R13
 Emoving_average
-Z29 w1526583664
+R1
 R3
 R4
 R0
-Z30 8../vhdl/moving_average.vhd
-Z31 F../vhdl/moving_average.vhd
+Z20 8../vhdl/moving_average.vhd
+Z21 F../vhdl/moving_average.vhd
 l0
 L4
 VflD=30I@NT0kUB^zhVg^z3
 !s100 zhdO7Ql<ERMFM04CLHQ9C1
 R7
 32
-R18
+R8
 !i10b 1
-R19
-Z32 !s90 -reportprogress|300|-check_synthesis|../vhdl/moving_average.vhd|
-Z33 !s107 ../vhdl/moving_average.vhd|
+R9
+Z22 !s90 -reportprogress|300|-check_synthesis|../vhdl/moving_average.vhd|
+Z23 !s107 ../vhdl/moving_average.vhd|
 !i113 1
 R12
 R13
 Artl
 R3
 R4
-R22
+Z24 DEx4 work 14 moving_average 0 22 flD=30I@NT0kUB^zhVg^z3
 l33
 L18
 VNX8gmF>D]OjHEM1:mXL@33
 !s100 kE<4Sk`gZZQHR`1M76L8e1
 R7
 32
-R18
+R8
 !i10b 1
-R19
+R9
+R22
+R23
+!i113 1
+R12
+R13
+Eprotocolo
+Z25 w1527280181
+R3
+R4
+R0
+Z26 8../vhdl/protocolo.vhd
+Z27 F../vhdl/protocolo.vhd
+l0
+L8
+VR3I@k3iFT@VkhMVBC6I552
+!s100 bXn`PZoX:f@J0lM4:=6In1
+R7
+32
+Z28 !s110 1527280542
+!i10b 1
+Z29 !s108 1527280542.000000
+Z30 !s90 -reportprogress|300|-check_synthesis|../vhdl/protocolo.vhd|
+Z31 !s107 ../vhdl/protocolo.vhd|
+!i113 1
+R12
+R13
+Artl
+R3
+R4
+Z32 DEx4 work 9 protocolo 0 22 R3I@k3iFT@VkhMVBC6I552
+l41
+L33
+ViaGAKDU>kH:ZCHz^<]UUP0
+!s100 ^LDMDQ65Fke15SDoE113i3
+R7
+32
+R28
+!i10b 1
+R29
+R30
+R31
+!i113 1
+R12
+R13
+Eprotocolo_tb
+Z33 w1527280020
+R2
+R3
+R4
+R0
+Z34 8../testbench/protocolo_tb.vhd
+Z35 F../testbench/protocolo_tb.vhd
+l0
+L14
+V:K3Y39eJQ6Ed]e>1;D8Oj2
+!s100 g@kbMo8jS7jgi[V;RS;j[1
+R7
+32
+R28
+!i10b 1
+R29
+Z36 !s90 -reportprogress|300|-check_synthesis|../testbench/protocolo_tb.vhd|
+Z37 !s107 ../testbench/protocolo_tb.vhd|
+!i113 1
+R12
+R13
+Afull
 R32
-R33
-!i113 1
-R12
-R13
-Eslice16to8bitstx
-Z34 w1526501392
-Z35 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z38 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z39 DEx4 work 4 uart 0 22 =e7?Gk<USdg?@BnZZ0JkB1
 R2
 R3
 R4
-R0
-Z36 8../vhdl/slice16to8bitsTX.vhd
-Z37 F../vhdl/slice16to8bitsTX.vhd
-l0
-L18
-V4238DV8^PXVXoaC>1oI>C0
-!s100 cL_U5Rj967cgFo1fdX3^]1
+Z40 DEx4 work 12 protocolo_tb 0 22 :K3Y39eJQ6Ed]e>1;D8Oj2
+l47
+L17
+Z41 VMWMPzlnW?fYYF7k=U5Q5L1
+Z42 !s100 ?ANjEU5Lc[ShX^EB0;C>C1
 R7
 32
-Z38 !s110 1526502677
+R28
 !i10b 1
-Z39 !s108 1526502677.000000
-Z40 !s90 -reportprogress|300|-check_synthesis|../vhdl/slice16to8bitsTX.vhd|
-Z41 !s107 ../vhdl/slice16to8bitsTX.vhd|
-!i113 1
-R12
-R13
-Afull
-R35
-R2
-R3
-R4
-Z42 DEx4 work 16 slice16to8bitstx 0 22 4238DV8^PXVXoaC>1oI>C0
-l54
-L41
-VE3<K8YTLkZk^e3?P7<8Vl1
-!s100 NoUPc[PcNVkDNGHG9bF8L2
-R7
-32
-R38
-!i10b 1
-R39
-R40
-R41
-!i113 1
-R12
-R13
-Eslice_tb
-Z43 w1526502666
-R2
-R3
-R4
-R0
-Z44 8../testbench/tb_slice16to8bitsTX.vhd
-Z45 F../testbench/tb_slice16to8bitsTX.vhd
-l0
-L13
-VRGMa7h6Ug[LX3e[379oKH2
-!s100 8`iaP@=Ll2`G0nc?cN[o42
-R7
-32
-Z46 !s110 1526502678
-!i10b 1
-R39
-Z47 !s90 -reportprogress|300|-check_synthesis|../testbench/tb_slice16to8bitsTX.vhd|
-Z48 !s107 ../testbench/tb_slice16to8bitsTX.vhd|
-!i113 1
-R12
-R13
-Afull
-R35
-R42
-R2
-R3
-R4
-DEx4 work 8 slice_tb 0 22 RGMa7h6Ug[LX3e[379oKH2
-l30
-L16
-VBNR<?mn@4H[lzGUcCEU]z2
-!s100 hSSK:4Nz@=]9Fl;zX9mdU0
-R7
-32
-R46
-!i10b 1
-R39
-R47
-R48
+R29
+R36
+R37
 !i113 1
 R12
 R13
 Etimer
-Z49 w1526648098
-R35
+R1
+R38
 R2
 R3
 R4
 R0
-Z50 8../vhdl/timer.vhd
-Z51 F../vhdl/timer.vhd
+Z43 8../vhdl/timer.vhd
+Z44 F../vhdl/timer.vhd
 l0
 L18
 VU2fVG^GTc2jm1djCXGgIL2
@@ -273,17 +228,17 @@ R7
 R8
 !i10b 1
 R9
-Z52 !s90 -reportprogress|300|-check_synthesis|../vhdl/timer.vhd|
-Z53 !s107 ../vhdl/timer.vhd|
+Z45 !s90 -reportprogress|300|-check_synthesis|../vhdl/timer.vhd|
+Z46 !s107 ../vhdl/timer.vhd|
 !i113 1
 R12
 R13
 Afull
-R35
+R38
 R2
 R3
 R4
-Z54 DEx4 work 5 timer 0 22 U2fVG^GTc2jm1djCXGgIL2
+Z47 DEx4 work 5 timer 0 22 U2fVG^GTc2jm1djCXGgIL2
 l39
 L33
 V_ozAD[@o]D4^Z?neoh=Gi3
@@ -293,22 +248,65 @@ R7
 R8
 !i10b 1
 R9
+R45
+R46
+!i113 1
+R12
+R13
+Etimer_tb
+R1
+R2
+R3
+R4
+R0
+Z48 8../testbench/timer_test_bench.vhd
+Z49 F../testbench/timer_test_bench.vhd
+l0
+L14
+VP[lPD;B7_>]4chk?EY[T40
+!s100 ^ZdYS0CGbm[Rd^MaU1I`V2
+R7
+32
+Z50 !s110 1526997074
+!i10b 1
+Z51 !s108 1526997074.000000
+Z52 !s90 -reportprogress|300|-check_synthesis|../testbench/timer_test_bench.vhd|
+Z53 !s107 ../testbench/timer_test_bench.vhd|
+!i113 1
+R12
+R13
+Afull
+R38
+R47
+R2
+R3
+R4
+DEx4 work 8 timer_tb 0 22 P[lPD;B7_>]4chk?EY[T40
+l25
+L17
+V^OW_Rom36M:0Eb[5HLnjU0
+!s100 fN<j8m1@J]`N]F[M^I=:<3
+R7
+32
+R50
+!i10b 1
+R51
 R52
 R53
 !i113 1
 R12
 R13
 Etopo
-Z55 w1526663486
-Z56 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z57 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-R35
+Z54 w1527255619
+Z55 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z56 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R38
 R2
 R3
 R4
 R0
-Z58 8../vhdl/topo.vhd
-Z59 F../vhdl/topo.vhd
+Z57 8../vhdl/topo.vhd
+Z58 F../vhdl/topo.vhd
 l0
 L20
 V8RHOnZcPK?>LJ2XR=X;PM2
@@ -318,47 +316,47 @@ R7
 R8
 !i10b 1
 R9
-Z60 !s90 -reportprogress|300|-check_synthesis|../vhdl/topo.vhd|
-Z61 !s107 ../vhdl/topo.vhd|
+Z59 !s90 -reportprogress|300|-check_synthesis|../vhdl/topo.vhd|
+Z60 !s107 ../vhdl/topo.vhd|
 !i113 1
 R12
 R13
 Afull
-R54
-R28
-R22
+R47
+R19
+R24
 R14
-Z62 DEx4 work 7 uart_rx 0 22 =VgJBDj79f<Qb7[jO42TQ3
-Z63 DEx4 work 7 uart_tx 0 22 @f?0NBGW[AGcOf>^BWa131
+Z61 DEx4 work 7 uart_rx 0 22 =VgJBDj79f<Qb7[jO42TQ3
+Z62 DEx4 work 7 uart_tx 0 22 @f?0NBGW[AGcOf>^BWa131
+R55
 R56
-R57
-R35
+R38
 R2
 R3
 R4
-Z64 DEx4 work 4 topo 0 22 8RHOnZcPK?>LJ2XR=X;PM2
+Z63 DEx4 work 4 topo 0 22 8RHOnZcPK?>LJ2XR=X;PM2
 l103
 L45
-V?PSQBh2D5Tm5ASWILW]<B0
-!s100 DaLgOAgf_]6M1o;<CRZ4l1
+VWe8MYTDHSMT1In@e[;@:E0
+!s100 KUSP8:@3ezP3l1@4DNhf>3
 R7
 32
 R8
 !i10b 1
 R9
+R59
 R60
-R61
 !i113 1
 R12
 R13
 Etopo_tb
-Z65 w1526655400
+R1
 R2
 R3
 R4
 R0
-Z66 8../testbench/topo_tb.vhd
-Z67 F../testbench/topo_tb.vhd
+Z64 8../testbench/topo_tb.vhd
+Z65 F../testbench/topo_tb.vhd
 l0
 L14
 VlU8i;Sh;M=8E@^?nV703z2
@@ -368,98 +366,98 @@ R7
 R8
 !i10b 1
 R9
-Z68 !s90 -reportprogress|300|-check_synthesis|../testbench/topo_tb.vhd|
-Z69 !s107 ../testbench/topo_tb.vhd|
+Z66 !s90 -reportprogress|300|-check_synthesis|../testbench/topo_tb.vhd|
+Z67 !s107 ../testbench/topo_tb.vhd|
 !i113 1
 R12
 R13
 Afull
+R55
 R56
-R57
-R35
-R64
+R38
+R63
 R2
 R3
 R4
-Z70 DEx4 work 7 topo_tb 0 22 lU8i;Sh;M=8E@^?nV703z2
+DEx4 work 7 topo_tb 0 22 lU8i;Sh;M=8E@^?nV703z2
 l30
 L17
-Z71 V=R8GT1SGzH]HJ4E?Lgbj@0
-Z72 !s100 9[Fl[;K4VKkknGnH[4gO53
+V=R8GT1SGzH]HJ4E?Lgbj@0
+!s100 9[Fl[;K4VKkknGnH[4gO53
 R7
 32
 R8
 !i10b 1
 R9
-R68
-R69
+R66
+R67
 !i113 1
 R12
 R13
 Euart
-Z73 w1525799972
-R35
+R1
+R38
 R2
 R3
 R4
 R0
-Z74 8../vhdl/UART.vhd
-Z75 F../vhdl/UART.vhd
+Z68 8../vhdl/uart.vhd
+Z69 F../vhdl/uart.vhd
 l0
 L18
 V=e7?Gk<USdg?@BnZZ0JkB1
 !s100 HoHlAMDXkR;V2z5IUMlXQ1
 R7
 32
-R8
+R28
 !i10b 1
-R9
-Z76 !s90 -reportprogress|300|-check_synthesis|../vhdl/UART.vhd|
-Z77 !s107 ../vhdl/UART.vhd|
+R29
+Z70 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart.vhd|
+Z71 !s107 ../vhdl/uart.vhd|
 !i113 1
 R12
 R13
 Afull
+R61
 R62
-R63
-R35
+R38
 R2
 R3
 R4
-DEx4 work 4 uart 0 22 =e7?Gk<USdg?@BnZZ0JkB1
+R39
 l53
 L42
 VjbD[TNWme<NEH9MKeo7FA1
 !s100 X>EiRh0>9R7JYB4jBO`d>1
 R7
 32
-R8
+R28
 !i10b 1
-R9
-R76
-R77
+R29
+R70
+R71
 !i113 1
 R12
 R13
 Euart_parity
-Z78 w1470489372
+R1
 R2
 R3
 R4
 R0
-Z79 8../vhdl/UART_PARITY.vhd
-Z80 F../vhdl/UART_PARITY.vhd
+Z72 8../vhdl/uart_parity.vhd
+Z73 F../vhdl/uart_parity.vhd
 l0
 L14
 VHmVV_DE8X0930Li>96D7C2
 !s100 LZz;T?1KgS5b24dR`l5eJ2
 R7
 32
-R8
+R28
 !i10b 1
-Z81 !s108 1526663488.000000
-Z82 !s90 -reportprogress|300|-check_synthesis|../vhdl/UART_PARITY.vhd|
-Z83 !s107 ../vhdl/UART_PARITY.vhd|
+R29
+Z74 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_parity.vhd|
+Z75 !s107 ../vhdl/uart_parity.vhd|
 !i113 1
 R12
 R13
@@ -467,102 +465,102 @@ Afull
 R2
 R3
 R4
-Z84 DEx4 work 11 uart_parity 0 22 HmVV_DE8X0930Li>96D7C2
+Z76 DEx4 work 11 uart_parity 0 22 HmVV_DE8X0930Li>96D7C2
 l27
 L25
 Vk:X;N?d=`iKLOR<hGfTY?2
 !s100 ROCe[RMzXOOjTM=83Z3nd0
 R7
 32
-R8
+R28
 !i10b 1
-R81
-R82
-R83
+R29
+R74
+R75
 !i113 1
 R12
 R13
 Euart_rx
-Z85 w1526384236
+R1
 R2
 R3
 R4
 R0
-Z86 8../vhdl/UART_RX.vhd
-Z87 F../vhdl/UART_RX.vhd
+Z77 8../vhdl/uart_rx.vhd
+Z78 F../vhdl/uart_rx.vhd
 l0
 L14
 V=VgJBDj79f<Qb7[jO42TQ3
 !s100 _ENNOcjDeP66:lA:E]S0M2
 R7
 32
-R8
+R28
 !i10b 1
-R9
-Z88 !s90 -reportprogress|300|-check_synthesis|../vhdl/UART_RX.vhd|
-Z89 !s107 ../vhdl/UART_RX.vhd|
+R29
+Z79 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_rx.vhd|
+Z80 !s107 ../vhdl/uart_rx.vhd|
 !i113 1
 R12
 R13
 Afull
-R84
+R76
 R2
 R3
 R4
-R62
+R61
 l48
 L31
 V<?NBfUDnM5TCUoBTN1F8`0
 !s100 >>Nok0Yg]YQmLFl=0N;T21
 R7
 32
-R8
+R28
 !i10b 1
-R9
-R88
-R89
+R29
+R79
+R80
 !i113 1
 R12
 R13
 Euart_tx
-Z90 w1525800393
+R1
 R2
 R3
 R4
 R0
-Z91 8../vhdl/UART_TX.vhd
-Z92 F../vhdl/UART_TX.vhd
+Z81 8../vhdl/uart_tx.vhd
+Z82 F../vhdl/uart_tx.vhd
 l0
 L14
 V@f?0NBGW[AGcOf>^BWa131
 !s100 DmFIWaJ@:?kbFX55Mc9Ti2
 R7
 32
-R8
+R28
 !i10b 1
-R9
-Z93 !s90 -reportprogress|300|-check_synthesis|../vhdl/UART_TX.vhd|
-Z94 !s107 ../vhdl/UART_TX.vhd|
+R29
+Z83 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_tx.vhd|
+Z84 !s107 ../vhdl/uart_tx.vhd|
 !i113 1
 R12
 R13
 Afull
-R84
+R76
 R2
 R3
 R4
-R63
+R62
 l47
 L31
 V^hiJf;O2V:]Z@00WJ>:VY1
 !s100 Xcjd2j31C0YTiRBDn>Lm13
 R7
 32
-R8
+R28
 !i10b 1
-R9
-R93
-R94
+R29
+R83
+R84
 !i113 1
 R12
 R13

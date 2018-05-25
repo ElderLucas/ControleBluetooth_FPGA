@@ -1,13 +1,10 @@
 
 State Machine - |topo|masterCTRL:controlador|state
-Name state.convADC_Ch2 state.convADC_Ch1 state.convADC_Ch0 state.SucessoTeste state.Comando state.Teste state.Idle 
-state.Idle 0 0 0 0 0 0 0 
-state.Teste 0 0 0 0 0 1 1 
-state.Comando 0 0 0 0 1 0 1 
-state.SucessoTeste 0 0 0 1 0 0 1 
-state.convADC_Ch0 0 0 1 0 0 0 1 
-state.convADC_Ch1 0 1 0 0 0 0 1 
-state.convADC_Ch2 1 0 0 0 0 0 1 
+Name state.convADC_Ch2 state.convADC_Ch1 state.convADC_Ch0 state.Idle 
+state.Idle 0 0 0 0 
+state.convADC_Ch0 0 0 1 1 
+state.convADC_Ch1 0 1 0 1 
+state.convADC_Ch2 1 0 0 1 
 
 State Machine - |topo|UART_RX:uart_rx_i|rx_pstate
 Name rx_pstate.stopbit rx_pstate.paritybit rx_pstate.databits rx_pstate.startbit rx_pstate.idle 

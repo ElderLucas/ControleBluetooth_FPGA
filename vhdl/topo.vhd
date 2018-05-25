@@ -271,7 +271,7 @@ begin
     ----------------------------------------------------------------------------
     channel_2: entity work.moving_average
     generic map (
-        SAMPLES_COUNT    => 10
+        SAMPLES_COUNT    => 100
     )
     port map(
         CLK     => CLK,
@@ -288,18 +288,18 @@ begin
     -- Master controle
     -- -------------------------------------------------------------------------
     controlador : entity work.masterCTRL
-	generic map (
-	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
-	)
-	port map (
-		clk	=> CLK,
-		data_in => timer_1seg_s,
-		reset  => RST_s,
-		enb_adc_conv => CONV_ENB_S,
-		ch_adc_conv => CONV_CH_SEL_S,
-		busy => Busy_s,
-		data_out => LED_OUT(1 downto 0)
-	);
+  	generic map (
+  	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
+  	)
+  	port map (
+    		clk	=> CLK,
+    		data_in => timer_1seg_s,
+    		reset  => RST_s,
+    		enb_adc_conv => CONV_ENB_S,
+    		ch_adc_conv => CONV_CH_SEL_S,
+    		busy => Busy_s,
+    		data_out => LED_OUT(1 downto 0)
+  	);
 
 
     -- ADC128S22

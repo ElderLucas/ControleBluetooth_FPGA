@@ -131,9 +131,7 @@ public class MainActivity extends AppCompatActivity {
         tempButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on temp button click
-
                 (new Thread(new workerThread("temp"))).start();
-
             }
         });
         //end temp button handler
@@ -172,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Aquarium",device.getName());
                     mmDevice = device;
                     break;
+
+
                 }
             }
         }

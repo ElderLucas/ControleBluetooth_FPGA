@@ -1,6 +1,6 @@
 Analysis & Synthesis report for ControleBluetooth_FPGA
-Tue May 15 14:59:40 2018
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Fri May 25 09:38:35 2018
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
 ---------------------
@@ -18,38 +18,42 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
  10. State Machine - |topo|masterCTRL:controlador|state
  11. State Machine - |topo|UART_RX:uart_rx_i|rx_pstate
  12. State Machine - |topo|UART_TX:uart_tx_i|tx_pstate
- 13. User-Specified and Inferred Latches
- 14. Registers Removed During Synthesis
- 15. Removed Registers Triggering Further Register Optimizations
- 16. General Register Statistics
- 17. Inverted Register Statistics
- 18. Multiplexer Restructuring Statistics (Restructuring Performed)
- 19. Source assignments for sld_signaltap:auto_signaltap_0
- 20. Parameter Settings for User Entity Instance: Top-level Entity: |topo
- 21. Parameter Settings for User Entity Instance: UART_TX:uart_tx_i
- 22. Parameter Settings for User Entity Instance: UART_RX:uart_rx_i
- 23. Parameter Settings for User Entity Instance: adc_serial_control:adc128s022
- 24. Parameter Settings for User Entity Instance: masterCTRL:controlador
- 25. Parameter Settings for User Entity Instance: TIMER:tic_1segundo
- 26. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
- 27. Port Connectivity Checks: "masterCTRL:controlador"
- 28. Port Connectivity Checks: "adc_serial_control:adc128s022"
- 29. Port Connectivity Checks: "UART_RX:uart_rx_i"
- 30. Port Connectivity Checks: "UART_TX:uart_tx_i"
- 31. Signal Tap Logic Analyzer Settings
- 32. Post-Synthesis Netlist Statistics for Top Partition
- 33. Post-Synthesis Netlist Statistics for Partition sld_signaltap:auto_signaltap_0
- 34. Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub
- 35. Elapsed Time Per Partition
- 36. Connections to In-System Debugging Instance "auto_signaltap_0"
- 37. Analysis & Synthesis Messages
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Source assignments for sld_signaltap:auto_signaltap_0
+ 19. Parameter Settings for User Entity Instance: Top-level Entity: |topo
+ 20. Parameter Settings for User Entity Instance: UART_TX:uart_tx_i
+ 21. Parameter Settings for User Entity Instance: UART_RX:uart_rx_i
+ 22. Parameter Settings for User Entity Instance: adc_serial_control:adc128s022
+ 23. Parameter Settings for User Entity Instance: moving_average:channel_0
+ 24. Parameter Settings for User Entity Instance: moving_average:channel_1
+ 25. Parameter Settings for User Entity Instance: moving_average:channel_2
+ 26. Parameter Settings for User Entity Instance: masterCTRL:controlador
+ 27. Parameter Settings for User Entity Instance: TIMER:tic_1segundo
+ 28. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
+ 29. Port Connectivity Checks: "masterCTRL:controlador"
+ 30. Port Connectivity Checks: "moving_average:channel_2"
+ 31. Port Connectivity Checks: "moving_average:channel_1"
+ 32. Port Connectivity Checks: "moving_average:channel_0"
+ 33. Port Connectivity Checks: "UART_RX:uart_rx_i"
+ 34. Port Connectivity Checks: "UART_TX:uart_tx_i"
+ 35. Signal Tap Logic Analyzer Settings
+ 36. Post-Synthesis Netlist Statistics for Top Partition
+ 37. Post-Synthesis Netlist Statistics for Partition sld_signaltap:auto_signaltap_0
+ 38. Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub
+ 39. Elapsed Time Per Partition
+ 40. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 41. Analysis & Synthesis Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -68,15 +72,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 15 14:59:40 2018       ;
-; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Analysis & Synthesis Status        ; Successful - Fri May 25 09:38:35 2018       ;
+; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; ControleBluetooth_FPGA                      ;
 ; Top-level Entity Name              ; topo                                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,178                                       ;
-;     Total combinational functions  ; 731                                         ;
-;     Dedicated logic registers      ; 911                                         ;
-; Total registers                    ; 911                                         ;
+; Total logic elements               ; 1,170                                       ;
+;     Total combinational functions  ; 722                                         ;
+;     Dedicated logic registers      ; 908                                         ;
+; Total registers                    ; 908                                         ;
 ; Total pins                         ; 16                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 425,984                                     ;
@@ -85,90 +89,90 @@ refer to the applicable agreement for further details.
 +------------------------------------+---------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                            ;
-+----------------------------------------------------------------------------+--------------------+------------------------+
-; Option                                                                     ; Setting            ; Default Value          ;
-+----------------------------------------------------------------------------+--------------------+------------------------+
-; Device                                                                     ; EP4CE22F17C6       ;                        ;
-; Top-level entity name                                                      ; topo               ; ControleBluetooth_FPGA ;
-; Family name                                                                ; Cyclone IV E       ; Cyclone V              ;
-; Use smart compilation                                                      ; Off                ; Off                    ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                     ;
-; Enable compact report table                                                ; Off                ; Off                    ;
-; Restructure Multiplexers                                                   ; Auto               ; Auto                   ;
-; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                    ;
-; Preserve fewer node names                                                  ; On                 ; On                     ;
-; Intel FPGA IP Evaluation Mode                                              ; Enable             ; Enable                 ;
-; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001           ;
-; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993              ;
-; State Machine Processing                                                   ; Auto               ; Auto                   ;
-; Safe State Machine                                                         ; Off                ; Off                    ;
-; Extract Verilog State Machines                                             ; On                 ; On                     ;
-; Extract VHDL State Machines                                                ; On                 ; On                     ;
-; Ignore Verilog initial constructs                                          ; Off                ; Off                    ;
-; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000                   ;
-; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                    ;
-; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                     ;
-; Infer RAMs from Raw Logic                                                  ; On                 ; On                     ;
-; Parallel Synthesis                                                         ; On                 ; On                     ;
-; DSP Block Balancing                                                        ; Auto               ; Auto                   ;
-; NOT Gate Push-Back                                                         ; On                 ; On                     ;
-; Power-Up Don't Care                                                        ; On                 ; On                     ;
-; Remove Redundant Logic Cells                                               ; Off                ; Off                    ;
-; Remove Duplicate Registers                                                 ; On                 ; On                     ;
-; Ignore CARRY Buffers                                                       ; Off                ; Off                    ;
-; Ignore CASCADE Buffers                                                     ; Off                ; Off                    ;
-; Ignore GLOBAL Buffers                                                      ; Off                ; Off                    ;
-; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                    ;
-; Ignore LCELL Buffers                                                       ; Off                ; Off                    ;
-; Ignore SOFT Buffers                                                        ; On                 ; On                     ;
-; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                    ;
-; Optimization Technique                                                     ; Balanced           ; Balanced               ;
-; Carry Chain Length                                                         ; 70                 ; 70                     ;
-; Auto Carry Chains                                                          ; On                 ; On                     ;
-; Auto Open-Drain Pins                                                       ; On                 ; On                     ;
-; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                    ;
-; Auto ROM Replacement                                                       ; On                 ; On                     ;
-; Auto RAM Replacement                                                       ; On                 ; On                     ;
-; Auto DSP Block Replacement                                                 ; On                 ; On                     ;
-; Auto Shift Register Replacement                                            ; Auto               ; Auto                   ;
-; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto                   ;
-; Auto Clock Enable Replacement                                              ; On                 ; On                     ;
-; Strict RAM Replacement                                                     ; Off                ; Off                    ;
-; Allow Synchronous Control Signals                                          ; On                 ; On                     ;
-; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                    ;
-; Auto RAM Block Balancing                                                   ; On                 ; On                     ;
-; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                    ;
-; Auto Resource Sharing                                                      ; Off                ; Off                    ;
-; Allow Any RAM Size For Recognition                                         ; Off                ; Off                    ;
-; Allow Any ROM Size For Recognition                                         ; Off                ; Off                    ;
-; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                    ;
-; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                     ;
-; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                    ;
-; Timing-Driven Synthesis                                                    ; On                 ; On                     ;
-; Report Parameter Settings                                                  ; On                 ; On                     ;
-; Report Source Assignments                                                  ; On                 ; On                     ;
-; Report Connectivity Checks                                                 ; On                 ; On                     ;
-; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                    ;
-; Synchronization Register Chain Length                                      ; 2                  ; 2                      ;
-; Power Optimization During Synthesis                                        ; Normal compilation ; Normal compilation     ;
-; HDL message level                                                          ; Level2             ; Level2                 ;
-; Suppress Register Optimization Related Messages                            ; Off                ; Off                    ;
-; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000                   ;
-; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000                   ;
-; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                    ;
-; Clock MUX Protection                                                       ; On                 ; On                     ;
-; Auto Gated Clock Conversion                                                ; Off                ; Off                    ;
-; Block Design Naming                                                        ; Auto               ; Auto                   ;
-; SDC constraint protection                                                  ; Off                ; Off                    ;
-; Synthesis Effort                                                           ; Auto               ; Auto                   ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                     ;
-; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                    ;
-; Analysis & Synthesis Message Level                                         ; Medium             ; Medium                 ;
-; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto                   ;
-; Resource Aware Inference For Block RAM                                     ; On                 ; On                     ;
-+----------------------------------------------------------------------------+--------------------+------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                  ;
++------------------------------------------------------------------+--------------------+------------------------+
+; Option                                                           ; Setting            ; Default Value          ;
++------------------------------------------------------------------+--------------------+------------------------+
+; Device                                                           ; EP4CE22F17C6       ;                        ;
+; Top-level entity name                                            ; topo               ; ControleBluetooth_FPGA ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V              ;
+; Use smart compilation                                            ; Off                ; Off                    ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                     ;
+; Enable compact report table                                      ; Off                ; Off                    ;
+; Restructure Multiplexers                                         ; Auto               ; Auto                   ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                    ;
+; Preserve fewer node names                                        ; On                 ; On                     ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable                 ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001           ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993              ;
+; State Machine Processing                                         ; Auto               ; Auto                   ;
+; Safe State Machine                                               ; Off                ; Off                    ;
+; Extract Verilog State Machines                                   ; On                 ; On                     ;
+; Extract VHDL State Machines                                      ; On                 ; On                     ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                    ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000                   ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                    ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                     ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                     ;
+; Parallel Synthesis                                               ; On                 ; On                     ;
+; DSP Block Balancing                                              ; Auto               ; Auto                   ;
+; NOT Gate Push-Back                                               ; On                 ; On                     ;
+; Power-Up Don't Care                                              ; On                 ; On                     ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                    ;
+; Remove Duplicate Registers                                       ; On                 ; On                     ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                    ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                    ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                    ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                    ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                    ;
+; Ignore SOFT Buffers                                              ; On                 ; On                     ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                    ;
+; Optimization Technique                                           ; Balanced           ; Balanced               ;
+; Carry Chain Length                                               ; 70                 ; 70                     ;
+; Auto Carry Chains                                                ; On                 ; On                     ;
+; Auto Open-Drain Pins                                             ; On                 ; On                     ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                    ;
+; Auto ROM Replacement                                             ; On                 ; On                     ;
+; Auto RAM Replacement                                             ; On                 ; On                     ;
+; Auto DSP Block Replacement                                       ; On                 ; On                     ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto                   ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto                   ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                     ;
+; Strict RAM Replacement                                           ; Off                ; Off                    ;
+; Allow Synchronous Control Signals                                ; On                 ; On                     ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                    ;
+; Auto RAM Block Balancing                                         ; On                 ; On                     ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                    ;
+; Auto Resource Sharing                                            ; Off                ; Off                    ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                    ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                    ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                    ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                     ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                    ;
+; Timing-Driven Synthesis                                          ; On                 ; On                     ;
+; Report Parameter Settings                                        ; On                 ; On                     ;
+; Report Source Assignments                                        ; On                 ; On                     ;
+; Report Connectivity Checks                                       ; On                 ; On                     ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                    ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                      ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation     ;
+; HDL message level                                                ; Level2             ; Level2                 ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                    ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000                   ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000                   ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                    ;
+; Clock MUX Protection                                             ; On                 ; On                     ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                    ;
+; Block Design Naming                                              ; Auto               ; Auto                   ;
+; SDC constraint protection                                        ; Off                ; Off                    ;
+; Synthesis Effort                                                 ; Auto               ; Auto                   ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                     ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                    ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium                 ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto                   ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                     ;
++------------------------------------------------------------------+--------------------+------------------------+
 
 
 +------------------------------------------+
@@ -185,81 +189,81 @@ refer to the applicable agreement for further details.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
-;     Processor 3            ;   0.0%      ;
-;     Processor 4            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                         ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+-------------+
-; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                               ; Library     ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+-------------+
-; ../vhdl/uart_tx.vhd                                                ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_tx.vhd                                                           ;             ;
-; ../vhdl/uart_rx.vhd                                                ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_rx.vhd                                                           ;             ;
-; ../vhdl/uart_parity.vhd                                            ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_parity.vhd                                                       ;             ;
-; ../vhdl/timer.vhd                                                  ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/timer.vhd                                                             ;             ;
-; ../vhdl/masterCTRL.vhd                                             ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd                                                        ;             ;
-; ../vhdl/topo.vhd                                                   ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd                                                              ;             ;
-; ../vhdl/ADC128S022.vhd                                             ; yes             ; User VHDL File                               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd                                                        ;             ;
-; sld_signaltap.vhd                                                  ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_signaltap.vhd                                                   ;             ;
-; sld_signaltap_impl.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                                              ;             ;
-; sld_ela_control.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_ela_control.vhd                                                 ;             ;
-; lpm_shiftreg.tdf                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_shiftreg.tdf                                                    ;             ;
-; lpm_constant.inc                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_constant.inc                                                    ;             ;
-; dffeea.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/dffeea.inc                                                          ;             ;
-; aglobal171.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/aglobal171.inc                                                      ;             ;
-; sld_mbpmg.vhd                                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_mbpmg.vhd                                                       ;             ;
-; sld_ela_trigger_flow_mgr.vhd                                       ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd                                        ;             ;
-; sld_buffer_manager.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_buffer_manager.vhd                                              ;             ;
-; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf                                                      ;             ;
-; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                               ;             ;
-; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_mux.inc                                                         ;             ;
-; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_decode.inc                                                      ;             ;
-; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                       ;             ;
-; altrom.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altrom.inc                                                          ;             ;
-; altram.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altram.inc                                                          ;             ;
-; altdpram.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altdpram.inc                                                        ;             ;
-; db/altsyncram_g924.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/altsyncram_g924.tdf                                             ;             ;
-; db/decode_jsa.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/decode_jsa.tdf                                                  ;             ;
-; db/mux_job.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/mux_job.tdf                                                     ;             ;
-; altdpram.tdf                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altdpram.tdf                                                        ;             ;
-; memmodes.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/others/maxplus2/memmodes.inc                                                      ;             ;
-; a_hdffe.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/a_hdffe.inc                                                         ;             ;
-; alt_le_rden_reg.inc                                                ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/alt_le_rden_reg.inc                                                 ;             ;
-; altsyncram.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altsyncram.inc                                                      ;             ;
-; lpm_mux.tdf                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_mux.tdf                                                         ;             ;
-; muxlut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/muxlut.inc                                                          ;             ;
-; bypassff.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/bypassff.inc                                                        ;             ;
-; altshift.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altshift.inc                                                        ;             ;
-; db/mux_1tc.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/mux_1tc.tdf                                                     ;             ;
-; lpm_decode.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_decode.tdf                                                      ;             ;
-; declut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/declut.inc                                                          ;             ;
-; lpm_compare.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_compare.inc                                                     ;             ;
-; db/decode_dvf.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/decode_dvf.tdf                                                  ;             ;
-; lpm_counter.tdf                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_counter.tdf                                                     ;             ;
-; lpm_add_sub.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                     ;             ;
-; cmpconst.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/cmpconst.inc                                                        ;             ;
-; lpm_counter.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_counter.inc                                                     ;             ;
-; alt_counter_stratix.inc                                            ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/alt_counter_stratix.inc                                             ;             ;
-; db/cntr_rgi.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_rgi.tdf                                                    ;             ;
-; db/cmpr_rgc.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cmpr_rgc.tdf                                                    ;             ;
-; db/cntr_bbj.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_bbj.tdf                                                    ;             ;
-; db/cntr_kgi.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_kgi.tdf                                                    ;             ;
-; db/cntr_23j.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_23j.tdf                                                    ;             ;
-; db/cmpr_ngc.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cmpr_ngc.tdf                                                    ;             ;
-; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                      ;             ;
-; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                                       ;             ;
-; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv                                   ;             ;
-; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_hub.vhd                                                         ; altera_sld  ;
-; db/ip/sld7e5398e7/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/alt_sld_fab.v                                    ; alt_sld_fab ;
-; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v             ; alt_sld_fab ;
-; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; alt_sld_fab ;
-; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; alt_sld_fab ;
-; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
-; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; alt_sld_fab ;
-; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                    ;             ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+-------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                            ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------+
+; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                  ; Library     ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------+
+; ../vhdl/moving_average.vhd                                         ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/moving_average.vhd                                                    ;             ;
+; ../vhdl/uart_tx.vhd                                                ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd                                                           ;             ;
+; ../vhdl/uart_rx.vhd                                                ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd                                                           ;             ;
+; ../vhdl/uart_parity.vhd                                            ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/uart_parity.vhd                                                       ;             ;
+; ../vhdl/timer.vhd                                                  ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/timer.vhd                                                             ;             ;
+; ../vhdl/masterCTRL.vhd                                             ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd                                                        ;             ;
+; ../vhdl/topo.vhd                                                   ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd                                                              ;             ;
+; ../vhdl/ADC128S022.vhd                                             ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd                                                        ;             ;
+; sld_signaltap.vhd                                                  ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_signaltap.vhd                             ;             ;
+; sld_signaltap_impl.vhd                                             ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                        ;             ;
+; sld_ela_control.vhd                                                ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_ela_control.vhd                           ;             ;
+; lpm_shiftreg.tdf                                                   ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_shiftreg.tdf                              ;             ;
+; lpm_constant.inc                                                   ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_constant.inc                              ;             ;
+; dffeea.inc                                                         ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/dffeea.inc                                    ;             ;
+; aglobal180.inc                                                     ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/aglobal180.inc                                ;             ;
+; sld_mbpmg.vhd                                                      ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_mbpmg.vhd                                 ;             ;
+; sld_ela_trigger_flow_mgr.vhd                                       ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd                  ;             ;
+; sld_buffer_manager.vhd                                             ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_buffer_manager.vhd                        ;             ;
+; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf                                ;             ;
+; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/stratix_ram_block.inc                         ;             ;
+; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_mux.inc                                   ;             ;
+; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_decode.inc                                ;             ;
+; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/a_rdenreg.inc                                 ;             ;
+; altrom.inc                                                         ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altrom.inc                                    ;             ;
+; altram.inc                                                         ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altram.inc                                    ;             ;
+; altdpram.inc                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altdpram.inc                                  ;             ;
+; db/altsyncram_g924.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/altsyncram_g924.tdf                                             ;             ;
+; db/decode_jsa.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/decode_jsa.tdf                                                  ;             ;
+; db/mux_job.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/mux_job.tdf                                                     ;             ;
+; altdpram.tdf                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altdpram.tdf                                  ;             ;
+; memmodes.inc                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/others/maxplus2/memmodes.inc                                ;             ;
+; a_hdffe.inc                                                        ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/a_hdffe.inc                                   ;             ;
+; alt_le_rden_reg.inc                                                ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/alt_le_rden_reg.inc                           ;             ;
+; altsyncram.inc                                                     ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altsyncram.inc                                ;             ;
+; lpm_mux.tdf                                                        ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_mux.tdf                                   ;             ;
+; muxlut.inc                                                         ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/muxlut.inc                                    ;             ;
+; bypassff.inc                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/bypassff.inc                                  ;             ;
+; altshift.inc                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/altshift.inc                                  ;             ;
+; db/mux_1tc.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/mux_1tc.tdf                                                     ;             ;
+; lpm_decode.tdf                                                     ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_decode.tdf                                ;             ;
+; declut.inc                                                         ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/declut.inc                                    ;             ;
+; lpm_compare.inc                                                    ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_compare.inc                               ;             ;
+; db/decode_dvf.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/decode_dvf.tdf                                                  ;             ;
+; lpm_counter.tdf                                                    ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_counter.tdf                               ;             ;
+; lpm_add_sub.inc                                                    ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_add_sub.inc                               ;             ;
+; cmpconst.inc                                                       ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/cmpconst.inc                                  ;             ;
+; lpm_counter.inc                                                    ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/lpm_counter.inc                               ;             ;
+; alt_counter_stratix.inc                                            ; yes             ; Megafunction                                 ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/alt_counter_stratix.inc                       ;             ;
+; db/cntr_rgi.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_rgi.tdf                                                    ;             ;
+; db/cmpr_rgc.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cmpr_rgc.tdf                                                    ;             ;
+; db/cntr_bbj.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_bbj.tdf                                                    ;             ;
+; db/cntr_kgi.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_kgi.tdf                                                    ;             ;
+; db/cntr_23j.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_23j.tdf                                                    ;             ;
+; db/cmpr_ngc.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; /home/elder/ControleBluetooth_FPGA/quartus/db/cmpr_ngc.tdf                                                    ;             ;
+; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_rom_sr.vhd                                ;             ;
+; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                 ;             ;
+; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv             ;             ;
+; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_hub.vhd                                   ; altera_sld  ;
+; db/ip/sld7e5398e7/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/alt_sld_fab.v                                    ; alt_sld_fab ;
+; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v             ; alt_sld_fab ;
+; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; alt_sld_fab ;
+; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; alt_sld_fab ;
+; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
+; db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; alt_sld_fab ;
+; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_jtag_hub.vhd                              ;             ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------+
 
 
 +---------------------------------------------------------+
@@ -267,20 +271,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,178     ;
+; Estimated Total logic elements              ; 1,170     ;
 ;                                             ;           ;
-; Total combinational functions               ; 731       ;
+; Total combinational functions               ; 722       ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 285       ;
-;     -- 3 input functions                    ; 209       ;
-;     -- <=2 input functions                  ; 237       ;
+;     -- 3 input functions                    ; 203       ;
+;     -- <=2 input functions                  ; 234       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 594       ;
+;     -- normal mode                          ; 585       ;
 ;     -- arithmetic mode                      ; 137       ;
 ;                                             ;           ;
-; Total registers                             ; 911       ;
-;     -- Dedicated logic registers            ; 911       ;
+; Total registers                             ; 908       ;
+;     -- Dedicated logic registers            ; 908       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 16        ;
@@ -289,9 +293,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 538       ;
-; Total fan-out                               ; 6736      ;
-; Average fan-out                             ; 3.88      ;
+; Maximum fan-out                             ; 535       ;
+; Total fan-out                               ; 6699      ;
+; Average fan-out                             ; 3.89      ;
 +---------------------------------------------+-----------+
 
 
@@ -300,12 +304,12 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                              ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |topo                                                                                                                                   ; 731 (13)            ; 911 (11)                  ; 425984      ; 0            ; 0       ; 0         ; 16   ; 0            ; |topo                                                                                                                                                                                                                                                                                                                                            ; topo                              ; work         ;
+; |topo                                                                                                                                   ; 722 (13)            ; 908 (11)                  ; 425984      ; 0            ; 0       ; 0         ; 16   ; 0            ; |topo                                                                                                                                                                                                                                                                                                                                            ; topo                              ; work         ;
 ;    |TIMER:tic_1segundo|                                                                                                                 ; 35 (35)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|TIMER:tic_1segundo                                                                                                                                                                                                                                                                                                                         ; TIMER                             ; work         ;
 ;    |UART_RX:uart_rx_i|                                                                                                                  ; 27 (27)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|UART_RX:uart_rx_i                                                                                                                                                                                                                                                                                                                          ; UART_RX                           ; work         ;
 ;    |UART_TX:uart_tx_i|                                                                                                                  ; 20 (20)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|UART_TX:uart_tx_i                                                                                                                                                                                                                                                                                                                          ; UART_TX                           ; work         ;
 ;    |adc_serial_control:adc128s022|                                                                                                      ; 27 (27)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|adc_serial_control:adc128s022                                                                                                                                                                                                                                                                                                              ; adc_serial_control                ; work         ;
-;    |masterCTRL:controlador|                                                                                                             ; 10 (10)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|masterCTRL:controlador                                                                                                                                                                                                                                                                                                                     ; masterCTRL                        ; work         ;
+;    |masterCTRL:controlador|                                                                                                             ; 1 (1)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|masterCTRL:controlador                                                                                                                                                                                                                                                                                                                     ; masterCTRL                        ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 124 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -402,19 +406,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |topo|masterCTRL:controlador|state                                                                                             ;
-+--------------------+-------------------+-------------------+-------------------+--------------------+---------------+-------------+------------+
-; Name               ; state.convADC_Ch2 ; state.convADC_Ch1 ; state.convADC_Ch0 ; state.SucessoTeste ; state.Comando ; state.Teste ; state.Idle ;
-+--------------------+-------------------+-------------------+-------------------+--------------------+---------------+-------------+------------+
-; state.Idle         ; 0                 ; 0                 ; 0                 ; 0                  ; 0             ; 0           ; 0          ;
-; state.Teste        ; 0                 ; 0                 ; 0                 ; 0                  ; 0             ; 1           ; 1          ;
-; state.Comando      ; 0                 ; 0                 ; 0                 ; 0                  ; 1             ; 0           ; 1          ;
-; state.SucessoTeste ; 0                 ; 0                 ; 0                 ; 1                  ; 0             ; 0           ; 1          ;
-; state.convADC_Ch0  ; 0                 ; 0                 ; 1                 ; 0                  ; 0             ; 0           ; 1          ;
-; state.convADC_Ch1  ; 0                 ; 1                 ; 0                 ; 0                  ; 0             ; 0           ; 1          ;
-; state.convADC_Ch2  ; 1                 ; 0                 ; 0                 ; 0                  ; 0             ; 0           ; 1          ;
-+--------------------+-------------------+-------------------+-------------------+--------------------+---------------+-------------+------------+
++--------------------------------------------------------------------------------------------+
+; State Machine - |topo|masterCTRL:controlador|state                                         ;
++-------------------+-------------------+-------------------+-------------------+------------+
+; Name              ; state.convADC_Ch2 ; state.convADC_Ch1 ; state.convADC_Ch0 ; state.Idle ;
++-------------------+-------------------+-------------------+-------------------+------------+
+; state.Idle        ; 0                 ; 0                 ; 0                 ; 0          ;
+; state.convADC_Ch0 ; 0                 ; 0                 ; 1                 ; 1          ;
+; state.convADC_Ch1 ; 0                 ; 1                 ; 0                 ; 1          ;
+; state.convADC_Ch2 ; 1                 ; 0                 ; 0                 ; 1          ;
++-------------------+-------------------+-------------------+-------------------+------------+
 
 
 Encoding Type:  One-Hot
@@ -444,20 +445,6 @@ Encoding Type:  One-Hot
 ; tx_pstate.paritybit ; 0                 ; 1                   ; 0                  ; 0                  ; 0                ; 1              ;
 ; tx_pstate.stopbit   ; 1                 ; 0                   ; 0                  ; 0                  ; 0                ; 1              ;
 +---------------------+-------------------+---------------------+--------------------+--------------------+------------------+----------------+
-
-
-+---------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                           ;
-+----------------------------------------------------+---------------------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal             ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------------------+------------------------+
-; masterCTRL:controlador|data_out[0]                 ; masterCTRL:controlador|WideOr9  ; yes                    ;
-; masterCTRL:controlador|data_out[1]                 ; masterCTRL:controlador|WideOr9  ; yes                    ;
-; masterCTRL:controlador|ch_adc_conv[1]              ; masterCTRL:controlador|WideOr12 ; yes                    ;
-; masterCTRL:controlador|ch_adc_conv[0]              ; masterCTRL:controlador|WideOr12 ; yes                    ;
-; Number of user-specified and inferred latches = 4  ;                                 ;                        ;
-+----------------------------------------------------+---------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -519,12 +506,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 911   ;
+; Total registers                              ; 908   ;
 ; Number of registers using Synchronous Clear  ; 95    ;
 ; Number of registers using Synchronous Load   ; 98    ;
-; Number of registers using Asynchronous Clear ; 325   ;
+; Number of registers using Asynchronous Clear ; 322   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 473   ;
+; Number of registers using Clock Enable       ; 470   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -563,28 +550,28 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                                                                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |topo|TIMER:tic_1segundo|timer_1seg_cnt[6]                                                                                                                                                                                                                                                                                                                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_data[1]                                                                                                                                                                                                                                                                                                                             ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|uart_clk_cnt[4]                                                                                                                                                                                                                                                                                                                                          ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |topo|TIMER:tic_1segundo|timer_1seg_cnt[17]                                                                                                                                                                                                                                                                                                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_data[5]                                                                                                                                                                                                                                                                                                                             ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|uart_clk_cnt[3]                                                                                                                                                                                                                                                                                                                                          ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_clock[1]                                                                                                                                                                                                                                                                                                         ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_bit_count[1]                                                                                                                                                                                                                                                                                                                        ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_bit_count[1]                                                                                                                                                                                                                                                                                                                        ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_ticks[2]                                                                                                                                                                                                                                                                                                                            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_ticks[3]                                                                                                                                                                                                                                                                                                                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_bit_count[0]                                                                                                                                                                                                                                                                                                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_bit_count[0]                                                                                                                                                                                                                                                                                                                        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_ticks[3]                                                                                                                                                                                                                                                                                                                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_ticks[0]                                                                                                                                                                                                                                                                                                                            ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_data[0]                                                                                                                                                                                                                                                                                                          ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_val_shift_reg[15]                                                                                                                                                                                                                    ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_val_shift_reg[9]                                                                                                                                                                                                                     ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|serial_crc_16:\tdo_crc_gen:tdo_crc_calc|lfsr[1]                                                                                                                                                                                              ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_SHIFTREG:ram_data_shift_out|dffs[0]                                                                                                                     ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_len_reg[26]                                                                                                                                                                                                                          ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_rom_sr:crc_rom_sr|word_counter[0]                                                                                                                                                                                                        ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|counter[3]                                                                                                                                                                                        ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_rom_sr:crc_rom_sr|WORD_SR[2]                                                                                                                                                                                                             ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_val_shift_reg[14]                                                                                                                                                                                                                    ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_val_shift_reg[11]                                                                                                                                                                                                                    ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|serial_crc_16:\tdo_crc_gen:tdo_crc_calc|lfsr[8]                                                                                                                                                                                              ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_SHIFTREG:ram_data_shift_out|dffs[20]                                                                                                                    ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|tdo_crc_len_reg[1]                                                                                                                                                                                                                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_rom_sr:crc_rom_sr|word_counter[1]                                                                                                                                                                                                        ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|counter[7]                                                                                                                                                                                        ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_rom_sr:crc_rom_sr|WORD_SR[0]                                                                                                                                                                                                             ;
 ; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |topo|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|offset_count                                                                                                                                                                                      ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irsr_reg[0]                             ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irsr_reg[2]                             ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[3]                    ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|word_counter[0] ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[4]              ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[1]              ;
 ; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|design_hash_reg[1]                      ;
 ; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; Yes        ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|WORD_SR[1]      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -639,6 +626,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+---------------------------------------------------+
 ; clk_div        ; 100   ; Signed Integer                                    ;
 +----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: moving_average:channel_0 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; samples_count  ; 10    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: moving_average:channel_1 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; samples_count  ; 10    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: moving_average:channel_2 ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; samples_count  ; 100   ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -737,15 +754,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "adc_serial_control:adc128s022"                                                                  ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port             ; Type   ; Severity ; Details                                                                             ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; o_adc_data_valid ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; o_adc_ch         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; o_adc_data       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "moving_average:channel_2"                                                                   ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; average      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; enb_data_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "moving_average:channel_1"                                                                   ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; average      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; enb_data_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "moving_average:channel_0"                                                                   ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; average      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; enb_data_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------+
@@ -783,27 +819,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 28                          ;
-; cycloneiii_ff         ; 101                         ;
+; cycloneiii_ff         ; 98                          ;
 ;     CLR               ; 9                           ;
 ;     CLR SCLR          ; 7                           ;
 ;     ENA               ; 20                          ;
-;     ENA CLR           ; 13                          ;
+;     ENA CLR           ; 10                          ;
 ;     ENA SCLR          ; 2                           ;
 ;     SCLR              ; 38                          ;
 ;     SLD               ; 2                           ;
 ;     plain             ; 10                          ;
-; cycloneiii_lcell_comb ; 136                         ;
+; cycloneiii_lcell_comb ; 128                         ;
 ;     arith             ; 34                          ;
 ;         2 data inputs ; 34                          ;
-;     normal            ; 102                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 8                           ;
-;         2 data inputs ; 35                          ;
-;         3 data inputs ; 23                          ;
+;     normal            ; 94                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 34                          ;
+;         3 data inputs ; 17                          ;
 ;         4 data inputs ; 35                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.04                        ;
+; Average LUT depth     ; 2.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -876,7 +912,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------------------------+--------------+
 ; sld_signaltap:auto_signaltap_0 ; 00:00:01     ;
 ; sld_hub:auto_hub               ; 00:00:00     ;
-; Top                            ; 00:00:00     ;
+; Top                            ; 00:00:01     ;
 +--------------------------------+--------------+
 
 
@@ -978,91 +1014,90 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Tue May 15 14:59:14 2018
+    Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+    Info: Processing started: Fri May 25 09:38:08 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControleBluetooth_FPGA -c ControleBluetooth_FPGA
-Critical Warning (138067): Current license file does not support incremental compilation. The Quartus Prime software removes all the user-specified design partitions in the design automatically.
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/uart_tx.vhd
-    Info (12022): Found design unit 1: UART_TX-FULL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 31
-    Info (12023): Found entity 1: UART_TX File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/uart_rx.vhd
-    Info (12022): Found design unit 1: UART_RX-FULL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 31
-    Info (12023): Found entity 1: UART_RX File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/uart_parity.vhd
-    Info (12022): Found design unit 1: UART_PARITY-FULL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_parity.vhd Line: 25
-    Info (12023): Found entity 1: UART_PARITY File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_parity.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/uart.vhd
-    Info (12022): Found design unit 1: UART-FULL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart.vhd Line: 42
-    Info (12023): Found entity 1: UART File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart.vhd Line: 18
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/timer.vhd
-    Info (12022): Found design unit 1: TIMER-FULL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/timer.vhd Line: 33
-    Info (12023): Found entity 1: TIMER File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/timer.vhd Line: 18
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/masterctrl.vhd
-    Info (12022): Found design unit 1: masterCTRL-rtl File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 23
-    Info (12023): Found entity 1: masterCTRL File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/topo.vhd
-    Info (12022): Found design unit 1: topo-full File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 43
-    Info (12023): Found entity 1: topo File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 18
-Info (12021): Found 2 design units, including 1 entities, in source file /projetos/descriptware/controlebluetooth_fpga/vhdl/adc128s022.vhd
-    Info (12022): Found design unit 1: adc_serial_control-rtl File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 24
-    Info (12023): Found entity 1: adc_serial_control File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/moving_average.vhd
+    Info (12022): Found design unit 1: moving_average-rtl File: /home/elder/ControleBluetooth_FPGA/vhdl/moving_average.vhd Line: 18
+    Info (12023): Found entity 1: moving_average File: /home/elder/ControleBluetooth_FPGA/vhdl/moving_average.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd
+    Info (12022): Found design unit 1: UART_TX-FULL File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 31
+    Info (12023): Found entity 1: UART_TX File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 14
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd
+    Info (12022): Found design unit 1: UART_RX-FULL File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 31
+    Info (12023): Found entity 1: UART_RX File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 14
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/uart_parity.vhd
+    Info (12022): Found design unit 1: UART_PARITY-FULL File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_parity.vhd Line: 25
+    Info (12023): Found entity 1: UART_PARITY File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_parity.vhd Line: 14
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/uart.vhd
+    Info (12022): Found design unit 1: UART-FULL File: /home/elder/ControleBluetooth_FPGA/vhdl/uart.vhd Line: 42
+    Info (12023): Found entity 1: UART File: /home/elder/ControleBluetooth_FPGA/vhdl/uart.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/timer.vhd
+    Info (12022): Found design unit 1: TIMER-FULL File: /home/elder/ControleBluetooth_FPGA/vhdl/timer.vhd Line: 33
+    Info (12023): Found entity 1: TIMER File: /home/elder/ControleBluetooth_FPGA/vhdl/timer.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd
+    Info (12022): Found design unit 1: masterCTRL-rtl File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 23
+    Info (12023): Found entity 1: masterCTRL File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd
+    Info (12022): Found design unit 1: topo-full File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 45
+    Info (12023): Found entity 1: topo File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 20
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd
+    Info (12022): Found design unit 1: adc_serial_control-rtl File: /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 24
+    Info (12023): Found entity 1: adc_serial_control File: /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 6
 Info (12127): Elaborating entity "topo" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at topo.vhd(61): used implicit default value for signal "DATA_IN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 61
-Warning (10541): VHDL Signal Declaration warning at topo.vhd(62): used implicit default value for signal "DATA_SEND" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 62
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(63): object "BUSY" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 63
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(66): object "DATA_OUT" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 66
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(67): object "DATA_VLD" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 67
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(68): object "FRAME_ERROR" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 68
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(72): object "DATA_VALID_S" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 72
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(73): object "ADC_CH_ADDRESS_S" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 73
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(74): object "ADC_DATAOUT_S" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 74
-Warning (10036): Verilog HDL or VHDL warning at topo.vhd(78): object "Busy_s" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 78
-Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TX:uart_tx_i" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 156
-Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_RX:uart_rx_i" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 176
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.vhd(41): object "rx_parity_check_en" assigned a value but never read File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 41
-Info (12128): Elaborating entity "adc_serial_control" for hierarchy "adc_serial_control:adc128s022" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 195
-Info (12128): Elaborating entity "masterCTRL" for hierarchy "masterCTRL:controlador" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 219
-Warning (10540): VHDL Signal Declaration warning at masterCTRL.vhd(38): used explicit default value for signal "erro_s" because signal was never assigned a value File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 38
-Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(42): inferring latch(es) for signal or variable "state", which holds its previous value in one or more paths through the process File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 42
-Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(113): inferring latch(es) for signal or variable "data_out", which holds its previous value in one or more paths through the process File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(113): inferring latch(es) for signal or variable "busy", which holds its previous value in one or more paths through the process File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(113): inferring latch(es) for signal or variable "ch_adc_conv", which holds its previous value in one or more paths through the process File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "ch_adc_conv[0]" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "ch_adc_conv[1]" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "ch_adc_conv[2]" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "busy" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "data_out[0]" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "data_out[1]" at masterCTRL.vhd(113) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 113
-Info (10041): Inferred latch for "state.ErroTeste" at masterCTRL.vhd(42) File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 42
-Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:tic_1segundo" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 244
-Critical Warning (138067): Current license file does not support incremental compilation. The Quartus Prime software removes all the user-specified design partitions in the design automatically.
+Warning (10541): VHDL Signal Declaration warning at topo.vhd(63): used implicit default value for signal "DATA_IN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 63
+Warning (10541): VHDL Signal Declaration warning at topo.vhd(64): used implicit default value for signal "DATA_SEND" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 64
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(65): object "BUSY" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 65
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(68): object "DATA_OUT" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 68
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(69): object "DATA_VLD" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 69
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(70): object "FRAME_ERROR" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 70
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(80): object "Busy_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 80
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(94): object "avg_adc_data_ch0_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 94
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(95): object "avg_adc_data_ch1_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 95
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(96): object "avg_adc_data_ch2_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 96
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(98): object "enb_data_ch0_out" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 98
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(99): object "enb_data_ch1_out" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 99
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(100): object "enb_data_ch2_out" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 100
+Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TX:uart_tx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 174
+Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_RX:uart_rx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 193
+Warning (10036): Verilog HDL or VHDL warning at uart_rx.vhd(41): object "rx_parity_check_en" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 41
+Info (12128): Elaborating entity "adc_serial_control" for hierarchy "adc_serial_control:adc128s022" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 212
+Info (12128): Elaborating entity "moving_average" for hierarchy "moving_average:channel_0" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 238
+Info (12128): Elaborating entity "moving_average" for hierarchy "moving_average:channel_2" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 272
+Info (12128): Elaborating entity "masterCTRL" for hierarchy "masterCTRL:controlador" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 290
+Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(90): inferring latch(es) for signal or variable "data_out", which holds its previous value in one or more paths through the process File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 90
+Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(90): inferring latch(es) for signal or variable "busy", which holds its previous value in one or more paths through the process File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 90
+Info (10041): Inferred latch for "busy" at masterCTRL.vhd(90) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 90
+Info (10041): Inferred latch for "data_out[0]" at masterCTRL.vhd(90) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 90
+Info (10041): Inferred latch for "data_out[1]" at masterCTRL.vhd(90) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 90
+Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:tic_1segundo" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 313
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g924.tdf
-    Info (12023): Found entity 1: altsyncram_g924 File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/altsyncram_g924.tdf Line: 31
+    Info (12023): Found entity 1: altsyncram_g924 File: /home/elder/ControleBluetooth_FPGA/quartus/db/altsyncram_g924.tdf Line: 31
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_jsa.tdf
-    Info (12023): Found entity 1: decode_jsa File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/decode_jsa.tdf Line: 22
+    Info (12023): Found entity 1: decode_jsa File: /home/elder/ControleBluetooth_FPGA/quartus/db/decode_jsa.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_job.tdf
-    Info (12023): Found entity 1: mux_job File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/mux_job.tdf Line: 22
+    Info (12023): Found entity 1: mux_job File: /home/elder/ControleBluetooth_FPGA/quartus/db/mux_job.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_1tc.tdf
-    Info (12023): Found entity 1: mux_1tc File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/mux_1tc.tdf Line: 22
+    Info (12023): Found entity 1: mux_1tc File: /home/elder/ControleBluetooth_FPGA/quartus/db/mux_1tc.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_dvf.tdf
-    Info (12023): Found entity 1: decode_dvf File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/decode_dvf.tdf Line: 22
+    Info (12023): Found entity 1: decode_dvf File: /home/elder/ControleBluetooth_FPGA/quartus/db/decode_dvf.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_rgi.tdf
-    Info (12023): Found entity 1: cntr_rgi File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_rgi.tdf Line: 27
+    Info (12023): Found entity 1: cntr_rgi File: /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_rgi.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_rgc.tdf
-    Info (12023): Found entity 1: cmpr_rgc File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cmpr_rgc.tdf Line: 22
+    Info (12023): Found entity 1: cmpr_rgc File: /home/elder/ControleBluetooth_FPGA/quartus/db/cmpr_rgc.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_bbj.tdf
-    Info (12023): Found entity 1: cntr_bbj File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_bbj.tdf Line: 25
+    Info (12023): Found entity 1: cntr_bbj File: /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_bbj.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_kgi.tdf
-    Info (12023): Found entity 1: cntr_kgi File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_kgi.tdf Line: 27
+    Info (12023): Found entity 1: cntr_kgi File: /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_kgi.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_23j.tdf
-    Info (12023): Found entity 1: cntr_23j File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cntr_23j.tdf Line: 27
+    Info (12023): Found entity 1: cntr_23j File: /home/elder/ControleBluetooth_FPGA/quartus/db/cntr_23j.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_ngc.tdf
-    Info (12023): Found entity 1: cmpr_ngc File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/cmpr_ngc.tdf Line: 22
+    Info (12023): Found entity 1: cmpr_ngc File: /home/elder/ControleBluetooth_FPGA/quartus/db/cmpr_ngc.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2018.05.15.14:59:30 Progress: Loading sld7e5398e7/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2018.05.25.09:38:23 Progress: Loading sld7e5398e7/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1073,48 +1108,50 @@ Info (11172): Ident: "alt_sld_fab" instantiated altera_connection_identification
 Info (11172): Alt_sld_fab: Done "alt_sld_fab" with 6 modules, 6 files
 Info (11171): Finished IP generation for the debug fabric: alt_sld_fab.
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7e5398e7/alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd
-    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 102
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
+    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 102
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: /home/elder/ControleBluetooth_FPGA/quartus/db/ip/sld7e5398e7/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13049): Converted tri-state buffer "UART_TX:uart_tx_i|tx_parity_bit" feeding internal logic into a wire File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 40
-Info (13000): Registers with preset signals will power-up high File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 18
+    Warning (13049): Converted tri-state buffer "UART_TX:uart_tx_i|tx_parity_bit" feeding internal logic into a wire File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd Line: 40
+Info (13000): Registers with preset signals will power-up high File: /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 18
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED_OUT[2]" is stuck at VCC File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 33
-    Warning (13410): Pin "LED_OUT[3]" is stuck at VCC File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 33
-    Warning (13410): Pin "LED_OUT[4]" is stuck at VCC File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 33
-    Warning (13410): Pin "LED_OUT[5]" is stuck at VCC File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 33
+    Warning (13410): Pin "LED_OUT[0]" is stuck at GND File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
+    Warning (13410): Pin "LED_OUT[1]" is stuck at GND File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
+    Warning (13410): Pin "LED_OUT[2]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
+    Warning (13410): Pin "LED_OUT[3]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
+    Warning (13410): Pin "LED_OUT[4]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
+    Warning (13410): Pin "LED_OUT[5]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (13000): Registers with preset signals will power-up high File: c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_buffer_manager.vhd Line: 356
+Info (13000): Registers with preset signals will power-up high File: /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_buffer_manager.vhd Line: 356
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286031): Timing-Driven Synthesis is running on partition "sld_signaltap:auto_signaltap_0"
-Info (13000): Registers with preset signals will power-up high File: c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd Line: 386
+Info (13000): Registers with preset signals will power-up high File: /home/elder/intelFPGA_lite/18.0/quartus/libraries/megafunctions/sld_jtag_hub.vhd Line: 386
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 85 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "MISO_IN" File: C:/Projetos/Descriptware/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 39
-Info (21057): Implemented 1273 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "MISO_IN" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 41
+Info (21057): Implemented 1262 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 1200 logic cells
+    Info (21061): Implemented 1189 logic cells
     Info (21064): Implemented 52 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 760 megabytes
-    Info: Processing ended: Tue May 15 14:59:40 2018
-    Info: Elapsed time: 00:00:26
-    Info: Total CPU time (on all processors): 00:00:46
+    Info: Peak virtual memory: 1064 megabytes
+    Info: Processing ended: Fri May 25 09:38:35 2018
+    Info: Elapsed time: 00:00:27
+    Info: Total CPU time (on all processors): 00:00:44
 
 
