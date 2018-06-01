@@ -83,22 +83,42 @@ architecture full of topo is
     signal RST_s            : std_logic := '1';
 
     -------------- Average CHA 1
-    signal load_adc_ch0_s       : std_logic := '0';
-    signal load_adc_ch1_s       : std_logic := '0';
-    signal load_adc_ch2_s       : std_logic := '0';
+    signal load_adc_ch0_s           : std_logic := '0';
+    signal load_adc_ch1_s           : std_logic := '0';
+    signal load_adc_ch2_s           : std_logic := '0';
 
-    signal adc_data_ch0_s       : integer := 0;
-    signal adc_data_ch1_s       : integer := 0;
-    signal adc_data_ch2_s       : integer := 0;
+    signal adc_data_ch0_s           : integer := 0;
+    signal adc_data_ch1_s           : integer := 0;
+    signal adc_data_ch2_s           : integer := 0;
 
-    signal avg_adc_data_ch0_s   : integer := 0;
-    signal avg_adc_data_ch1_s   : integer := 0;
-    signal avg_adc_data_ch2_s   : integer := 0;
+    signal avg_adc_data_ch0_s       : integer := 0;
+    signal avg_adc_data_ch1_s       : integer := 0;
+    signal avg_adc_data_ch2_s       : integer := 0;
 
-    signal enb_data_ch0_out     : std_logic := '0';
-    signal enb_data_ch1_out     : std_logic := '0';
-    signal enb_data_ch2_out     : std_logic := '0';
+    signal enb_data_ch0_out         : std_logic := '0';
+    signal enb_data_ch1_out         : std_logic := '0';
+    signal enb_data_ch2_out         : std_logic := '0';
 
+    signal showFpgaStatus           : std_logic := '0';
+    signal fromUartTxBusy           : std_logic := '0';
+
+    signal showFPGA_Status          : std_logic := '0';
+    signal fromUART_TX_BUSY         : std_logic := '0';
+    signal rDATA_VLD                : std_logic := '0';
+    signal rDATA_OUT                : std_logic_vector(7 downto 0) := (others => '0');
+    signal DATA_Protoco2UartTX_en   : std_logic := '0';
+    signal DATA_Protoco2UartTX      : std_logic_vector(7 downto 0) := (others => '0');
+
+    signal rdata_bus_in             : std_logic_vector(15 downto 0) := (others => '0');
+
+    signal rdata_bus_out            : std_logic_vector(15 downto 0) := (others => '0');
+    signal rAddress_bus_out         : std_logic_vector(15 downto 0) := (others => '0');
+    signal rCommand_bus_out         : std_logic_vector(7 downto 0) := (others => '0');
+
+    signal rdata_bus_cs             : std_logic_vector(15 downto 0) := (others => '0');
+    signal rdata_bus_en_o           : std_logic := '0';
+    signal rdata_bus_en_i           : std_logic := '0';
+    signal rdata_bus_rw             : std_logic_vector(3 downto 0) := (others => '0');
 
 begin
 
@@ -201,9 +221,51 @@ begin
         UART_CLK_EN => uart_clk_en,
         UART_RXD    => uart_rxd_debounced,
         -- USER DATA OUTPUT INTERFACE
-        DATA_OUT    => DATA_OUT,
-        DATA_VLD    => DATA_VLD,
+        DATA_OUT    => rDATA_OUT,
+        DATA_VLD    => rDATA_VLD,
         FRAME_ERROR => FRAME_ERROR
+    );
+
+
+
+    protocolo_rx: entity work.PROTOCOLO
+    generic map (
+        CLK_DIV    => 100
+    )
+    port map (
+        CLK             => CLK,
+        RST             => RST_s,
+
+        -- Sinais de Status Interno da FPGA usado
+        -- para sinalizar que internamente a FPGA está em
+        -- alguma tarefa
+        fpga_busy_out   => showFPGA_Status,
+
+        -- Usado para sabe se a UART ainda está transmitindo
+        -- infromações para o Raspberry
+        uart_tx_busy_in => fromUART_TX_BUSY,
+
+        -- Interface para receber dados da UART RX
+        data_en_in      => rDATA_VLD,
+        data_in 	    => rDATA_OUT,
+
+        -- Interface para transmitir dados pela UART TX
+        data_en_out     => DATA_Protoco2UartTX_en,
+        data_out        => DATA_Protoco2UartTX,
+
+        -- Barramento de dados interno
+        data_bus_in     => rdata_bus_in,
+        data_bus_out    => rdata_bus_out,
+
+        -- Address Bus
+        address_bus_out => rAddress_bus_out,
+        command_bus_out => rCommand_bus_out,
+
+        -- Data bus Controll
+        chip_select     => rdata_bus_cs,
+        enable_out      => rdata_bus_en_o,
+        enable_in       => rdata_bus_en_i,
+        crud_out        => rdata_bus_rw
     );
 
     -- -------------------------------------------------------------------------
@@ -292,6 +354,8 @@ begin
   	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
   	)
   	port map (
+
+
     		clk	=> CLK,
     		data_in => timer_1seg_s,
     		reset  => RST_s,
@@ -301,6 +365,31 @@ begin
     		data_out => LED_OUT(1 downto 0)
   	);
 
+
+    CLK => CLK,
+    RST => RST_s,
+
+    data_bus_in => DATA_Protoco2UartTX_en,
+    enable_in   => DATA_Protoco2UartTX,
+
+    data_bus_out => open
+    enable_out => => rdata_bus_en_o,
+
+    address_bus_in
+    command_bus_in
+
+    chip_select => rdata_bus_cs,
+    crud_in
+    adc_data_in  => timer_1seg_s,
+    enb_adc_conv => CONV_ENB_S,
+    ch_adc_conv => CONV_CH_SEL_S,
+    busy => Busy_s,
+
+
+
+
+    rdata_bus_en_i,
+    rdata_bus_rw
 
     -- ADC128S22
     SCLK_OUT   <=  SCLKC_S;
@@ -382,7 +471,8 @@ begin
     LED_OUT(7) <= timer_1seg_s;
     LED_OUT(5 downto 2) <= (others => '1');
     LED_OUT(6) <= CONV_ENB_S;
+
     -- Inversão do Reset para a lógica dos blocos ativos em '1'
-    RST_s <= not RST;
+    RST_s <= RST;
 
 end full;

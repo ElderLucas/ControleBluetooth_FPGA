@@ -60,9 +60,9 @@ begin
         UART_TXD    => tx_uart,
         UART_RXD    => rx_uart,
         -- USER DATA INPUT INTERFACE
-        DATA_OUT    => sdata,
-        DATA_VLD    => data_vld,
-        FRAME_ERROR => frame_error,
+        DATA_OUT    => open,
+        DATA_VLD    => open,
+        FRAME_ERROR => open,
         -- USER DATA OUTPUT INTERFACE
         DATA_IN     => data_in,
         DATA_SEND   => data_send,
@@ -101,8 +101,8 @@ begin
           CLK           => CLK,
           RST           => RST,
           -- UART INTERFACE
-          data_en_in    => sdata_vld,
-          data_in 	    => sdata,
+          data_en_in    => data_vld, --sdata_vld,
+          data_in 	    => data_in, --sdata,
 
           -- Barramento de dados interno
           data_bus_in   => sdata_bus_in,
@@ -134,49 +134,146 @@ begin
 		wait for 100 ns;
     RST <= '0';
 
-    -- DATA TX 0
-		wait until rising_edge(CLK);
-		data_send <= '1';
-		data_in <= "10101010";
-		wait until rising_edge(CLK);
-		data_send <= '0';
-		wait until rising_edge(CLK);
-		wait for 80 us;
-		wait until rising_edge(CLK);
+		for I in 0 to 3 loop
+
+			-- START FRAME
+			wait until rising_edge(CLK);
+			data_send <= '1';
+			data_in <= "10101010";
+			wait until rising_edge(CLK);
+			data_send <= '0';
+			wait until rising_edge(CLK);
+			wait for 280 us;
+			wait until rising_edge(CLK);
 
 
-    -- DATA TX 1
-		wait until rising_edge(CLK);
-		data_send <= '1';
-		data_in <= "00000111";
-		wait until rising_edge(CLK);
-		data_send <= '0';
-		wait until rising_edge(CLK);
-		wait for 80 us;
-		wait until rising_edge(CLK);
+			-- ADDRESS 0
+			wait until rising_edge(CLK);
+			data_send <= '1';
+			data_in <= "00000100";
+			wait until rising_edge(CLK);
+			data_send <= '0';
+			wait until rising_edge(CLK);
+			wait for 280 us;
+			wait until rising_edge(CLK);
 
 
-    -- DATA TX 2
-    wait until rising_edge(CLK);
-    data_send <= '1';
-    data_in <= "11001100";
-    wait until rising_edge(CLK);
-    data_send <= '0';
-    wait until rising_edge(CLK);
-    wait for 80 us;
-    wait until rising_edge(CLK);
+	    -- ADDRESS 1
+			wait until rising_edge(CLK);
+			data_send <= '1';
+			data_in <= "00000010";
+			wait until rising_edge(CLK);
+			data_send <= '0';
+			wait until rising_edge(CLK);
+			wait for 280 us;
+			wait until rising_edge(CLK);
 
 
-    -- DATA TX 3
-    wait until rising_edge(CLK);
-    data_send <= '1';
-    data_in <= "01010101";
-    wait until rising_edge(CLK);
-    data_send <= '0';
-    wait until rising_edge(CLK);
-    wait for 80 us;
-    wait until rising_edge(CLK);
+	    -- COMMAND
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000001";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
 
+
+	    -- DATA 0
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000000";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			-- DATA 1
+			wait until rising_edge(CLK);
+			data_send <= '1';
+			data_in <= "00000001";
+			wait until rising_edge(CLK);
+			data_send <= '0';
+			wait until rising_edge(CLK);
+			wait for 280 us;
+			wait until rising_edge(CLK);
+
+			-- DATA 2
+			wait until rising_edge(CLK);
+			data_send <= '1';
+			data_in <= "00000010";
+			wait until rising_edge(CLK);
+			data_send <= '0';
+			wait until rising_edge(CLK);
+			wait for 280 us;
+			wait until rising_edge(CLK);
+
+			-- DATA 3
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000011";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			-- DATA 4
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000100";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+
+			-- DATA 5
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000101";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			-- DATA 6
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000110";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			-- DATA 7
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "00000111";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			-- STOP WORD
+	    wait until rising_edge(CLK);
+	    data_send <= '1';
+	    data_in <= "01010101";
+	    wait until rising_edge(CLK);
+	    data_send <= '0';
+	    wait until rising_edge(CLK);
+	    wait for 280 us;
+	    wait until rising_edge(CLK);
+
+			wait for 500 us;
+
+		end loop;
 
 		wait;
 

@@ -38,22 +38,37 @@ view wave -undock
 # 7 - Add wave
 add wave /PROTOCOLO_TB/CLK
 add wave /PROTOCOLO_TB/RST
+add wave -noupdate -radix hexadecimal /PROTOCOLO_TB/data_send
+add wave -noupdate -radix hexadecimal /PROTOCOLO_TB/data_in
 
-add wave /PROTOCOLO_TB/data_send
-add wave /PROTOCOLO_TB/data_in
+add wave -noupdate -divider { UART TX }
+add wave /PROTOCOLO_TB/tx_uart
+add wave /PROTOCOLO_TB/rx_uart
+
+add wave -noupdate -divider { UART RX }
+add wave -noupdate -radix hexadecimal /PROTOCOLO_TB/sdata
+add wave /PROTOCOLO_TB/data_vld
+add wave /PROTOCOLO_TB/frame_error
 
 add wave -noupdate -divider { PROTOCOLO }
 add wave /PROTOCOLO_TB/protocolo_rx/CLK
 add wave /PROTOCOLO_TB/protocolo_rx/RST
 add wave /PROTOCOLO_TB/protocolo_rx/data_en_in
 
-add wave -noupdate -divider {SINAIS DA UART}
+add wave -noupdate -divider { STATE MACHINE PROTOCOLO }
+add wave /PROTOCOLO_TB/protocolo_rx/state
+add wave -noupdate -radix hexadecimal /protocolo_tb/protocolo_rx/reg_data_in
+add wave /PROTOCOLO_TB/protocolo_rx/rdata_en_in
+add wave -noupdate -radix hexadecimal /PROTOCOLO_TB/protocolo_rx/count_rx_data
+
+
+add wave -noupdate -divider { DATA OUT PROTOCOLO }
 add wave /PROTOCOLO_TB/sdata_bus_cs
 add wave /PROTOCOLO_TB/sdata_bus_en_i
 add wave /PROTOCOLO_TB/sdata_bus_en_o
 add wave /PROTOCOLO_TB/sdata_bus_rw
 
-add wave /PROTOCOLO_TB/protocolo_rx/state
+
 
 add wave -noupdate -divider {SINAIS DA UART}
 #add wave -radix unsigned /PROTOCOLO_TB/protocolo_rx/

@@ -9,15 +9,38 @@ entity masterCTRL is
 	generic(
 	    CLK_DIV : integer := 100 );  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
 	port(
-		clk		 		: in	std_logic;
-		data_in	 		: in	std_logic;
-		reset	 		: in	std_logic; --Reset Ativado em Nivel Lógico Alto
-		enb_adc_conv 	: out	std_logic;
-		ch_adc_conv 	: out	std_logic_vector(2 downto 0);
-		busy	 		: out	std_logic;
-		data_out 		: out	std_logic_vector(1 downto 0)
-	);
+		------------------------------------------------------------------------
+		-- Sinais Vitais ao Bloco
+		CLK 		 		: in	std_logic;
+		RST			 		: in	std_logic;
+		------------------------------------------------------------------------
+	    -- SLAVE
+		------------------------------------------------------------------------
+	    data_bus_in  		: in	std_logic_vector(15 downto 0);
+		enable_in			: in	std_logic;
 
+		data_bus_out 		: out	std_logic_vector(15 downto 0);
+		enable_out			: in	std_logic;
+
+		------------------------------------------------------------------------
+	    -- Data bus Controll
+		address_bus_in		: in	std_logic_vector(15 downto 0);
+		command_bus_in		: in	std_logic_vector(7 downto 0);
+		------------------------------------------------------------------------
+		-- Controll Bus Signals
+	    chip_select			: in	std_logic_vector(15 downto 0);
+	    crud_in     		: in	std_logic_vector(3 downto 0) --CRUD : Create, Read, Update, Delete
+		------------------------------------------------------------------------
+		-- ADC Controll
+		------------------------------------------------------------------------
+		adc_data_in	 		: in	std_logic;
+		enb_adc_conv 		: out	std_logic;
+		ch_adc_conv 		: out	std_logic_vector(2 downto 0);
+		------------------------------------------------------------------------
+		-- Status do Bloco
+		------------------------------------------------------------------------
+		busy	 			: out	std_logic
+	);
 end entity;
 
 architecture rtl of masterCTRL is
@@ -114,5 +137,25 @@ begin
 
 		end case;
 	end process;
+
+
+
+
+	-- -------------------------------------------------------------------------
+	-- PROCESSO PARA REGISTRO DO DATAREG
+	-- -------------------------------------------------------------------------
+	data_reg_proc : process (CLK)
+	begin
+		if (rising_edge(CLK)) then
+			if (RST = '1') then
+				data_bus_out <= (others => '0');
+			else
+				if enable_in = '1' then
+					data_bus_out <= data_bus_in;
+				end if;
+			end if;
+		end if;
+	end process;
+
 
 end rtl;
