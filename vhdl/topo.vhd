@@ -69,11 +69,15 @@ architecture full of topo is
     signal DATA_VLD         : std_logic; -- when DATA_VLD = 1, output data are valid
     signal FRAME_ERROR      : std_logic;  -- when FRAME_ERROR = 1, stop bit was invalid
 
-    signal CONV_CH_SEL_S 	:std_logic_vector(2 downto 0);
-    signal CONV_ENB_S    	:std_logic;
-    signal DATA_VALID_S	 	:std_logic;
-    signal ADC_CH_ADDRESS_S	:std_logic_vector(2 downto 0);
-    signal ADC_DATAOUT_S	:std_logic_vector(11 downto 0);
+    signal conv_ch_sel_s 	:std_logic_vector(2 downto 0);
+    signal conv_enb_s    	:std_logic;
+    signal data_valid_s	 	:std_logic;
+    signal adc_ch_address_s	:std_logic_vector(2 downto 0);
+    signal adc_dataout_s	:std_logic_vector(11 downto 0);
+
+    signal adc_dataout_ch0_s	:std_logic_vector(11 downto 0);
+    signal adc_dataout_ch1_s	:std_logic_vector(11 downto 0);
+    signal adc_dataout_ch2_s	:std_logic_vector(11 downto 0);
 
 
     signal timer_1seg_s     : std_logic;
@@ -109,16 +113,19 @@ architecture full of topo is
     signal DATA_Protoco2UartTX_en   : std_logic := '0';
     signal DATA_Protoco2UartTX      : std_logic_vector(7 downto 0) := (others => '0');
 
-    signal rdata_bus_in             : std_logic_vector(15 downto 0) := (others => '0');
+    signal r_data_bus_in             : std_logic_vector(15 downto 0) := (others => '0');
+    signal r_data_bus_out            : std_logic_vector(15 downto 0) := (others => '0');
+    signal r_Address_bus_out         : std_logic_vector(15 downto 0) := (others => '0');
+    signal r_Command_bus_out         : std_logic_vector(7 downto 0) := (others => '0');
+    signal r_data_bus_cs             : std_logic_vector(15 downto 0) := (others => '0');
+    signal r_data_bus_en_o           : std_logic := '0';
+    signal r_data_bus_en_i           : std_logic := '0';
+    signal r_data_bus_rw             : std_logic_vector(3 downto 0) := (others => '0');
+    signal r_data_bus_crud           : std_logic_vector(3 downto 0) := (others => '0');
 
-    signal rdata_bus_out            : std_logic_vector(15 downto 0) := (others => '0');
-    signal rAddress_bus_out         : std_logic_vector(15 downto 0) := (others => '0');
-    signal rCommand_bus_out         : std_logic_vector(7 downto 0) := (others => '0');
+    signal To_UartTx                 : std_logic_vector(15 downto 0) := (others => '0');
+    signal Enb_To_UartTx             : std_logic := '0';
 
-    signal rdata_bus_cs             : std_logic_vector(15 downto 0) := (others => '0');
-    signal rdata_bus_en_o           : std_logic := '0';
-    signal rdata_bus_en_i           : std_logic := '0';
-    signal rdata_bus_rw             : std_logic_vector(3 downto 0) := (others => '0');
 
 begin
 
@@ -204,7 +211,7 @@ begin
         -- USER DATA INPUT INTERFACE
         DATA_IN     => DATA_IN,
         DATA_SEND   => DATA_SEND,
-        BUSY        => BUSY
+        BUSY        => fromUART_TX_BUSY
     );
 
     ----------------------------------------------------------------------------
@@ -254,18 +261,58 @@ begin
         data_out        => DATA_Protoco2UartTX,
 
         -- Barramento de dados interno
-        data_bus_in     => rdata_bus_in,
-        data_bus_out    => rdata_bus_out,
+        data_bus_in     => r_data_bus_in,
+        data_bus_out    => r_data_bus_out,
 
         -- Address Bus
-        address_bus_out => rAddress_bus_out,
-        command_bus_out => rCommand_bus_out,
+        address_bus_out => r_Address_bus_out,
+        command_bus_out => r_Command_bus_out,
 
         -- Data bus Controll
-        chip_select     => rdata_bus_cs,
-        enable_out      => rdata_bus_en_o,
-        enable_in       => rdata_bus_en_i,
-        crud_out        => rdata_bus_rw
+        chip_select     => r_data_bus_cs,
+        enable_out      => r_data_bus_en_o,
+        enable_in       => r_data_bus_en_i,
+        crud_out        => r_data_bus_crud
+    );
+
+    -- -------------------------------------------------------------------------
+    -- Master controle ADC
+    -- -------------------------------------------------------------------------
+    controlador : entity work.masterCTRL
+    generic map (
+        CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
+    )port map (
+        CLK => CLK,
+		RST	=> RST_s,
+
+        -- Entrada de dados
+        data_in         => r_data_bus_out,
+        address_in      => r_Address_bus_out,
+        crud_in         => r_data_bus_crud,
+        enable_data_in  => r_data_bus_en_o,
+        chip_select     => r_data_bus_cs(0),
+
+        -- Saida de dados
+		data_bus_out    => To_UartTx,
+		enable_data_out => Enb_To_UartTx,
+
+		-- Saída de seleção do canal do AD que será habilitado para converter os dados
+		enb_adc_conv => CONV_ENB_S,
+		ch_adc_conv => CONV_CH_SEL_S,
+
+		-- Entradas dos canais analógicos para testes das tensões e níveis
+		ADC_Data_ch0 => adc_dataout_ch0_s,
+		ADC_Data_ch1 => adc_dataout_ch1_s,
+		ADC_Data_ch2 => adc_dataout_ch2_s,
+		ADC_Data_ch3 => "000000000000",
+		ADC_Data_ch4 => "000000000000",
+		ADC_Data_ch5 => "000000000000",
+		ADC_Data_ch6 => "000000000000",
+		ADC_Data_ch7 => "000000000000",
+
+        --Sinalização de Busy
+        busy => Busy_s
+
     );
 
     -- -------------------------------------------------------------------------
@@ -274,8 +321,7 @@ begin
     adc128s022: entity work.adc_serial_control
 	generic map (
 	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
-	)
-	port map (
+	)port map (
 	    i_clk	=> CLK,
 	    i_rstb  => RST_s,
 
@@ -299,7 +345,7 @@ begin
     ----------------------------------------------------------------------------
     channel_0: entity work.moving_average
     generic map (
-        SAMPLES_COUNT    => 10
+        SAMPLES_COUNT    => 50
     )
     port map(
         CLK     => CLK,
@@ -316,7 +362,7 @@ begin
     ----------------------------------------------------------------------------
     channel_1: entity work.moving_average
     generic map (
-        SAMPLES_COUNT    => 10
+        SAMPLES_COUNT    => 50
     )
     port map(
         CLK     => CLK,
@@ -333,7 +379,7 @@ begin
     ----------------------------------------------------------------------------
     channel_2: entity work.moving_average
     generic map (
-        SAMPLES_COUNT    => 100
+        SAMPLES_COUNT    => 50
     )
     port map(
         CLK     => CLK,
@@ -344,52 +390,6 @@ begin
         enb_data_out => enb_data_ch2_out
     );
     ----------------------------------------------------------------------------
-
-
-    -- -------------------------------------------------------------------------
-    -- Master controle
-    -- -------------------------------------------------------------------------
-    controlador : entity work.masterCTRL
-  	generic map (
-  	    CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
-  	)
-  	port map (
-
-
-    		clk	=> CLK,
-    		data_in => timer_1seg_s,
-    		reset  => RST_s,
-    		enb_adc_conv => CONV_ENB_S,
-    		ch_adc_conv => CONV_CH_SEL_S,
-    		busy => Busy_s,
-    		data_out => LED_OUT(1 downto 0)
-  	);
-
-
-    CLK => CLK,
-    RST => RST_s,
-
-    data_bus_in => DATA_Protoco2UartTX_en,
-    enable_in   => DATA_Protoco2UartTX,
-
-    data_bus_out => open
-    enable_out => => rdata_bus_en_o,
-
-    address_bus_in
-    command_bus_in
-
-    chip_select => rdata_bus_cs,
-    crud_in
-    adc_data_in  => timer_1seg_s,
-    enb_adc_conv => CONV_ENB_S,
-    ch_adc_conv => CONV_CH_SEL_S,
-    busy => Busy_s,
-
-
-
-
-    rdata_bus_en_i,
-    rdata_bus_rw
 
     -- ADC128S22
     SCLK_OUT   <=  SCLKC_S;
@@ -425,8 +425,9 @@ begin
             else
                 if DATA_VALID_S = '1' then
                     if ADC_CH_ADDRESS_S = "000" then
-                        --data ch0
+                        -- data ch0
                         adc_data_ch0_s <= conv_integer(ADC_DATAOUT_S);--to_integer(unsigned(ADC_DATAOUT_S));  --to_unsigned(va, A'length); -- conv_integer(ADC_DATAOUT_S);-- to_integer(ADC_DATAOUT_S);
+                        adc_dataout_ch0_s <= ADC_DATAOUT_S;
                         adc_data_ch1_s <= 0;
                         adc_data_ch2_s <= 0;
                         -- enable ch0
@@ -435,9 +436,10 @@ begin
                         load_adc_ch2_s <= '0';
 
                     elsif ADC_CH_ADDRESS_S = "001" then
-                        --data ch1
+                        -- data ch1
                         adc_data_ch0_s <= 0;
                         adc_data_ch1_s <= conv_integer(ADC_DATAOUT_S);--to_integer(ADC_DATAOUT_S);
+                        adc_dataout_ch1_s <= ADC_DATAOUT_S;
                         adc_data_ch2_s <= 0;
                         -- enable ch1
                         load_adc_ch0_s <= '0';
@@ -445,10 +447,11 @@ begin
                         load_adc_ch2_s <= '0';
 
                     elsif ADC_CH_ADDRESS_S = "010" then
-                        --data ch2
+                        -- data ch2
                         adc_data_ch0_s <= 0;
                         adc_data_ch1_s <= 0;
                         adc_data_ch2_s <= conv_integer(ADC_DATAOUT_S);--to_integer(ADC_DATAOUT_S);
+                        adc_dataout_ch2_s <= ADC_DATAOUT_S;
                         -- enable ch2
                         load_adc_ch0_s <= '0';
                         load_adc_ch1_s <= '0';

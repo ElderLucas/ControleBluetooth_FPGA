@@ -22,9 +22,9 @@ V3cn1WN>?:9JXZS`2Y9Jg51
 !s100 eAi6C04bI=bI@DCbXoe5c0
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1527878000
+Z8 !s110 1528490802
 !i10b 1
-Z9 !s108 1527878000.000000
+Z9 !s108 1528490802.000000
 Z10 !s90 -reportprogress|300|-check_synthesis|../vhdl/ADC128S022.vhd|
 Z11 !s107 ../vhdl/ADC128S022.vhd|
 !i113 1
@@ -50,41 +50,41 @@ R11
 R12
 R13
 Emasterctrl
-R1
+Z15 w1528488213
 R3
 R4
 R0
-Z15 8../vhdl/masterCTRL.vhd
-Z16 F../vhdl/masterCTRL.vhd
+Z16 8../vhdl/masterCTRL.vhd
+Z17 F../vhdl/masterCTRL.vhd
 l0
 L8
-V8SAGcNNVB>0>NCN?FKLC41
-!s100 [hb6>aam4Kb`RKh[GH1U^0
+VbCGUfV@zkSV_1EXfL6BS_2
+!s100 z2NPcjTOKOlc@;GGMm8W]2
 R7
 32
 R8
 !i10b 1
 R9
-Z17 !s90 -reportprogress|300|-check_synthesis|../vhdl/masterCTRL.vhd|
-Z18 !s107 ../vhdl/masterCTRL.vhd|
+Z18 !s90 -reportprogress|300|-check_synthesis|../vhdl/masterCTRL.vhd|
+Z19 !s107 ../vhdl/masterCTRL.vhd|
 !i113 1
 R12
 R13
 Artl
 R3
 R4
-Z19 DEx4 work 10 masterctrl 0 22 8SAGcNNVB>0>NCN?FKLC41
-l43
-L23
-V7G90HT^=WLb0h7PBZ2`kO3
-!s100 0VPT`Em24QCg`a2Dijd@H0
+Z20 DEx4 work 10 masterctrl 0 22 bCGUfV@zkSV_1EXfL6BS_2
+l111
+L40
+VaMJkmAAQ[oLaAfU9IVnCA0
+!s100 _IgEbHdMZW0[KWTa:a74G3
 R7
 32
 R8
 !i10b 1
 R9
-R17
 R18
+R19
 !i113 1
 R12
 R13
@@ -93,8 +93,8 @@ R1
 R3
 R4
 R0
-Z20 8../vhdl/moving_average.vhd
-Z21 F../vhdl/moving_average.vhd
+Z21 8../vhdl/moving_average.vhd
+Z22 F../vhdl/moving_average.vhd
 l0
 L4
 VflD=30I@NT0kUB^zhVg^z3
@@ -104,15 +104,15 @@ R7
 R8
 !i10b 1
 R9
-Z22 !s90 -reportprogress|300|-check_synthesis|../vhdl/moving_average.vhd|
-Z23 !s107 ../vhdl/moving_average.vhd|
+Z23 !s90 -reportprogress|300|-check_synthesis|../vhdl/moving_average.vhd|
+Z24 !s107 ../vhdl/moving_average.vhd|
 !i113 1
 R12
 R13
 Artl
 R3
 R4
-Z24 DEx4 work 14 moving_average 0 22 flD=30I@NT0kUB^zhVg^z3
+Z25 DEx4 work 14 moving_average 0 22 flD=30I@NT0kUB^zhVg^z3
 l33
 L18
 VNX8gmF>D]OjHEM1:mXL@33
@@ -122,18 +122,18 @@ R7
 R8
 !i10b 1
 R9
-R22
 R23
+R24
 !i113 1
 R12
 R13
 Eprotocolo
-Z25 w1527877995
+Z26 w1528490389
 R3
 R4
 R0
-Z26 8../vhdl/protocolo.vhd
-Z27 F../vhdl/protocolo.vhd
+Z27 8../vhdl/protocolo.vhd
+Z28 F../vhdl/protocolo.vhd
 l0
 L8
 V88BlDzXjbdUWInIJT1^5W0
@@ -143,38 +143,38 @@ R7
 R8
 !i10b 1
 R9
-Z28 !s90 -reportprogress|300|-check_synthesis|../vhdl/protocolo.vhd|
-Z29 !s107 ../vhdl/protocolo.vhd|
+Z29 !s90 -reportprogress|300|-check_synthesis|../vhdl/protocolo.vhd|
+Z30 !s107 ../vhdl/protocolo.vhd|
 !i113 1
 R12
 R13
 Artl
 R3
 R4
-Z30 DEx4 work 9 protocolo 0 22 88BlDzXjbdUWInIJT1^5W0
-l99
+Z31 DEx4 work 9 protocolo 0 22 88BlDzXjbdUWInIJT1^5W0
+l116
 L60
-V:O;[n1We?jE@AVZ6zc26Y0
-!s100 4UTbV1PEfMaM2=P]nTJW23
+VPOdJm:j1UGR;jK8_`b=440
+!s100 fK9Ac9n^NL;^odMgiYZdd2
 R7
 32
 R8
 !i10b 1
 R9
-R28
 R29
+R30
 !i113 1
 R12
 R13
 Etimer
 R1
-Z31 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z32 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
 R2
 R3
 R4
 R0
-Z32 8../vhdl/timer.vhd
-Z33 F../vhdl/timer.vhd
+Z33 8../vhdl/timer.vhd
+Z34 F../vhdl/timer.vhd
 l0
 L18
 VU2fVG^GTc2jm1djCXGgIL2
@@ -183,14 +183,14 @@ R7
 32
 R8
 !i10b 1
-Z34 !s108 1527877999.000000
+R9
 Z35 !s90 -reportprogress|300|-check_synthesis|../vhdl/timer.vhd|
 Z36 !s107 ../vhdl/timer.vhd|
 !i113 1
 R12
 R13
 Afull
-R31
+R32
 R2
 R3
 R4
@@ -203,17 +203,17 @@ R7
 32
 R8
 !i10b 1
-R34
+R9
 R35
 R36
 !i113 1
 R12
 R13
 Etopo
-Z38 w1527861555
+Z38 w1528490800
 Z39 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z40 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-R31
+R32
 R2
 R3
 R4
@@ -236,23 +236,23 @@ R12
 R13
 Afull
 R37
-R19
-R24
+R25
 R14
-R30
+R20
+R31
 Z45 DEx4 work 7 uart_rx 0 22 =VgJBDj79f<Qb7[jO42TQ3
 Z46 DEx4 work 7 uart_tx 0 22 @f?0NBGW[AGcOf>^BWa131
 R39
 R40
-R31
+R32
 R2
 R3
 R4
 Z47 DEx4 work 4 topo 0 22 8RHOnZcPK?>LJ2XR=X;PM2
-l123
+l130
 L45
-V1kcoU^Wa=IPI;Sn@0go:^0
-!s100 75Yf8XDXAId6R6o1HjZ540
+V7]@Hk=EGhbTO2hzOL`UbQ1
+!s100 cm85c^SMQd4j1WmFo3G730
 R7
 32
 R8
@@ -264,7 +264,7 @@ R44
 R12
 R13
 Etopo_tb
-Z48 w1527865140
+Z48 w1528487508
 R2
 R3
 R4
@@ -289,16 +289,16 @@ Afull
 R39
 R40
 R47
-R31
+R32
 Z53 DEx4 work 4 uart 0 22 =e7?Gk<USdg?@BnZZ0JkB1
 R2
 R3
 R4
 Z54 DEx4 work 7 topo_tb 0 22 lU8i;Sh;M=8E@^?nV703z2
-l48
+l58
 L17
-Z55 VVDi=:Xjch2O9P@Mgb7a3M1
-Z56 !s100 h;kGD86G^Mjokcbl[:Qbd1
+Z55 VO7C>8j^GajPPGSGO_dfTd1
+Z56 !s100 ENgTlHR?60A5JjI[hOT?03
 R7
 32
 R8
@@ -311,7 +311,7 @@ R12
 R13
 Euart
 R1
-R31
+R32
 R2
 R3
 R4
@@ -324,18 +324,18 @@ V=e7?Gk<USdg?@BnZZ0JkB1
 !s100 HoHlAMDXkR;V2z5IUMlXQ1
 R7
 32
-Z59 !s110 1527877999
+R8
 !i10b 1
-R34
-Z60 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart.vhd|
-Z61 !s107 ../vhdl/uart.vhd|
+R9
+Z59 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart.vhd|
+Z60 !s107 ../vhdl/uart.vhd|
 !i113 1
 R12
 R13
 Afull
 R45
 R46
-R31
+R32
 R2
 R3
 R4
@@ -346,11 +346,11 @@ VjbD[TNWme<NEH9MKeo7FA1
 !s100 X>EiRh0>9R7JYB4jBO`d>1
 R7
 32
-R59
+R8
 !i10b 1
-R34
+R9
+R59
 R60
-R61
 !i113 1
 R12
 R13
@@ -360,19 +360,19 @@ R2
 R3
 R4
 R0
-Z62 8../vhdl/uart_parity.vhd
-Z63 F../vhdl/uart_parity.vhd
+Z61 8../vhdl/uart_parity.vhd
+Z62 F../vhdl/uart_parity.vhd
 l0
 L14
 VHmVV_DE8X0930Li>96D7C2
 !s100 LZz;T?1KgS5b24dR`l5eJ2
 R7
 32
-R59
+R8
 !i10b 1
-R34
-Z64 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_parity.vhd|
-Z65 !s107 ../vhdl/uart_parity.vhd|
+R9
+Z63 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_parity.vhd|
+Z64 !s107 ../vhdl/uart_parity.vhd|
 !i113 1
 R12
 R13
@@ -380,18 +380,18 @@ Afull
 R2
 R3
 R4
-Z66 DEx4 work 11 uart_parity 0 22 HmVV_DE8X0930Li>96D7C2
+Z65 DEx4 work 11 uart_parity 0 22 HmVV_DE8X0930Li>96D7C2
 l27
 L25
 Vk:X;N?d=`iKLOR<hGfTY?2
 !s100 ROCe[RMzXOOjTM=83Z3nd0
 R7
 32
-R59
+R8
 !i10b 1
-R34
+R9
+R63
 R64
-R65
 !i113 1
 R12
 R13
@@ -401,24 +401,24 @@ R2
 R3
 R4
 R0
-Z67 8../vhdl/uart_rx.vhd
-Z68 F../vhdl/uart_rx.vhd
+Z66 8../vhdl/uart_rx.vhd
+Z67 F../vhdl/uart_rx.vhd
 l0
 L14
 V=VgJBDj79f<Qb7[jO42TQ3
 !s100 _ENNOcjDeP66:lA:E]S0M2
 R7
 32
-R59
+R8
 !i10b 1
-R34
-Z69 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_rx.vhd|
-Z70 !s107 ../vhdl/uart_rx.vhd|
+R9
+Z68 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_rx.vhd|
+Z69 !s107 ../vhdl/uart_rx.vhd|
 !i113 1
 R12
 R13
 Afull
-R66
+R65
 R2
 R3
 R4
@@ -429,11 +429,11 @@ V<?NBfUDnM5TCUoBTN1F8`0
 !s100 >>Nok0Yg]YQmLFl=0N;T21
 R7
 32
-R59
+R8
 !i10b 1
-R34
+R9
+R68
 R69
-R70
 !i113 1
 R12
 R13
@@ -443,24 +443,24 @@ R2
 R3
 R4
 R0
-Z71 8../vhdl/uart_tx.vhd
-Z72 F../vhdl/uart_tx.vhd
+Z70 8../vhdl/uart_tx.vhd
+Z71 F../vhdl/uart_tx.vhd
 l0
 L14
 V@f?0NBGW[AGcOf>^BWa131
 !s100 DmFIWaJ@:?kbFX55Mc9Ti2
 R7
 32
-R59
+R8
 !i10b 1
-R34
-Z73 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_tx.vhd|
-Z74 !s107 ../vhdl/uart_tx.vhd|
+R9
+Z72 !s90 -reportprogress|300|-check_synthesis|../vhdl/uart_tx.vhd|
+Z73 !s107 ../vhdl/uart_tx.vhd|
 !i113 1
 R12
 R13
 Afull
-R66
+R65
 R2
 R3
 R4
@@ -471,11 +471,11 @@ V^hiJf;O2V:]Z@00WJ>:VY1
 !s100 Xcjd2j31C0YTiRBDn>Lm13
 R7
 32
-R59
+R8
 !i10b 1
-R34
+R9
+R72
 R73
-R74
 !i113 1
 R12
 R13

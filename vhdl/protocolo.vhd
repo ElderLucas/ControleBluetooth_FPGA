@@ -96,6 +96,23 @@ architecture rtl of protocolo is
 
 	signal strobe		: std_logic_vector(3 downto 0);
 
+	----------------------------------------------------------------------------
+	-- Máquina de Estados para controlar o envio dos dados pela UART TX
+	----------------------------------------------------------------------------
+	-- Controle de Teste do Módulo Alimentação
+	type state_type_tx_uart is (
+		Idle,
+		start_byte,
+		lsb,
+		msb,
+		stop_byte
+	);
+
+	-- Register to hold the current state
+	signal state_tx_uart   : state_type_tx_uart;
+
+	-- Controle de Teste do Módulo Alimentação
+
 begin
 
 	-- -------------------------------------------------------------------------
@@ -312,10 +329,10 @@ begin
 					data_bus_out 	<= (others => '1');
 
 				when rx_stop=>
-					address_bus_out <= rADDRESS;
+					address_bus_out <= DATA_RAM_REG(0) & DATA_RAM_REG(1);
 					command_bus_out <= rCOMMAND;
 					chip_select		<= rChipSelect;
-					data_bus_out 	<= DATA_RAM_REG(0) & DATA_RAM_REG(1);
+					data_bus_out 	<= DATA_RAM_REG(2) & DATA_RAM_REG(3);
 
 				when others =>
 					address_bus_out <= (others => '1');
@@ -345,5 +362,38 @@ begin
 	end process;
 
 	enable_out <= strobe(1);
+	crud_out <= rCOMMAND(3 downto 0);
+
+	----------------------------------------------------------------------------
+	-- PROC para Responder os dados Recebidos no Barramento
+	----------------------------------------------------------------------------
+	-- -------------------------------------------------------------------------
+	--Logic to advance to the next state
+	-- -------------------------------------------------------------------------
+	state_machine_uart_tx : process (CLK, RST)
+	begin
+		if RST = '1' then
+			state_tx_uart <= Idle;
+		elsif (rising_edge(clk)) then
+			case state_tx_uart is
+
+				when Idle=>
+					state_tx_uart <= start_byte;
+
+				when start_byte=>
+					state_tx_uart <= lsb;
+
+				when lsb=>
+					state_tx_uart <= msb;
+
+				when msb=>
+					state_tx_uart <= stop_byte;
+
+				when stop_byte=>
+					state_tx_uart <= Idle;
+
+			end case;
+		end if;
+	end process;
 
 end rtl;
