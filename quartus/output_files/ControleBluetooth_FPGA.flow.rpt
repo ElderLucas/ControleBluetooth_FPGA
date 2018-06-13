@@ -1,5 +1,5 @@
 Flow report for ControleBluetooth_FPGA
-Fri May 25 09:38:53 2018
+Wed Jun 13 17:37:06 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri May 25 09:38:50 2018       ;
+; Flow Status                        ; Successful - Wed Jun 13 17:37:03 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; ControleBluetooth_FPGA                      ;
 ; Top-level Entity Name              ; topo                                        ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,123 / 22,320 ( 5 % )                      ;
-;     Total combinational functions  ; 725 / 22,320 ( 3 % )                        ;
-;     Dedicated logic registers      ; 908 / 22,320 ( 4 % )                        ;
-; Total registers                    ; 908                                         ;
+; Total logic elements               ; 4,082 / 22,320 ( 18 % )                     ;
+;     Total combinational functions  ; 3,569 / 22,320 ( 16 % )                     ;
+;     Dedicated logic registers      ; 1,600 / 22,320 ( 7 % )                      ;
+; Total registers                    ; 1600                                        ;
 ; Total pins                         ; 16 / 154 ( 10 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 425,984 / 608,256 ( 70 % )                  ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 05/25/2018 09:38:08    ;
+; Start date & time ; 06/13/2018 17:36:09    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; ControleBluetooth_FPGA ;
 +-------------------+------------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+------------------------+-------------+------------------+
 ; Assignment Name                     ; Value                                                                                                                         ; Default Value          ; Entity Name ; Section Id       ;
 +-------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+------------------------+-------------+------------------+
-; COMPILER_SIGNATURE_ID               ; 229335795660297.152725188826211                                                                                               ; --                     ; --          ; --               ;
+; COMPILER_SIGNATURE_ID               ; 229335795660297.152892216931664                                                                                               ; --                     ; --          ; --               ;
 ; ENABLE_SIGNALTAP                    ; On                                                                                                                            ; --                     ; --          ; --               ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                                                            ; --                     ; --          ; --               ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                                             ; --                     ; --          ; --               ;
@@ -124,11 +124,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 1032 MB             ; 00:00:42                           ;
-; Fitter               ; 00:00:11     ; 1.0                     ; 1532 MB             ; 00:00:09                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 813 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 880 MB              ; 00:00:02                           ;
-; Total                ; 00:00:40     ; --                      ; --                  ; 00:00:55                           ;
+; Analysis & Synthesis ; 00:00:28     ; 1.0                     ; 1052 MB             ; 00:00:45                           ;
+; Fitter               ; 00:00:17     ; 1.1                     ; 1569 MB             ; 00:00:14                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 822 MB              ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.2                     ; 893 MB              ; 00:00:03                           ;
+; Total                ; 00:00:49     ; --                      ; --                  ; 00:01:04                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

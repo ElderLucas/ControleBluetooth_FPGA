@@ -40,6 +40,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "MISO_IN",
+					"strict" : false
+				},
+				{
 					"name" : "altera_reserved_tms",
 					"strict" : false
 				},

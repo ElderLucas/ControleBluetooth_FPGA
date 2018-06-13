@@ -521,6 +521,7 @@ begin
 							reset_time_out_tx <= '1';
 						else --UART TX desocupada
 							state_tx_uart <= stop_byte;
+							reset_time_out_tx <= '0';
 						end if;
 					else -- Contador de TimeOut estourou
 						state_tx_uart <= Idle;
@@ -540,6 +541,7 @@ begin
 				when Idle=>
 					tx_data_s <= (others => '0');
 					tx_data_enable_s <= "0001";
+					data_en_out <= '0';
 
 				when wait_uart_tx =>
 					--data_en_out <= '1';
@@ -550,10 +552,10 @@ begin
 					data_out <= "10101010";
 				when lsb=>
 					data_en_out <= '1';
-					data_out <= "00000010";
+					data_out <= data_bus_in_s(7 downto 0);
 				when msb=>
 					data_en_out <= '1';
-					data_out <= "00000011";
+					data_out <= data_bus_in_s(15 downto 8);
 				when stop_byte=>
 					data_en_out <= '1';
 					data_out <= "01010101";

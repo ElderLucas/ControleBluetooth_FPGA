@@ -1,10 +1,58 @@
 
+State Machine - |topo|masterCTRL:controlador|RegState
+Name RegState.EndProcess RegState.TXData RegState.WaitingProcess RegState.DeleteReg RegState.UpdateReg RegState.ReadReg RegState.WriteReg RegState.DecodeCommand RegState.DecodeAddress RegState.Idle 
+RegState.Idle 0 0 0 0 0 0 0 0 0 0 
+RegState.DecodeAddress 0 0 0 0 0 0 0 0 1 1 
+RegState.DecodeCommand 0 0 0 0 0 0 0 1 0 1 
+RegState.WriteReg 0 0 0 0 0 0 1 0 0 1 
+RegState.ReadReg 0 0 0 0 0 1 0 0 0 1 
+RegState.UpdateReg 0 0 0 0 1 0 0 0 0 1 
+RegState.DeleteReg 0 0 0 1 0 0 0 0 0 1 
+RegState.WaitingProcess 0 0 1 0 0 0 0 0 0 1 
+RegState.TXData 0 1 0 0 0 0 0 0 0 1 
+RegState.EndProcess 1 0 0 0 0 0 0 0 0 1 
+
 State Machine - |topo|masterCTRL:controlador|state
 Name state.convADC_Ch2 state.convADC_Ch1 state.convADC_Ch0 state.Idle 
 state.Idle 0 0 0 0 
 state.convADC_Ch0 0 0 1 1 
 state.convADC_Ch1 0 1 0 1 
 state.convADC_Ch2 1 0 0 1 
+
+State Machine - |topo|protocolo:protocolo_rx|state_tx_uart
+Name state_tx_uart.stop_byte state_tx_uart.msb state_tx_uart.lsb state_tx_uart.start_byte state_tx_uart.wait_uart_tx state_tx_uart.Idle 
+state_tx_uart.Idle 0 0 0 0 0 0 
+state_tx_uart.wait_uart_tx 0 0 0 0 1 1 
+state_tx_uart.start_byte 0 0 0 1 0 1 
+state_tx_uart.lsb 0 0 1 0 0 1 
+state_tx_uart.msb 0 1 0 0 0 1 
+state_tx_uart.stop_byte 1 0 0 0 0 1 
+
+State Machine - |topo|protocolo:protocolo_rx|state
+Name state.rx_stop state.rx_data state.rx_command state.rx_address_1 state.rx_address_0 state.Idle 
+state.Idle 0 0 0 0 0 0 
+state.rx_address_0 0 0 0 0 1 1 
+state.rx_address_1 0 0 0 1 0 1 
+state.rx_command 0 0 1 0 0 1 
+state.rx_data 0 1 0 0 0 1 
+state.rx_stop 1 0 0 0 0 1 
+
+State Machine - |topo|UART:uart|UART_RX:uart_rx_i|rx_pstate
+Name rx_pstate.stopbit rx_pstate.paritybit rx_pstate.databits rx_pstate.startbit rx_pstate.idle 
+rx_pstate.idle 0 0 0 0 0 
+rx_pstate.startbit 0 0 0 1 1 
+rx_pstate.databits 0 0 1 0 1 
+rx_pstate.paritybit 0 1 0 0 1 
+rx_pstate.stopbit 1 0 0 0 1 
+
+State Machine - |topo|UART:uart|UART_TX:uart_tx_i|tx_pstate
+Name tx_pstate.stopbit tx_pstate.paritybit tx_pstate.databits tx_pstate.startbit tx_pstate.txsync tx_pstate.idle 
+tx_pstate.idle 0 0 0 0 0 0 
+tx_pstate.txsync 0 0 0 0 1 1 
+tx_pstate.startbit 0 0 0 1 0 1 
+tx_pstate.databits 0 0 1 0 0 1 
+tx_pstate.paritybit 0 1 0 0 0 1 
+tx_pstate.stopbit 1 0 0 0 0 1 
 
 State Machine - |topo|UART_RX:uart_rx_i|rx_pstate
 Name rx_pstate.stopbit rx_pstate.paritybit rx_pstate.databits rx_pstate.startbit rx_pstate.idle 

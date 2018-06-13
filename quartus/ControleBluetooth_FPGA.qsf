@@ -182,6 +182,7 @@ set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=16384" -section_id auto_signaltap_0
+set_global_assignment -name VHDL_FILE ../vhdl/protocolo.vhd
 set_global_assignment -name VHDL_FILE ../vhdl/moving_average.vhd
 set_global_assignment -name VHDL_FILE ../vhdl/uart_tx.vhd
 set_global_assignment -name VHDL_FILE ../vhdl/uart_rx.vhd
@@ -193,4 +194,5 @@ set_global_assignment -name VHDL_FILE ../vhdl/topo.vhd
 set_global_assignment -name VHDL_FILE ../vhdl/ADC128S022.vhd
 set_global_assignment -name SIGNALTAP_FILE output_files/stp2.stp
 set_global_assignment -name SIGNALTAP_FILE output_files/stp2_UART.stp
+set_global_assignment -name SLD_FILE db/stp2_auto_stripped.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
