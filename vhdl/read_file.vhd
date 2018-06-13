@@ -23,7 +23,8 @@ begin
         if not endfile (infile) then
             readline(infile, inline);
             read(inline , a );
-            a := a + 10;
+            d1 <= a;
+            --a := a + 10;
             write(outline, a);
             writeline(outfile, outline);
         end if;

@@ -10,6 +10,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use std.textio.all;
 
 entity TOPO_TB is
 end TOPO_TB;
@@ -54,6 +55,8 @@ architecture FULL of TOPO_TB is
 	-- BANCO DE REGISTROS DO Módulo Master
 	type RAM is array (0 to 31) of std_logic_vector(7 downto 0);
 	signal CONFIG_WORD : RAM;
+
+	signal d1,d2,d3: integer;
 
 begin
 
@@ -114,8 +117,7 @@ begin
 		MISO_IN=> '1'
 	);
 
-
-		--
+	--
 	clk_process : process
 	begin
 		CLK <= '0';
@@ -123,6 +125,24 @@ begin
 		CLK <= '1';
 		wait for clk_period/2;
 	end process;
+
+	process (CLK)
+        variable  outline:      line;
+        variable  inline:       line;
+        variable  a:            integer;
+		variable  source_3v3:           integer;
+        -- file input_file: text open read_mode is "c:\users\k56c\desktop\test.txt";
+        file infile: text open read_mode is "teste1_3v3_0v25_var.txt";
+        file outfile: text is out "outputlink";
+    begin
+        if not endfile (infile) then
+            readline(infile, inline);
+            read(inline , a );
+            a := a + 10;
+            write(outline, a);
+            writeline(outfile, outline);
+        end if;
+    end process;
 
 
 	test_tx_uart : process
@@ -133,12 +153,11 @@ begin
 		wait for 100 ns;
 	    RST <= '0';
 
-
-		for I in 0 to 1 loop
+		for I in 0 to 2 loop
 
 			if I = 0 then
 				-- BYTE 0 - START FRAME
-				CONFIG_WORD(0) <= "10101010"; --0xAA
+				CONFIG_WORD(0) <= "10101010"; 	--0xAA
 
 				CONFIG_WORD(1) <= "00000000"; 	-- BYTE 1 - BLOCK ADDRESS LSW
 				CONFIG_WORD(2) <= "00000000"; 	-- BYTE 2 - BLOCK ADDRESS MSW
@@ -160,7 +179,7 @@ begin
 
 			elsif I = 1 then
 				-- BYTE 0 - START FRAME
-				CONFIG_WORD(0) <= "10101010"; --0xAA
+				CONFIG_WORD(0) <= "10101010"; 	-- 0xAA
 
 				CONFIG_WORD(1) <= "00000000"; 	-- BYTE 1 - BLOCK ADDRESS LSW
 				CONFIG_WORD(2) <= "00000000"; 	-- BYTE 2 - BLOCK ADDRESS MSW
@@ -169,6 +188,28 @@ begin
 
 				CONFIG_WORD(4) <= "00000000"; 	-- BYTE 4 - REGISTER ADDRESS MSB
 				CONFIG_WORD(5) <= "00000000"; 	-- BYTE 5- REGISTER ADDRESS LSB
+
+				CONFIG_WORD(6) <= "00000000"; 	-- BYTE 6 - DATA MSB
+				CONFIG_WORD(7) <= "00000000"; 	-- BYTE 7 - DATA LSB
+
+				CONFIG_WORD(8) <= "10101010"; 	-- BYTE 8 - RESERVADO
+				CONFIG_WORD(9) <= "10101010"; 	-- BYTE 9 - RESERVADO
+				CONFIG_WORD(10) <= "10101010";	-- BYTE 10 - RESERVADO
+				CONFIG_WORD(11) <= "10101010";	-- BYTE 11 - RESERVADO
+
+				CONFIG_WORD(12) <= "10101010";  -- STOP WORD
+
+			elsif I = 2 then
+				-- BYTE 0 - START FRAME
+				CONFIG_WORD(0) <= "10101010"; 	-- 0xAA
+
+				CONFIG_WORD(1) <= "00000000"; 	-- BYTE 1 - BLOCK ADDRESS LSW
+				CONFIG_WORD(2) <= "00000000"; 	-- BYTE 2 - BLOCK ADDRESS MSW
+
+				CONFIG_WORD(3) <= "00000001"; 	-- BYTE 3 - COMMAND - CRUD
+
+				CONFIG_WORD(4) <= "00000000"; 	-- BYTE 4 - REGISTER ADDRESS MSB
+				CONFIG_WORD(5) <= "00000100"; 	-- BYTE 5- REGISTER ADDRESS LSB
 
 				CONFIG_WORD(6) <= "00000000"; 	-- BYTE 6 - DATA MSB
 				CONFIG_WORD(7) <= "00000000"; 	-- BYTE 7 - DATA LSB
@@ -275,6 +316,7 @@ begin
 		    wait until rising_edge(CLK);
 		    wait for 280 us;
 		    wait until rising_edge(CLK);
+
 			-- BYTE 9 - RESERVADO
 		    wait until rising_edge(CLK);
 		    data_send <= '1';
@@ -284,7 +326,6 @@ begin
 		    wait until rising_edge(CLK);
 		    wait for 280 us;
 		    wait until rising_edge(CLK);
-
 
 			--------------------------------------------------------------------
 		    -- BYTE 10 - RESERVADO
@@ -307,7 +348,6 @@ begin
 		    wait for 280 us;
 		    wait until rising_edge(CLK);
 
-
 			-- STOP WORD
 		    wait until rising_edge(CLK);
 		    data_send <= '1';
@@ -319,7 +359,7 @@ begin
 		    wait until rising_edge(CLK);
 
 			-- Delay Entre cada Pack de Informação
-			wait for 1 ms;
+			wait for 10 ms;
 		end loop;
 
 

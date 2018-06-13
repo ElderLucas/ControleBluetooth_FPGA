@@ -20,9 +20,14 @@ entity masterCTRL is
 		-- Saida de dados
 		data_bus_out 		: out	std_logic_vector(15 downto 0);
 		enable_data_out		: out	std_logic;
+
 		-- Saída de seleção do canal do AD que será habilitado para converter os dados
 		enb_adc_conv 		: out	std_logic;
 		ch_adc_conv 		: out	std_logic_vector(2 downto 0);
+
+		-- Enable data in
+		ADC_Enb_Data_in		: in 	std_logic_vector(7 downto 0);
+
 		-- Entrada dos dados dos conversores AD
 		ADC_Data_ch0		: in	std_logic_vector(11 downto 0); -- V_SENSE
 		ADC_Data_ch1		: in	std_logic_vector(11 downto 0); -- I_DUT
@@ -33,6 +38,7 @@ entity masterCTRL is
 		ADC_Data_ch6		: in	std_logic_vector(11 downto 0);
 		ADC_Data_ch7		: in	std_logic_vector(11 downto 0);
 
+		-- Sinaliza que está ocupado
 		busy	 			: out	std_logic
 	);
 end entity;
@@ -354,14 +360,11 @@ begin
 				case RegState is
 					when Idle=>
 						write_data_ram <= '0';
-
 					when DecodeAddress =>
 						r_address_bus_in <= address_in;
 						r_data_bus_in <= data_in;
-
 					when WriteReg =>
 						write_data_ram <= '1';
-
 					when others =>
 						write_data_ram <= '0';
 				end case;
@@ -375,9 +378,9 @@ begin
 			RW_REGISTER_BANK(1) <= (others => '0');
 			RW_REGISTER_BANK(2) <= (others => '0');
 			RW_REGISTER_BANK(3) <= (others => '0');
-			RW_REGISTER_BANK(4) <= (others => '0');
-			RW_REGISTER_BANK(5) <= (others => '0');
-			RW_REGISTER_BANK(6) <= (others => '0');
+			--RW_REGISTER_BANK(4) <= (others => '0');
+			--RW_REGISTER_BANK(5) <= (others => '0');
+			--RW_REGISTER_BANK(6) <= (others => '0');
 			RW_REGISTER_BANK(7) <= (others => '0');
 			RW_REGISTER_BANK(8) <= (others => '0');
 			RW_REGISTER_BANK(9) <= (others => '0');
@@ -386,9 +389,7 @@ begin
 			if write_data_ram = '1' then
 				if(r_address_bus_in = "0000000000000000") then
 					RW_REGISTER_BANK(0) <= r_data_bus_in;
-
 				--elsif(r_address_bus_in = "0000000000000001") then
-
 				end if;
 			end if;
 		end if;
@@ -398,22 +399,15 @@ begin
 	begin
 		case RegState is
 			when Idle=>
-				r_address_bus_in <=  (others => '0');
 				data_bus_out <=  (others => '1');
 				read_data_ram <= '0';
 				enable_data_out <= '0';
-
-			when DecodeAddress =>
-				r_address_bus_in <= address_in;
-
 			when ReadReg =>
 				read_data_ram <= '1';
-
 			when TXData =>
 				read_data_ram <= '0';
 				data_bus_out <= r_read_data;
 				enable_data_out <= '1';
-
 			when others =>
 				read_data_ram <= '0';
 				enable_data_out <= '0';
@@ -435,6 +429,18 @@ begin
 					r_read_data <= RW_REGISTER_BANK(2);
 				elsif(r_address_bus_in = "0000000000000011") then
 					r_read_data <= RW_REGISTER_BANK(3);
+				elsif(r_address_bus_in = "0000000000000100") then
+					r_read_data <= RW_REGISTER_BANK(4);
+				elsif(r_address_bus_in = "0000000000000101") then
+					r_read_data <= RW_REGISTER_BANK(5);
+				elsif(r_address_bus_in = "0000000000000110") then
+					r_read_data <= RW_REGISTER_BANK(6);
+				elsif(r_address_bus_in = "0000000000000111") then
+					r_read_data <= RW_REGISTER_BANK(7);
+				elsif(r_address_bus_in = "0000000000001000") then
+					r_read_data <= RW_REGISTER_BANK(8);
+				elsif(r_address_bus_in = "0000000000001001") then
+					r_read_data <= RW_REGISTER_BANK(9);
 				end if;
 			end if;
 		end if;
@@ -457,6 +463,42 @@ begin
 	-- Enable Data Out
 	--enable_data_out <= shift_enb_data_out(2);
 
+	----------------------------------------------------------------------------
+	-- Armazena os dados lidos do conversor AD
+	--
+	----------------------------------------------------------------------------
+	loadADC_ch0_data : process (clk, RST)
+	begin
+		if RST = '1' then
+			RW_REGISTER_BANK(4) <= (others => '0');
+		elsif (rising_edge(clk)) then
+			if ADC_Enb_Data_in(0) = '1' then
+				RW_REGISTER_BANK(4) <= "0000" & ADC_Data_ch0(11 downto 0);
+			end if;
+		end if;
+	end process;
+
+	loadADC_ch1_data : process (clk, RST)
+	begin
+		if RST = '1' then
+			RW_REGISTER_BANK(5) <= (others => '0');
+		elsif (rising_edge(clk)) then
+			if ADC_Enb_Data_in(1) = '1' then
+				RW_REGISTER_BANK(5) <= "0000" & ADC_Data_ch1(11 downto 0);
+			end if;
+		end if;
+	end process;
+
+	loadADC_ch2_data : process (clk, RST)
+	begin
+		if RST = '1' then
+			RW_REGISTER_BANK(6) <= (others => '0');
+		elsif (rising_edge(clk)) then
+			if ADC_Enb_Data_in(2) = '1' then
+				RW_REGISTER_BANK(6) <= "0000" & ADC_Data_ch2(11 downto 0);
+			end if;
+		end if;
+	end process;
 
 
 

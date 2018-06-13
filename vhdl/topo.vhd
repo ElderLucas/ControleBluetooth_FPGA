@@ -125,6 +125,16 @@ architecture full of topo is
 
     signal To_UartTx                 : std_logic_vector(15 downto 0) := (others => '0');
     signal Enb_To_UartTx             : std_logic := '0';
+    signal ADC_Enb_Data_s		     : std_logic_vector(7 downto 0);
+
+    signal avg_adc_ch0: std_logic_vector(11 downto 0);
+    signal avg_adc_ch1: std_logic_vector(11 downto 0);
+    signal avg_adc_ch2: std_logic_vector(11 downto 0);
+
+    signal tx_busy       : std_logic := '0';
+    signal tx_uart       : std_logic := '1';
+    signal rx_uart       : std_logic := '1';
+    signal uart_busy     : std_logic := '1';
 
 
 begin
@@ -205,13 +215,16 @@ begin
     port map (
         CLK         => CLK,
         RST         => RST_s,
+
         -- UART INTERFACE
-        UART_CLK_EN => uart_clk_en,
+        UART_CLK_EN => '1',-- uart_clk_en,
         UART_TXD    => UART_TXD,
+
         -- USER DATA INPUT INTERFACE
-        DATA_IN     => DATA_IN,
-        DATA_SEND   => DATA_SEND,
-        BUSY        => fromUART_TX_BUSY
+        DATA_IN     => DATA_Protoco2UartTX,
+        DATA_SEND   => DATA_Protoco2UartTX_en,
+
+        BUSY        => tx_busy
     );
 
     ----------------------------------------------------------------------------
@@ -234,6 +247,29 @@ begin
     );
 
 
+    uart: entity work.UART
+    generic map (
+        CLK_FREQ    => 50e6,
+        BAUD_RATE   => 115200,
+        PARITY_BIT  => "none"
+    )
+    port map (
+        CLK         => CLK,
+        RST         => RST_s,
+        -- UART INTERFACE
+        UART_TXD    => tx_uart,
+        UART_RXD    => rx_uart,
+        -- USER DATA INPUT INTERFACE
+        DATA_OUT    => open,
+        DATA_VLD    => open,
+        FRAME_ERROR => open,
+        -- USER DATA OUTPUT INTERFACE
+        DATA_IN     => DATA_Protoco2UartTX,
+        DATA_SEND   => DATA_Protoco2UartTX_en,
+        BUSY        => uart_busy
+    );
+
+
 
     protocolo_rx: entity work.PROTOCOLO
     generic map (
@@ -248,30 +284,33 @@ begin
         -- alguma tarefa
         fpga_busy_out   => showFPGA_Status,
 
-        -- Usado para sabe se a UART ainda está transmitindo
-        -- infromações para o Raspberry
-        uart_tx_busy_in => fromUART_TX_BUSY,
+        -- Sinal de entrada usado para saber se a UART ainda está transmitindo
+        -- infromações
+        uart_tx_busy_in => tx_busy,
 
-        -- Interface para receber dados da UART RX
+        ------------------------------------------------------------------------
+        ------------------ INTERFACE PARALELA ----------------------------------
+        -- Recebe os dados Paralelos vindos da UART RX
         data_en_in      => rDATA_VLD,
         data_in 	    => rDATA_OUT,
 
-        -- Interface para transmitir dados pela UART TX
+        -- Transmite dados Paralelos para UART TX
         data_en_out     => DATA_Protoco2UartTX_en,
         data_out        => DATA_Protoco2UartTX,
+        ------------------------------------------------------------------------
 
-        -- Barramento de dados interno
+        ----------------- BARRAMENTO DE COMUNICAÇÃO ----------------------------
+        -- Sinais de Dados de Entrada no bloco, vindo do Barramento
         data_bus_in     => r_data_bus_in,
-        data_bus_out    => r_data_bus_out,
-
-        -- Address Bus
-        address_bus_out => r_Address_bus_out,
-        command_bus_out => r_Command_bus_out,
-
-        -- Data bus Controll
-        chip_select     => r_data_bus_cs,
-        enable_out      => r_data_bus_en_o,
         enable_in       => r_data_bus_en_i,
+
+        -- Sinais de Dados de Saída do bloco, vindo do Barramento
+        data_bus_out    => r_data_bus_out,
+        enable_out      => r_data_bus_en_o,
+
+        -- Sinais de Controle
+        address_bus_out => r_Address_bus_out,
+        chip_select     => r_data_bus_cs,
         crud_out        => r_data_bus_crud
     );
 
@@ -293,17 +332,20 @@ begin
         chip_select     => r_data_bus_cs(0),
 
         -- Saida de dados
-		data_bus_out    => To_UartTx,
-		enable_data_out => Enb_To_UartTx,
+		data_bus_out    => r_data_bus_in,
+		enable_data_out => r_data_bus_en_i,
 
 		-- Saída de seleção do canal do AD que será habilitado para converter os dados
 		enb_adc_conv => CONV_ENB_S,
 		ch_adc_conv => CONV_CH_SEL_S,
 
+        -- Enable data in
+        ADC_Enb_Data_in => ADC_Enb_Data_s,
+
 		-- Entradas dos canais analógicos para testes das tensões e níveis
-		ADC_Data_ch0 => adc_dataout_ch0_s,
-		ADC_Data_ch1 => adc_dataout_ch1_s,
-		ADC_Data_ch2 => adc_dataout_ch2_s,
+		ADC_Data_ch0 => avg_adc_ch0,
+		ADC_Data_ch1 => avg_adc_ch1,
+		ADC_Data_ch2 => avg_adc_ch2,
 		ADC_Data_ch3 => "000000000000",
 		ADC_Data_ch4 => "000000000000",
 		ADC_Data_ch5 => "000000000000",
@@ -314,6 +356,14 @@ begin
         busy => Busy_s
 
     );
+
+    ADC_Enb_Data_s <= "00000" & enb_data_ch2_out & enb_data_ch1_out & enb_data_ch0_out;
+
+
+    avg_adc_ch0 <= std_logic_vector(to_unsigned(avg_adc_data_ch0_s,avg_adc_ch0'length));
+    avg_adc_ch1 <= std_logic_vector(to_unsigned(avg_adc_data_ch1_s,avg_adc_ch1'length));
+    avg_adc_ch2 <= std_logic_vector(to_unsigned(avg_adc_data_ch2_s,avg_adc_ch2'length));
+
 
     -- -------------------------------------------------------------------------
     -- ADC128S022

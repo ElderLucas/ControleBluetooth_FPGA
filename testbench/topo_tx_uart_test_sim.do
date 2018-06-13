@@ -56,51 +56,48 @@ add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/DATA_RAM_REG
 
 add wave -noupdate -divider { PROTOCOLO : SAÍDA }
 add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/address_bus_out
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/command_bus_out
 add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/chip_select
 add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/data_bus_out
 add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/crud_out
 add wave /TOPO_TB/utt/protocolo_rx/state
 
 add wave -noupdate -divider { }
-add wave -noupdate -divider { MASTER INSIDE }
+add wave -noupdate -divider { PROTOCOLO : UART TX SMachine }
+add wave /TOPO_TB/utt/protocolo_rx/state_tx_uart
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/enable_in_s
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/time_out_tx
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/uart_tx_busy_in
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/reset_time_out_tx
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/count_time_out
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/data_en_out
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/data_out
+add wave -noupdate -radix hexadecimal /TOPO_TB/utt/protocolo_rx/shift_reg_busy
 
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/CLK
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/RST
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/crud_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/chip_select
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/data_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/enable_data_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/data_bus_out
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/enable_data_out
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/address_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/r_data_bus_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/r_read_data
 
-add wave -noupdate -divider { }
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/RegState
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/write_data_ram
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/read_data_ram
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/r_address_bus_in
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/controlador/RW_REGISTER_BANK
+#add wave -noupdate -divider { }
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/uart_clk_en
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/UART_TXD
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/DATA_Protoco2UartTX
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/DATA_Protoco2UartTX_en
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/tx_busy
 
-add wave -noupdate -divider { }
-add wave -noupdate -divider { MASTER CONTROLE ADC }
+#add wave -noupdate -divider { }
+#add wave -noupdate -divider { UART TX }
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/CLK
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/RST
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/tx_uart
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/rx_uart
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/DATA_Protoco2UartTX
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/DATA_Protoco2UartTX_en
+#add wave -noupdate -radix hexadecimal /TOPO_TB/utt/uart_busy
 
-add wave /TOPO_TB/utt/CONV_ENB_S
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/CONV_CH_SEL_S
-add wave /TOPO_TB/utt/DATA_VALID_S
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/ADC_CH_ADDRESS_S
-add wave /TOPO_TB/utt/ADC_DATAOUT_S
 
-add wave -noupdate -divider { }
-add wave -noupdate -divider { ADC_AVG }
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/ADC_Enb_Data_s
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/avg_adc_ch0
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/avg_adc_ch1
-add wave -noupdate -radix hexadecimal /TOPO_TB/utt/avg_adc_ch2
 
-add wave -noupdate -radix hexadecimal /TOPO_TB/d1
+
+
+
+
+
 
 set Top_Level_Name tb
 

@@ -25,7 +25,7 @@ entity protocolo is
 	----------------------------------------------------------------------------
 	-- Entrada de dados no Bloco de Protocolo
 	----------------------------------------------------------------------------
-    -- RX da UART
+    -- Dados vindos do bloco de RX da UART
     data_en_in	 		: in	std_logic;
     data_in 	 		: in	std_logic_vector(7 downto 0);
 
@@ -39,19 +39,18 @@ entity protocolo is
 	----------------------------------------------------------------------------
     -- Barramento de dados interno da FPGA
 	----------------------------------------------------------------------------
-    data_bus_in  		: out	std_logic_vector(15 downto 0);
+	-- Dados Vindos dos Blocos internos à FPGA
+    data_bus_in  		: in	std_logic_vector(15 downto 0);
+	enable_in			: in	std_logic;
+
+	--
     data_bus_out 		: out	std_logic_vector(15 downto 0);
+	enable_out			: out	std_logic;
 
 	----------------------------------------------------------------------------
     -- Data bus Controll
 	address_bus_out		: out	std_logic_vector(15 downto 0);
-	command_bus_out		: out	std_logic_vector(7 downto 0);
-
-	----------------------------------------------------------------------------
-	-- Controll Bus Signals
     chip_select			: out	std_logic_vector(15 downto 0);
-    enable_out			: out	std_logic;
-    enable_in			: in	std_logic;
     crud_out     		: out	std_logic_vector(3 downto 0) --CRUD : Create, Read, Update, Delete
 
 );
@@ -94,7 +93,24 @@ architecture rtl of protocolo is
 	signal A_BUS 		: BYTE;
 	signal DATA_RAM_REG : RAM;
 
-	signal strobe		: std_logic_vector(3 downto 0);
+	signal strobe		 : std_logic_vector(3 downto 0);
+
+	signal data_bus_in_s : std_logic_vector(15 downto 0);
+	signal enable_in_s	 : std_logic;
+
+	-- Count Time Out
+	signal count_time_out : integer := 0;
+	signal reset_time_out_tx : std_logic;
+	signal time_out_tx : std_logic;
+
+
+	signal tx_data_s 		: std_logic_vector(7 downto 0);
+	signal tx_data_enable_s : std_logic_vector(3 downto 0);
+
+
+	signal shift_reg_busy : std_logic_vector(3 downto 0);
+
+
 
 	----------------------------------------------------------------------------
 	-- Máquina de Estados para controlar o envio dos dados pela UART TX
@@ -102,6 +118,7 @@ architecture rtl of protocolo is
 	-- Controle de Teste do Módulo Alimentação
 	type state_type_tx_uart is (
 		Idle,
+		wait_uart_tx,
 		start_byte,
 		lsb,
 		msb,
@@ -181,7 +198,6 @@ begin
 					state <= rx_address_1;
 				end if;
 
-
         	-- RECEBE O COMANDO
   			when rx_command=>
   				if data_en_in = '1' then
@@ -243,16 +259,23 @@ begin
 		end if;
 	end process;
 
-	-- Proc para Receber e Registrar as informações
-	reg_proc : process (CLK, RST)
+	----------------------------------------------------------------------------
+	----------------------------------------------------------------------------
+	--
+	-- Proc para receber as informações de Address, Comando e Dados
+	-- vindos do Pacote serial.
+	-- Todos os dados recebidos pela UART são disponibilizados no
+	-- data_in juntamente com um Enable (1 ciclo de Clock)
+	--
+	----------------------------------------------------------------------------
+	----------------------------------------------------------------------------
+	DataPack_SerialDecode_Reg_proc : process (CLK, RST)
 	begin
 		if RST = '1' then
-
 			rSTART <= (others => '0');
 			rADDRESS <= (others => '0');
 			rCOMMAND <= (others => '0');
 			rSTOP <= (others => '0');
-
 		elsif (rising_edge(clk)) then
 			if (data_en_in = '1') then
 				case state is
@@ -281,7 +304,9 @@ begin
 		end if;
 	end process;
 
+	----------------------------------------------------------------------------
 	-- Proc para Controlar os sinais do Carramento
+	----------------------------------------------------------------------------
 	chipSelec_proc : process (CLK, RST)
 	begin
 		if RST = '1' then
@@ -317,26 +342,22 @@ begin
 	begin
 		if RST = '1' then
 			address_bus_out <= (others => '0');
-			command_bus_out <= (others => '0');
 			chip_select		<= (others => '0');
 
 		elsif (rising_edge(clk)) then
 			case state is
 				when Idle =>
 					address_bus_out <= (others => '1');
-					command_bus_out <= (others => '1');
 					chip_select		<= (others => '1');
 					data_bus_out 	<= (others => '1');
 
 				when rx_stop=>
 					address_bus_out <= DATA_RAM_REG(0) & DATA_RAM_REG(1);
-					command_bus_out <= rCOMMAND;
 					chip_select		<= rChipSelect;
 					data_bus_out 	<= DATA_RAM_REG(2) & DATA_RAM_REG(3);
 
 				when others =>
 					address_bus_out <= (others => '1');
-					command_bus_out <= (others => '1');
 					--chip_select		<= (others => '1');
 					data_bus_out 	<= (others => '1');
 
@@ -364,35 +385,190 @@ begin
 	enable_out <= strobe(1);
 	crud_out <= rCOMMAND(3 downto 0);
 
+
 	----------------------------------------------------------------------------
-	-- PROC para Responder os dados Recebidos no Barramento
+	--------------------------- TX DATA UART -----------------------------------
+	--
+	--	Processos para receber os dados dos blocos  e transmitir para UART
+	--
+
 	----------------------------------------------------------------------------
+	----------------------------------------------------------------------------
+	-- Proc para registrar os dados de Data e Enable
+	-- vindos dos Blocos da FPGA.
+	-- Neste caso recebe os dados vindos do Master e transmite para
+	-- UART TX
+	----------------------------------------------------------------------------
+	----------------------------------------------------------------------------
+	process (CLK, RST)
+	begin
+		if RST = '1' then
+			data_bus_in_s <= (others => '0');
+			enable_in_s <= '0';
+		elsif (rising_edge(clk)) then
+			if enable_in = '1' then
+				data_bus_in_s <= data_bus_in;
+				enable_in_s <= enable_in;
+			else
+				enable_in_s <= '0';
+			end if;
+		end if;
+	end process;
+
+	----------------------------------------------------------------------------
+	-- Proc Contagem do Time Out
+	----------------------------------------------------------------------------
+	process (CLK, RST)
+	begin
+		if RST = '1' then
+			count_time_out <= 0;
+			time_out_tx <= '0';
+		elsif (rising_edge(clk)) then
+			if reset_time_out_tx = '0' then
+				if count_time_out < 100000 then
+					count_time_out <= count_time_out + 1;
+				else
+					count_time_out <= 0;
+					time_out_tx <= '1';
+				end if;
+
+			else
+				count_time_out <= 0;
+				time_out_tx <= '0';
+			end if;
+		end if;
+	end process;
+
 	-- -------------------------------------------------------------------------
-	--Logic to advance to the next state
+	-- PROC para transmitir dados via interface UART
 	-- -------------------------------------------------------------------------
 	state_machine_uart_tx : process (CLK, RST)
 	begin
 		if RST = '1' then
 			state_tx_uart <= Idle;
+			reset_time_out_tx <= '0';
+
 		elsif (rising_edge(clk)) then
 			case state_tx_uart is
-
 				when Idle=>
-					state_tx_uart <= start_byte;
+					if enable_in_s = '1' then
+						state_tx_uart <= wait_uart_tx;
+					end if;
+					reset_time_out_tx <= '1';
+
+				when wait_uart_tx =>
+					if time_out_tx = '0' then
+						if shift_reg_busy = "0000" then --UART Ocupada
+							state_tx_uart <= start_byte;
+							reset_time_out_tx <= '1';
+						else --UART TX desocupada
+							state_tx_uart <= wait_uart_tx;
+							reset_time_out_tx <= '0';
+
+						end if;
+					else -- Contador de TimeOut estourou
+						state_tx_uart <= Idle;
+						--reset_time_out_tx <= '1';
+					end if;
 
 				when start_byte=>
-					state_tx_uart <= lsb;
+					if time_out_tx = '0' then
+						if shift_reg_busy = "1110" then --UART Ocupada
+							state_tx_uart <= lsb;
+							reset_time_out_tx <= '1';
+						else --UART TX desocupada
+							state_tx_uart <= start_byte;
+							reset_time_out_tx <= '0';
+						end if;
+					else -- Contador de TimeOut estourou
+						state_tx_uart <= Idle;
+						reset_time_out_tx <= '1';
+					end if;
 
 				when lsb=>
-					state_tx_uart <= msb;
+					if time_out_tx = '0' then
+						if shift_reg_busy = "1110" then --UART Ocupada
+							state_tx_uart <= msb;
+							reset_time_out_tx <= '1';
+						else --UART TX desocupada
+							state_tx_uart <= lsb;
+							reset_time_out_tx <= '0';
+
+						end if;
+					else -- Contador de TimeOut estourou
+						state_tx_uart <= Idle;
+						reset_time_out_tx <= '1';
+					end if;
 
 				when msb=>
-					state_tx_uart <= stop_byte;
+					if time_out_tx = '0' then
+						if shift_reg_busy = "1110" then --UART Ocupada
+							state_tx_uart <= stop_byte;
+							reset_time_out_tx <= '1';
+						else --UART TX desocupada
+							state_tx_uart <= msb;
+							reset_time_out_tx <= '0';
+						end if;
+					else -- Contador de TimeOut estourou
+						state_tx_uart <= Idle;
+						reset_time_out_tx <= '1';
+					end if;
 
 				when stop_byte=>
-					state_tx_uart <= Idle;
-
+					if time_out_tx = '0' then
+						if shift_reg_busy = "1110" then --UART Ocupada
+							state_tx_uart <= Idle;
+							reset_time_out_tx <= '1';
+						else --UART TX desocupada
+							state_tx_uart <= stop_byte;
+						end if;
+					else -- Contador de TimeOut estourou
+						state_tx_uart <= Idle;
+						reset_time_out_tx <= '1';
+					end if;
 			end case;
+		end if;
+	end process;
+
+	observer_state_machine_uart_tx : process (RST, clk, state_tx_uart)
+	begin
+		if RST = '1' then
+			data_en_out <= '0';
+			data_out <= "11111111";
+		elsif (rising_edge(clk)) then
+			case state_tx_uart is
+				when Idle=>
+					tx_data_s <= (others => '0');
+					tx_data_enable_s <= "0001";
+
+				when wait_uart_tx =>
+					--data_en_out <= '1';
+					--data_out <= "10101010";
+
+				when start_byte=>
+					data_en_out <= '1';
+					data_out <= "10101010";
+				when lsb=>
+					data_en_out <= '1';
+					data_out <= "00000010";
+				when msb=>
+					data_en_out <= '1';
+					data_out <= "00000011";
+				when stop_byte=>
+					data_en_out <= '1';
+					data_out <= "01010101";
+			end case;
+		else
+			--data_en_out <= '0';
+		end if;
+	end process;
+
+	process (RST, clk)
+	begin
+		if RST = '1' then
+			shift_reg_busy <= "0000";
+		elsif (rising_edge(clk)) then
+			shift_reg_busy <= shift_reg_busy(2 downto 0) & uart_tx_busy_in;
 		end if;
 	end process;
 
