@@ -26,7 +26,7 @@ entity protocolo is
 	-- Entrada de dados no Bloco de Protocolo
 	----------------------------------------------------------------------------
     -- Dados vindos do bloco de RX da UART
-    data_en_in	 		: in	std_logic;
+  	data_en_in	 		: in	std_logic;
     data_in 	 		: in	std_logic_vector(7 downto 0);
 
 	----------------------------------------------------------------------------
@@ -179,7 +179,9 @@ begin
         	-- IDLE State
 			when Idle=>
 				if data_en_in = '1' then
-					state <= rx_address_0;
+					if(data_in = "10101010") then--0xAA
+						state <= rx_address_0;
+					end if;
 				else
 					state <= Idle;
 				end if;
@@ -269,7 +271,7 @@ begin
 	--
 	----------------------------------------------------------------------------
 	----------------------------------------------------------------------------
-	DataPack_SerialDecode_Reg_proc : process (CLK, RST)
+	DataPack_SerialDecode_Reg_proc : process (CLK, RST, state)
 	begin
 		if RST = '1' then
 			rSTART <= (others => '0');
@@ -277,30 +279,30 @@ begin
 			rCOMMAND <= (others => '0');
 			rSTOP <= (others => '0');
 		elsif (rising_edge(clk)) then
-			if (data_en_in = '1') then
-				case state is
-					-- IDLE State
-					when Idle=>
-						rSTART <= data_in;
-					-- RECEBE O ENDEREÇO LSW - Palavra Menos Significante
-					when rx_address_0 =>
-						rADDRESS(7 downto 0) <= data_in;
-					-- RECEBE O ENDEREÇO MSW - Palavra Mais Significante
-					when rx_address_1 =>
-						rADDRESS(15 downto 8) <= data_in;
-					-- RECEBE O COMANDO
-					when rx_command=>
-						rCOMMAND <= data_in;
-					-- RECEBE O DADO
-					when rx_data=>
-						if count_rx_data < 8 then
-							DATA_RAM_REG(count_rx_data) <= data_in;
-						end if;
-					-- RECEBE A PALAVRA DE FIM DE QUADRO
-					when rx_stop=>
-						rSTOP <= data_in;
-				end case;
-			end if;
+			--if (data_en_in = '1') then
+			case state is
+				-- IDLE State
+				when Idle=>
+					rSTART <= data_in;
+				-- RECEBE O ENDEREÇO LSW - Palavra Menos Significante
+				when rx_address_0 =>
+					rADDRESS(7 downto 0) <= data_in;
+				-- RECEBE O ENDEREÇO MSW - Palavra Mais Significante
+				when rx_address_1 =>
+					rADDRESS(15 downto 8) <= data_in;
+				-- RECEBE O COMANDO
+				when rx_command=>
+					rCOMMAND <= data_in;
+				-- RECEBE O DADO
+				when rx_data=>
+					if count_rx_data < 8 then
+						DATA_RAM_REG(count_rx_data) <= data_in;
+					end if;
+				-- RECEBE A PALAVRA DE FIM DE QUADRO
+				when rx_stop=>
+					rSTOP <= data_in;
+			end case;
+			--end if;
 		end if;
 	end process;
 
@@ -329,7 +331,7 @@ begin
 					elsif(rADDRESS = "0000000000000101")then
 						rChipSelect <= "1111111111011111";
 					else
-						rChipSelect <= (others => '1');
+						rChipSelect <= (others => 'X');
 					end if;
 				when others =>
 					--rChipSelect <= (others => '1');

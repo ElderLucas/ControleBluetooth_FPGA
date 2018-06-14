@@ -389,7 +389,18 @@ begin
 			if write_data_ram = '1' then
 				if(r_address_bus_in = "0000000000000000") then
 					RW_REGISTER_BANK(0) <= r_data_bus_in;
-				--elsif(r_address_bus_in = "0000000000000001") then
+				elsif(r_address_bus_in = "0000000000000001") then
+					RW_REGISTER_BANK(1) <= r_data_bus_in;
+				elsif(r_address_bus_in = "0000000000000010") then
+					RW_REGISTER_BANK(2) <= r_data_bus_in;
+				elsif(r_address_bus_in = "0000000000000011") then
+					RW_REGISTER_BANK(3) <= r_data_bus_in;
+				elsif(r_address_bus_in = "0000000000000111") then
+					RW_REGISTER_BANK(7) <= r_data_bus_in;
+				elsif(r_address_bus_in = "0000000000001000") then
+					RW_REGISTER_BANK(8) <= r_data_bus_in;
+				elsif(r_address_bus_in = "0000000000001001") then
+					RW_REGISTER_BANK(9) <= r_data_bus_in;
 				end if;
 			end if;
 		end if;

@@ -218,7 +218,7 @@ begin
 
         -- UART INTERFACE
         UART_CLK_EN => '1',-- uart_clk_en,
-        UART_TXD    => UART_TXD,
+        UART_TXD    => open,
 
         -- USER DATA INPUT INTERFACE
         DATA_IN     => DATA_Protoco2UartTX,
@@ -257,7 +257,7 @@ begin
         CLK         => CLK,
         RST         => RST_s,
         -- UART INTERFACE
-        UART_TXD    => tx_uart,
+        UART_TXD    => UART_TXD,
         UART_RXD    => rx_uart,
         -- USER DATA INPUT INTERFACE
         DATA_OUT    => open,
@@ -286,7 +286,7 @@ begin
 
         -- Sinal de entrada usado para saber se a UART ainda está transmitindo
         -- infromações
-        uart_tx_busy_in => tx_busy,
+        uart_tx_busy_in => uart_busy,
 
         ------------------------------------------------------------------------
         ------------------ INTERFACE PARALELA ----------------------------------
@@ -526,6 +526,6 @@ begin
     LED_OUT(6) <= CONV_ENB_S;
 
     -- Inversão do Reset para a lógica dos blocos ativos em '1'
-    RST_s <= RST;
+    RST_s <= not RST;
 
 end full;
