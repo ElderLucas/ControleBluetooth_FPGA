@@ -1,14 +1,14 @@
-Fitter Status : Successful - Thu Jun 14 18:10:34 2018
+Fitter Status : Successful - Fri Jun 15 13:06:38 2018
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : ControleBluetooth_FPGA
 Top-level Entity Name : topo
 Family : Cyclone IV E
 Device : EP4CE22F17C6
 Timing Models : Final
-Total logic elements : 5,675 / 22,320 ( 25 % )
-    Total combinational functions : 4,061 / 22,320 ( 18 % )
-    Dedicated logic registers : 3,096 / 22,320 ( 14 % )
-Total registers : 3096
+Total logic elements : 5,695 / 22,320 ( 26 % )
+    Total combinational functions : 4,042 / 22,320 ( 18 % )
+    Dedicated logic registers : 3,121 / 22,320 ( 14 % )
+Total registers : 3121
 Total pins : 16 / 154 ( 10 % )
 Total virtual pins : 0
 Total memory bits : 299,008 / 608,256 ( 49 % )

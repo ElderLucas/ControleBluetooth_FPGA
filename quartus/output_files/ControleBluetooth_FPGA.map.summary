@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Thu Jun 14 18:10:20 2018
+Analysis & Synthesis Status : Successful - Fri Jun 15 13:06:18 2018
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : ControleBluetooth_FPGA
 Top-level Entity Name : topo
 Family : Cyclone IV E
-Total logic elements : 5,901
-    Total combinational functions : 4,049
-    Dedicated logic registers : 3,096
-Total registers : 3096
+Total logic elements : 5,915
+    Total combinational functions : 4,030
+    Dedicated logic registers : 3,121
+Total registers : 3121
 Total pins : 16
 Total virtual pins : 0
 Total memory bits : 299,008

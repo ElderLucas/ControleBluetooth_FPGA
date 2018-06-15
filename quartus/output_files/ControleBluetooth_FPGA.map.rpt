@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ControleBluetooth_FPGA
-Thu Jun 14 18:10:21 2018
+Fri Jun 15 13:06:18 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -15,51 +15,55 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |topo|masterCTRL:controlador|RegState
- 11. State Machine - |topo|masterCTRL:controlador|state
- 12. State Machine - |topo|protocolo:protocolo_rx|state_tx_uart
- 13. State Machine - |topo|protocolo:protocolo_rx|state
- 14. State Machine - |topo|UART:uart|UART_RX:uart_rx_i|rx_pstate
- 15. State Machine - |topo|UART:uart|UART_TX:uart_tx_i|tx_pstate
- 16. State Machine - |topo|UART_RX:uart_rx_i|rx_pstate
- 17. State Machine - |topo|UART_TX:uart_tx_i|tx_pstate
- 18. User-Specified and Inferred Latches
- 19. Registers Removed During Synthesis
- 20. Removed Registers Triggering Further Register Optimizations
- 21. General Register Statistics
- 22. Inverted Register Statistics
- 23. Multiplexer Restructuring Statistics (Restructuring Performed)
- 24. Source assignments for sld_signaltap:auto_signaltap_0
- 25. Parameter Settings for User Entity Instance: Top-level Entity: |topo
- 26. Parameter Settings for User Entity Instance: UART_TX:uart_tx_i
- 27. Parameter Settings for User Entity Instance: UART_RX:uart_rx_i
- 28. Parameter Settings for User Entity Instance: UART:uart
- 29. Parameter Settings for User Entity Instance: UART:uart|UART_TX:uart_tx_i
- 30. Parameter Settings for User Entity Instance: UART:uart|UART_RX:uart_rx_i
- 31. Parameter Settings for User Entity Instance: protocolo:protocolo_rx
- 32. Parameter Settings for User Entity Instance: masterCTRL:controlador
- 33. Parameter Settings for User Entity Instance: adc_serial_control:adc128s022
- 34. Parameter Settings for User Entity Instance: moving_average:channel_0
- 35. Parameter Settings for User Entity Instance: moving_average:channel_1
- 36. Parameter Settings for User Entity Instance: moving_average:channel_2
- 37. Parameter Settings for User Entity Instance: TIMER:tic_1segundo
- 38. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
- 39. Parameter Settings for Inferred Entity Instance: moving_average:channel_0|lpm_divide:Div0
- 40. Parameter Settings for Inferred Entity Instance: moving_average:channel_1|lpm_divide:Div0
- 41. Parameter Settings for Inferred Entity Instance: moving_average:channel_2|lpm_divide:Div0
- 42. Port Connectivity Checks: "moving_average:channel_2"
- 43. Port Connectivity Checks: "moving_average:channel_1"
- 44. Port Connectivity Checks: "moving_average:channel_0"
- 45. Port Connectivity Checks: "masterCTRL:controlador"
- 46. Port Connectivity Checks: "protocolo:protocolo_rx"
- 47. Port Connectivity Checks: "UART:uart"
- 48. Port Connectivity Checks: "UART_RX:uart_rx_i"
- 49. Port Connectivity Checks: "UART_TX:uart_tx_i"
- 50. Signal Tap Logic Analyzer Settings
- 51. Post-Synthesis Netlist Statistics for Top Partition
- 52. Elapsed Time Per Partition
- 53. Connections to In-System Debugging Instance "auto_signaltap_0"
- 54. Analysis & Synthesis Messages
+ 10. State Machine - |topo|gpio_CTRL:gpio_controlador|RegState
+ 11. State Machine - |topo|masterCTRL:controlador|RegState
+ 12. State Machine - |topo|masterCTRL:controlador|state
+ 13. State Machine - |topo|protocolo:protocolo_rx|state_tx_uart
+ 14. State Machine - |topo|protocolo:protocolo_rx|state
+ 15. State Machine - |topo|UART:uart|UART_RX:uart_rx_i|rx_pstate
+ 16. State Machine - |topo|UART:uart|UART_TX:uart_tx_i|tx_pstate
+ 17. State Machine - |topo|UART_RX:uart_rx_i|rx_pstate
+ 18. State Machine - |topo|UART_TX:uart_tx_i|tx_pstate
+ 19. User-Specified and Inferred Latches
+ 20. Registers Removed During Synthesis
+ 21. Removed Registers Triggering Further Register Optimizations
+ 22. General Register Statistics
+ 23. Inverted Register Statistics
+ 24. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 25. Source assignments for sld_signaltap:auto_signaltap_0
+ 26. Parameter Settings for User Entity Instance: Top-level Entity: |topo
+ 27. Parameter Settings for User Entity Instance: UART_TX:uart_tx_i
+ 28. Parameter Settings for User Entity Instance: UART_RX:uart_rx_i
+ 29. Parameter Settings for User Entity Instance: UART:uart
+ 30. Parameter Settings for User Entity Instance: UART:uart|UART_TX:uart_tx_i
+ 31. Parameter Settings for User Entity Instance: UART:uart|UART_RX:uart_rx_i
+ 32. Parameter Settings for User Entity Instance: protocolo:protocolo_rx
+ 33. Parameter Settings for User Entity Instance: masterCTRL:controlador
+ 34. Parameter Settings for User Entity Instance: adc_serial_control:adc128s022
+ 35. Parameter Settings for User Entity Instance: moving_average:channel_0
+ 36. Parameter Settings for User Entity Instance: moving_average:channel_1
+ 37. Parameter Settings for User Entity Instance: moving_average:channel_2
+ 38. Parameter Settings for User Entity Instance: TIMER:tic_1segundo
+ 39. Parameter Settings for User Entity Instance: gpio_CTRL:gpio_controlador
+ 40. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
+ 41. Parameter Settings for Inferred Entity Instance: moving_average:channel_0|lpm_divide:Div0
+ 42. Parameter Settings for Inferred Entity Instance: moving_average:channel_1|lpm_divide:Div0
+ 43. Parameter Settings for Inferred Entity Instance: moving_average:channel_2|lpm_divide:Div0
+ 44. Port Connectivity Checks: "gpio_CTRL:gpio_controlador"
+ 45. Port Connectivity Checks: "TIMER:tic_1segundo"
+ 46. Port Connectivity Checks: "moving_average:channel_2"
+ 47. Port Connectivity Checks: "moving_average:channel_1"
+ 48. Port Connectivity Checks: "moving_average:channel_0"
+ 49. Port Connectivity Checks: "masterCTRL:controlador"
+ 50. Port Connectivity Checks: "protocolo:protocolo_rx"
+ 51. Port Connectivity Checks: "UART:uart"
+ 52. Port Connectivity Checks: "UART_RX:uart_rx_i"
+ 53. Port Connectivity Checks: "UART_TX:uart_tx_i"
+ 54. Signal Tap Logic Analyzer Settings
+ 55. Post-Synthesis Netlist Statistics for Top Partition
+ 56. Elapsed Time Per Partition
+ 57. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 58. Analysis & Synthesis Messages
 
 
 
@@ -85,15 +89,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 14 18:10:20 2018       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 15 13:06:18 2018       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; ControleBluetooth_FPGA                      ;
 ; Top-level Entity Name              ; topo                                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 5,901                                       ;
-;     Total combinational functions  ; 4,049                                       ;
-;     Dedicated logic registers      ; 3,096                                       ;
-; Total registers                    ; 3096                                        ;
+; Total logic elements               ; 5,915                                       ;
+;     Total combinational functions  ; 4,030                                       ;
+;     Dedicated logic registers      ; 3,121                                       ;
+; Total registers                    ; 3121                                        ;
 ; Total pins                         ; 16                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 299,008                                     ;
@@ -212,6 +216,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------+
 ; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                  ; Library     ;
 +--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------+
+; ../vhdl/gpio_CTRL.vhd                                              ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd                                                         ;             ;
 ; ../vhdl/protocolo.vhd                                              ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd                                                         ;             ;
 ; ../vhdl/moving_average.vhd                                         ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/moving_average.vhd                                                    ;             ;
 ; ../vhdl/uart_tx.vhd                                                ; yes             ; User VHDL File                               ; /home/elder/ControleBluetooth_FPGA/vhdl/uart_tx.vhd                                                           ;             ;
@@ -296,20 +301,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 5,901     ;
+; Estimated Total logic elements              ; 5,915     ;
 ;                                             ;           ;
-; Total combinational functions               ; 4049      ;
+; Total combinational functions               ; 4030      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 1425      ;
-;     -- 3 input functions                    ; 1141      ;
-;     -- <=2 input functions                  ; 1483      ;
+;     -- 4 input functions                    ; 1430      ;
+;     -- 3 input functions                    ; 1145      ;
+;     -- <=2 input functions                  ; 1455      ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 3051      ;
-;     -- arithmetic mode                      ; 998       ;
+;     -- normal mode                          ; 3056      ;
+;     -- arithmetic mode                      ; 974       ;
 ;                                             ;           ;
-; Total registers                             ; 3096      ;
-;     -- Dedicated logic registers            ; 3096      ;
+; Total registers                             ; 3121      ;
+;     -- Dedicated logic registers            ; 3121      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 16        ;
@@ -318,9 +323,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 2359      ;
-; Total fan-out                               ; 24931     ;
-; Average fan-out                             ; 3.40      ;
+; Maximum fan-out                             ; 2384      ;
+; Total fan-out                               ; 25000     ;
+; Average fan-out                             ; 3.41      ;
 +---------------------------------------------+-----------+
 
 
@@ -329,32 +334,32 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                              ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |topo                                                                                                                                   ; 4049 (47)           ; 3096 (44)                 ; 299008      ; 0            ; 0       ; 0         ; 16   ; 0            ; |topo                                                                                                                                                                                                                                                                                                                                            ; topo                              ; work         ;
-;    |TIMER:tic_1segundo|                                                                                                                 ; 35 (35)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|TIMER:tic_1segundo                                                                                                                                                                                                                                                                                                                         ; TIMER                             ; work         ;
+; |topo                                                                                                                                   ; 4030 (47)           ; 3121 (44)                 ; 299008      ; 0            ; 0       ; 0         ; 16   ; 0            ; |topo                                                                                                                                                                                                                                                                                                                                            ; topo                              ; work         ;
 ;    |UART:uart|                                                                                                                          ; 46 (8)              ; 28 (6)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|UART:uart                                                                                                                                                                                                                                                                                                                                  ; UART                              ; work         ;
 ;       |UART_TX:uart_tx_i|                                                                                                               ; 38 (38)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|UART:uart|UART_TX:uart_tx_i                                                                                                                                                                                                                                                                                                                ; UART_TX                           ; work         ;
 ;    |UART_RX:uart_rx_i|                                                                                                                  ; 27 (27)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|UART_RX:uart_rx_i                                                                                                                                                                                                                                                                                                                          ; UART_RX                           ; work         ;
 ;    |adc_serial_control:adc128s022|                                                                                                      ; 51 (51)             ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|adc_serial_control:adc128s022                                                                                                                                                                                                                                                                                                              ; adc_serial_control                ; work         ;
+;    |gpio_CTRL:gpio_controlador|                                                                                                         ; 25 (25)             ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|gpio_CTRL:gpio_controlador                                                                                                                                                                                                                                                                                                                 ; gpio_CTRL                         ; work         ;
 ;    |masterCTRL:controlador|                                                                                                             ; 240 (240)           ; 245 (245)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|masterCTRL:controlador                                                                                                                                                                                                                                                                                                                     ; masterCTRL                        ; work         ;
-;    |moving_average:channel_0|                                                                                                           ; 803 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
-;       |lpm_divide:Div0|                                                                                                                 ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
-;          |lpm_divide_r0p:auto_generated|                                                                                                ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
-;             |abs_divider_mbg:divider|                                                                                                   ; 639 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
+;    |moving_average:channel_0|                                                                                                           ; 801 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
+;       |lpm_divide:Div0|                                                                                                                 ; 637 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
+;          |lpm_divide_r0p:auto_generated|                                                                                                ; 637 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
+;             |abs_divider_mbg:divider|                                                                                                   ; 637 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
 ;                |alt_u_div_a7f:divider|                                                                                                  ; 575 (575)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|alt_u_div_a7f:divider                                                                                                                                                                                                                       ; alt_u_div_a7f                     ; work         ;
-;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
-;    |moving_average:channel_1|                                                                                                           ; 805 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
-;       |lpm_divide:Div0|                                                                                                                 ; 641 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
-;          |lpm_divide_r0p:auto_generated|                                                                                                ; 641 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
-;             |abs_divider_mbg:divider|                                                                                                   ; 641 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
+;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 39 (39)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_0|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
+;    |moving_average:channel_1|                                                                                                           ; 803 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
+;       |lpm_divide:Div0|                                                                                                                 ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
+;          |lpm_divide_r0p:auto_generated|                                                                                                ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
+;             |abs_divider_mbg:divider|                                                                                                   ; 639 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
 ;                |alt_u_div_a7f:divider|                                                                                                  ; 575 (575)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|alt_u_div_a7f:divider                                                                                                                                                                                                                       ; alt_u_div_a7f                     ; work         ;
-;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
-;    |moving_average:channel_2|                                                                                                           ; 803 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
-;       |lpm_divide:Div0|                                                                                                                 ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
-;          |lpm_divide_r0p:auto_generated|                                                                                                ; 639 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
-;             |abs_divider_mbg:divider|                                                                                                   ; 639 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
+;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_1|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
+;    |moving_average:channel_2|                                                                                                           ; 801 (164)           ; 92 (92)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2                                                                                                                                                                                                                                                                                                                   ; moving_average                    ; work         ;
+;       |lpm_divide:Div0|                                                                                                                 ; 637 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0                                                                                                                                                                                                                                                                                                   ; lpm_divide                        ; work         ;
+;          |lpm_divide_r0p:auto_generated|                                                                                                ; 637 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated                                                                                                                                                                                                                                                                     ; lpm_divide_r0p                    ; work         ;
+;             |abs_divider_mbg:divider|                                                                                                   ; 637 (23)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider                                                                                                                                                                                                                                             ; abs_divider_mbg                   ; work         ;
 ;                |alt_u_div_a7f:divider|                                                                                                  ; 575 (575)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|alt_u_div_a7f:divider                                                                                                                                                                                                                       ; alt_u_div_a7f                     ; work         ;
-;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 41 (41)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
-;    |protocolo:protocolo_rx|                                                                                                             ; 228 (228)           ; 211 (211)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|protocolo:protocolo_rx                                                                                                                                                                                                                                                                                                                     ; protocolo                         ; work         ;
+;                |lpm_abs_i0a:my_abs_num|                                                                                                 ; 39 (39)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|moving_average:channel_2|lpm_divide:Div0|lpm_divide_r0p:auto_generated|abs_divider_mbg:divider|lpm_abs_i0a:my_abs_num                                                                                                                                                                                                                      ; lpm_abs_i0a                       ; work         ;
+;    |protocolo:protocolo_rx|                                                                                                             ; 225 (225)           ; 212 (212)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|protocolo:protocolo_rx                                                                                                                                                                                                                                                                                                                     ; protocolo                         ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 125 (1)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 124 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 124 (0)             ; 91 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |topo|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -571,6 +576,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 Encoding Type:  One-Hot
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |topo|gpio_CTRL:gpio_controlador|RegState                                                                                                                                                                                    ;
++-------------------------+---------------------+-----------------+-------------------------+--------------------+--------------------+------------------+-------------------+------------------------+------------------------+---------------+
+; Name                    ; RegState.EndProcess ; RegState.TXData ; RegState.WaitingProcess ; RegState.DeleteReg ; RegState.UpdateReg ; RegState.ReadReg ; RegState.WriteReg ; RegState.DecodeCommand ; RegState.DecodeAddress ; RegState.Idle ;
++-------------------------+---------------------+-----------------+-------------------------+--------------------+--------------------+------------------+-------------------+------------------------+------------------------+---------------+
+; RegState.Idle           ; 0                   ; 0               ; 0                       ; 0                  ; 0                  ; 0                ; 0                 ; 0                      ; 0                      ; 0             ;
+; RegState.DecodeAddress  ; 0                   ; 0               ; 0                       ; 0                  ; 0                  ; 0                ; 0                 ; 0                      ; 1                      ; 1             ;
+; RegState.DecodeCommand  ; 0                   ; 0               ; 0                       ; 0                  ; 0                  ; 0                ; 0                 ; 1                      ; 0                      ; 1             ;
+; RegState.WriteReg       ; 0                   ; 0               ; 0                       ; 0                  ; 0                  ; 0                ; 1                 ; 0                      ; 0                      ; 1             ;
+; RegState.ReadReg        ; 0                   ; 0               ; 0                       ; 0                  ; 0                  ; 1                ; 0                 ; 0                      ; 0                      ; 1             ;
+; RegState.UpdateReg      ; 0                   ; 0               ; 0                       ; 0                  ; 1                  ; 0                ; 0                 ; 0                      ; 0                      ; 1             ;
+; RegState.DeleteReg      ; 0                   ; 0               ; 0                       ; 1                  ; 0                  ; 0                ; 0                 ; 0                      ; 0                      ; 1             ;
+; RegState.WaitingProcess ; 0                   ; 0               ; 1                       ; 0                  ; 0                  ; 0                ; 0                 ; 0                      ; 0                      ; 1             ;
+; RegState.TXData         ; 0                   ; 1               ; 0                       ; 0                  ; 0                  ; 0                ; 0                 ; 0                      ; 0                      ; 1             ;
+; RegState.EndProcess     ; 1                   ; 0               ; 0                       ; 0                  ; 0                  ; 0                ; 0                 ; 0                      ; 0                      ; 1             ;
++-------------------------+---------------------+-----------------+-------------------------+--------------------+--------------------+------------------+-------------------+------------------------+------------------------+---------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; State Machine - |topo|masterCTRL:controlador|RegState                                                                                                                                                                                        ;
 +-------------------------+---------------------+-----------------+-------------------------+--------------------+--------------------+------------------+-------------------+------------------------+------------------------+---------------+
 ; Name                    ; RegState.EndProcess ; RegState.TXData ; RegState.WaitingProcess ; RegState.DeleteReg ; RegState.UpdateReg ; RegState.ReadReg ; RegState.WriteReg ; RegState.DecodeCommand ; RegState.DecodeAddress ; RegState.Idle ;
@@ -716,60 +740,61 @@ Encoding Type:  One-Hot
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                       ;
-+-------------------------------------------------+----------------------------------------+
-; Register name                                   ; Reason for Removal                     ;
-+-------------------------------------------------+----------------------------------------+
-; adc_serial_control:adc128s022|r_adc_ch[2]       ; Stuck at GND due to stuck port data_in ;
-; adc_serial_control:adc128s022|o_adc_ch[2]       ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[4][15]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[4][14]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[4][13]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[4][12]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[5][15]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[5][14]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[5][13]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[5][12]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[6][15]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[6][14]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[6][13]  ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RW_REGISTER_BANK[6][12]  ; Stuck at GND due to stuck port data_in ;
-; UART:uart|uart_rxd_shreg[3]                     ; Stuck at VCC due to stuck port data_in ;
-; UART:uart|uart_rxd_shreg[0..2]                  ; Lost fanout                            ;
-; UART:uart|uart_rxd_debounced                    ; Stuck at VCC due to stuck port data_in ;
-; uart_clk_en                                     ; Merged with UART:uart|uart_clk_en      ;
-; uart_clk_cnt[4]                                 ; Merged with UART:uart|uart_clk_cnt[4]  ;
-; uart_clk_cnt[3]                                 ; Merged with UART:uart|uart_clk_cnt[3]  ;
-; uart_clk_cnt[2]                                 ; Merged with UART:uart|uart_clk_cnt[2]  ;
-; uart_clk_cnt[1]                                 ; Merged with UART:uart|uart_clk_cnt[1]  ;
-; uart_clk_cnt[0]                                 ; Merged with UART:uart|uart_clk_cnt[0]  ;
-; adc_data_ch0_s[13..31]                          ; Merged with adc_data_ch0_s[12]         ;
-; adc_data_ch1_s[12..31]                          ; Merged with adc_data_ch0_s[12]         ;
-; adc_data_ch2_s[12..31]                          ; Merged with adc_data_ch0_s[12]         ;
-; adc_data_ch0_s[12]                              ; Stuck at GND due to stuck port data_in ;
-; masterCTRL:controlador|RegState.WaitingProcess  ; Stuck at GND due to stuck port data_in ;
-; UART:uart|UART_RX:uart_rx_i|rx_clk_en           ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_bit_count[0..2]  ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_clk_en                     ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_bit_count[0..2]            ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_ticks[0..3]      ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_ticks[0..3]                ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_pstate.idle      ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_pstate.startbit  ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_pstate.databits  ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_pstate.paritybit ; Lost fanout                            ;
-; UART:uart|UART_RX:uart_rx_i|rx_pstate.stopbit   ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.idle                ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.txsync              ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.startbit            ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.databits            ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.paritybit           ; Lost fanout                            ;
-; UART_TX:uart_tx_i|tx_pstate.stopbit             ; Lost fanout                            ;
-; UART:uart|UART_TX:uart_tx_i|tx_pstate.paritybit ; Stuck at GND due to stuck port data_in ;
-; UART_RX:uart_rx_i|rx_pstate.paritybit           ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 115         ;                                        ;
-+-------------------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------------------+----------------------------------------+
+; Register name                                      ; Reason for Removal                     ;
++----------------------------------------------------+----------------------------------------+
+; adc_serial_control:adc128s022|r_adc_ch[2]          ; Stuck at GND due to stuck port data_in ;
+; adc_serial_control:adc128s022|o_adc_ch[2]          ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[4][15]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[4][14]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[4][13]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[4][12]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[5][15]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[5][14]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[5][13]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[5][12]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[6][15]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[6][14]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[6][13]     ; Stuck at GND due to stuck port data_in ;
+; masterCTRL:controlador|RW_REGISTER_BANK[6][12]     ; Stuck at GND due to stuck port data_in ;
+; UART:uart|uart_rxd_shreg[3]                        ; Stuck at VCC due to stuck port data_in ;
+; UART:uart|uart_rxd_shreg[0..2]                     ; Lost fanout                            ;
+; UART:uart|uart_rxd_debounced                       ; Stuck at VCC due to stuck port data_in ;
+; uart_clk_en                                        ; Merged with UART:uart|uart_clk_en      ;
+; uart_clk_cnt[4]                                    ; Merged with UART:uart|uart_clk_cnt[4]  ;
+; uart_clk_cnt[3]                                    ; Merged with UART:uart|uart_clk_cnt[3]  ;
+; uart_clk_cnt[2]                                    ; Merged with UART:uart|uart_clk_cnt[2]  ;
+; uart_clk_cnt[1]                                    ; Merged with UART:uart|uart_clk_cnt[1]  ;
+; uart_clk_cnt[0]                                    ; Merged with UART:uart|uart_clk_cnt[0]  ;
+; adc_data_ch0_s[13..31]                             ; Merged with adc_data_ch0_s[12]         ;
+; adc_data_ch1_s[12..31]                             ; Merged with adc_data_ch0_s[12]         ;
+; adc_data_ch2_s[12..31]                             ; Merged with adc_data_ch0_s[12]         ;
+; adc_data_ch0_s[12]                                 ; Stuck at GND due to stuck port data_in ;
+; gpio_CTRL:gpio_controlador|RegState.WaitingProcess ; Lost fanout                            ;
+; masterCTRL:controlador|RegState.WaitingProcess     ; Stuck at GND due to stuck port data_in ;
+; UART:uart|UART_RX:uart_rx_i|rx_clk_en              ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_bit_count[0..2]     ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_clk_en                        ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_bit_count[0..2]               ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_ticks[0..3]         ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_ticks[0..3]                   ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_pstate.idle         ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_pstate.startbit     ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_pstate.databits     ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_pstate.paritybit    ; Lost fanout                            ;
+; UART:uart|UART_RX:uart_rx_i|rx_pstate.stopbit      ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.idle                   ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.txsync                 ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.startbit               ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.databits               ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.paritybit              ; Lost fanout                            ;
+; UART_TX:uart_tx_i|tx_pstate.stopbit                ; Lost fanout                            ;
+; UART:uart|UART_TX:uart_tx_i|tx_pstate.paritybit    ; Stuck at GND due to stuck port data_in ;
+; UART_RX:uart_rx_i|rx_pstate.paritybit              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 116            ;                                        ;
++----------------------------------------------------+----------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -799,12 +824,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 3096  ;
-; Number of registers using Synchronous Clear  ; 232   ;
+; Total registers                              ; 3121  ;
+; Number of registers using Synchronous Clear  ; 207   ;
 ; Number of registers using Synchronous Load   ; 73    ;
-; Number of registers using Asynchronous Clear ; 1158  ;
+; Number of registers using Asynchronous Clear ; 1193  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1415  ;
+; Number of registers using Clock Enable       ; 1449  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -814,6 +839,14 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; Inverted Register                                                                                                                                                                                                                                                                                                               ; Fan out ;
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; gpio_CTRL:gpio_controlador|reg_led[0]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[1]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[2]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[3]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[4]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[5]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[6]                                                                                                                                                                                                                                                                                           ; 1       ;
+; gpio_CTRL:gpio_controlador|reg_led[7]                                                                                                                                                                                                                                                                                           ; 1       ;
 ; adc_serial_control:adc128s022|o_sclk                                                                                                                                                                                                                                                                                            ; 2       ;
 ; adc_serial_control:adc128s022|o_ss                                                                                                                                                                                                                                                                                              ; 1       ;
 ; adc_serial_control:adc128s022|o_mosi                                                                                                                                                                                                                                                                                            ; 2       ;
@@ -841,23 +874,23 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; masterCTRL:controlador|r_read_data[7]                                                                                                                                                                                                                                                                                           ; 2       ;
 ; masterCTRL:controlador|r_read_data[8]                                                                                                                                                                                                                                                                                           ; 2       ;
 ; masterCTRL:controlador|r_read_data[9]                                                                                                                                                                                                                                                                                           ; 2       ;
-; masterCTRL:controlador|reg_enable_test[0]                                                                                                                                                                                                                                                                                       ; 1       ;
 ; moving_average:channel_0|average[0]                                                                                                                                                                                                                                                                                             ; 1       ;
 ; moving_average:channel_1|average[0]                                                                                                                                                                                                                                                                                             ; 1       ;
 ; moving_average:channel_2|average[0]                                                                                                                                                                                                                                                                                             ; 1       ;
 ; moving_average:channel_0|average_s[0]                                                                                                                                                                                                                                                                                           ; 2       ;
 ; moving_average:channel_1|average_s[0]                                                                                                                                                                                                                                                                                           ; 2       ;
 ; moving_average:channel_2|average_s[0]                                                                                                                                                                                                                                                                                           ; 2       ;
+; masterCTRL:controlador|reg_enable_test[0]                                                                                                                                                                                                                                                                                       ; 1       ;
 ; moving_average:channel_0|sum[0]                                                                                                                                                                                                                                                                                                 ; 5       ;
-; moving_average:channel_0|sum[31]                                                                                                                                                                                                                                                                                                ; 89      ;
+; moving_average:channel_0|sum[31]                                                                                                                                                                                                                                                                                                ; 85      ;
 ; moving_average:channel_0|count[31]                                                                                                                                                                                                                                                                                              ; 5       ;
 ; moving_average:channel_0|count[0]                                                                                                                                                                                                                                                                                               ; 2       ;
 ; moving_average:channel_1|sum[0]                                                                                                                                                                                                                                                                                                 ; 5       ;
-; moving_average:channel_1|sum[31]                                                                                                                                                                                                                                                                                                ; 85      ;
+; moving_average:channel_1|sum[31]                                                                                                                                                                                                                                                                                                ; 89      ;
 ; moving_average:channel_1|count[31]                                                                                                                                                                                                                                                                                              ; 5       ;
 ; moving_average:channel_1|count[0]                                                                                                                                                                                                                                                                                               ; 2       ;
 ; moving_average:channel_2|sum[0]                                                                                                                                                                                                                                                                                                 ; 5       ;
-; moving_average:channel_2|sum[31]                                                                                                                                                                                                                                                                                                ; 89      ;
+; moving_average:channel_2|sum[31]                                                                                                                                                                                                                                                                                                ; 85      ;
 ; moving_average:channel_2|count[31]                                                                                                                                                                                                                                                                                              ; 5       ;
 ; moving_average:channel_2|count[0]                                                                                                                                                                                                                                                                                               ; 2       ;
 ; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg[2] ; 2       ;
@@ -874,7 +907,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|modified_post_count[10]                                                                                                                                                  ; 1       ;
 ; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|modified_post_count[11]                                                                                                                                                  ; 1       ;
 ; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|modified_post_count[0]                                                                                                                                                   ; 1       ;
-; Total number of inverted registers = 60                                                                                                                                                                                                                                                                                         ;         ;
+; Total number of inverted registers = 68                                                                                                                                                                                                                                                                                         ;         ;
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -883,49 +916,50 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART:uart|UART_TX:uart_tx_i|tx_data[0]           ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |topo|TIMER:tic_1segundo|timer_1seg_cnt[0]             ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_data[7]                     ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |topo|masterCTRL:controlador|timer_adc_cnt[30]         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART:uart|UART_TX:uart_tx_i|tx_data[4]           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_data[3]                     ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |topo|masterCTRL:controlador|timer_adc_cnt[18]         ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topo|UART:uart|uart_clk_cnt[4]                        ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_ticks[1]                    ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_clock[4] ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_2|average_s[5]            ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_1|average_s[4]            ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_0|average_s[10]           ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |topo|protocolo:protocolo_rx|count_time_out[27]        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_ticks[3]                    ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_clock[5] ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_2|average_s[3]            ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_1|average_s[8]            ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_0|average_s[5]            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |topo|protocolo:protocolo_rx|count_time_out[10]        ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART:uart|UART_RX:uart_rx_i|rx_bit_count[0]      ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART:uart|UART_TX:uart_tx_i|tx_bit_count[0]      ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_bit_count[2]                ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |topo|UART_TX:uart_tx_i|tx_bit_count[0]                ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART:uart|UART_RX:uart_rx_i|rx_ticks[3]          ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART:uart|UART_TX:uart_tx_i|tx_ticks[1]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART:uart|UART_RX:uart_rx_i|rx_ticks[0]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART:uart|UART_TX:uart_tx_i|tx_ticks[0]          ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|UART_RX:uart_rx_i|rx_ticks[1]                    ;
-; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |topo|moving_average:channel_2|count[10]               ;
-; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |topo|moving_average:channel_1|count[17]               ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |topo|moving_average:channel_2|count[9]                ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |topo|moving_average:channel_1|count[30]               ;
 ; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |topo|moving_average:channel_0|count[2]                ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_data[0]  ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |topo|load_adc_ch2_s                                   ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch1_s[1]                                ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch2_s[1]                                ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch0_s[7]                                ;
-; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_2|sum[23]                 ;
-; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_2|sum[11]                 ;
-; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_1|sum[17]                 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |topo|adc_serial_control:adc128s022|r_counter_data[1]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|protocolo:protocolo_rx|chip_select[1]            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |topo|load_adc_ch0_s                                   ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch1_s[9]                                ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch2_s[0]                                ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |topo|adc_data_ch0_s[0]                                ;
+; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_2|sum[20]                 ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_2|sum[7]                  ;
+; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_1|sum[30]                 ;
 ; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_1|sum[11]                 ;
-; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_0|sum[21]                 ;
-; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_0|sum[2]                  ;
+; 5:1                ; 19 bits   ; 57 LEs        ; 19 LEs               ; 38 LEs                 ; Yes        ; |topo|moving_average:channel_0|sum[24]                 ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |topo|moving_average:channel_0|sum[10]                 ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |topo|protocolo:protocolo_rx|rChipSelect[4]            ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|moving_average:channel_2|count[31]               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|moving_average:channel_2|count[0]                ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|moving_average:channel_1|count[31]               ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|moving_average:channel_0|count[31]               ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |topo|protocolo:protocolo_rx|data_out[0]               ;
-; 11:1               ; 4 bits    ; 28 LEs        ; 16 LEs               ; 12 LEs                 ; Yes        ; |topo|masterCTRL:controlador|r_read_data[15]           ;
-; 11:1               ; 12 bits   ; 84 LEs        ; 72 LEs               ; 12 LEs                 ; Yes        ; |topo|masterCTRL:controlador|r_read_data[11]           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |topo|moving_average:channel_0|count[0]                ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |topo|protocolo:protocolo_rx|data_out[7]               ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |topo|protocolo:protocolo_rx|data_out[1]               ;
+; 11:1               ; 4 bits    ; 28 LEs        ; 16 LEs               ; 12 LEs                 ; Yes        ; |topo|masterCTRL:controlador|r_read_data[14]           ;
+; 11:1               ; 12 bits   ; 84 LEs        ; 72 LEs               ; 12 LEs                 ; Yes        ; |topo|masterCTRL:controlador|r_read_data[5]            ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topo|masterCTRL:controlador|state                     ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topo|protocolo:protocolo_rx|state                     ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |topo|protocolo:protocolo_rx|count_rx_data             ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topo|masterCTRL:controlador|RegState                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |topo|masterCTRL:controlador|RegState                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 
 
@@ -1074,6 +1108,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: gpio_CTRL:gpio_controlador ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; clk_div        ; 100   ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
 +-------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+
@@ -1210,6 +1254,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "gpio_CTRL:gpio_controlador"                                                                    ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_bus_out    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; enable_data_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; busy            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "TIMER:tic_1segundo"                                                                       ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; timer_1seg ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "moving_average:channel_2"                                                                      ;
 +-----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port            ; Type   ; Severity ; Details                                                                             ;
@@ -1257,7 +1321,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Port               ; Type   ; Severity ; Details                                                                             ;
 +--------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; fpga_busy_out      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; chip_select[15..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; chip_select[15..2] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +--------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
@@ -1308,28 +1372,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 160                         ;
-; cycloneiii_ff         ; 901                         ;
-;     CLR               ; 107                         ;
+; cycloneiii_ff         ; 926                         ;
+;     CLR               ; 124                         ;
 ;     CLR SCLR          ; 39                          ;
-;     ENA               ; 323                         ;
-;     ENA CLR           ; 263                         ;
+;     ENA               ; 339                         ;
+;     ENA CLR           ; 281                         ;
 ;     ENA SCLR          ; 71                          ;
-;     SCLR              ; 74                          ;
+;     SCLR              ; 49                          ;
 ;     SLD               ; 2                           ;
-;     plain             ; 22                          ;
-; cycloneiii_lcell_comb ; 3090                        ;
-;     arith             ; 904                         ;
-;         2 data inputs ; 325                         ;
+;     plain             ; 21                          ;
+; cycloneiii_lcell_comb ; 3077                        ;
+;     arith             ; 880                         ;
+;         2 data inputs ; 301                         ;
 ;         3 data inputs ; 579                         ;
-;     normal            ; 2186                        ;
-;         0 data inputs ; 83                          ;
-;         1 data inputs ; 51                          ;
-;         2 data inputs ; 851                         ;
-;         3 data inputs ; 275                         ;
-;         4 data inputs ; 926                         ;
+;     normal            ; 2197                        ;
+;         0 data inputs ; 81                          ;
+;         1 data inputs ; 66                          ;
+;         2 data inputs ; 840                         ;
+;         3 data inputs ; 279                         ;
+;         4 data inputs ; 931                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 88.60                       ;
-; Average LUT depth     ; 47.02                       ;
+; Average LUT depth     ; 46.94                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1338,7 +1402,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -1681,10 +1745,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 14 18:09:55 2018
+    Info: Processing started: Fri Jun 15 13:05:50 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControleBluetooth_FPGA -c ControleBluetooth_FPGA
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd
+    Info (12022): Found design unit 1: gpio_CTRL-rtl File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 32
+    Info (12023): Found entity 1: gpio_CTRL File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd
     Info (12022): Found design unit 1: protocolo-rtl File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 59
     Info (12023): Found entity 1: protocolo File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 8
@@ -1720,16 +1787,16 @@ Warning (10036): Verilog HDL or VHDL warning at topo.vhd(70): object "FRAME_ERRO
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(78): object "adc_dataout_ch0_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 78
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(79): object "adc_dataout_ch1_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 79
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(80): object "adc_dataout_ch2_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 80
+Warning (10036): Verilog HDL or VHDL warning at topo.vhd(83): object "timer_1seg_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 83
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(84): object "Busy_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 84
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(109): object "showFPGA_Status" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 109
 Warning (10036): Verilog HDL or VHDL warning at topo.vhd(134): object "tx_busy" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 134
 Warning (10540): VHDL Signal Declaration warning at topo.vhd(136): used explicit default value for signal "rx_uart" because signal was never assigned a value File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 136
-Warning (10873): Using initial value X (don't care) for net "LED_OUT[1..0]" at topo.vhd(35) File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TX:uart_tx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 211
-Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_RX:uart_rx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 233
+Info (12128): Elaborating entity "UART_TX" for hierarchy "UART_TX:uart_tx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 214
+Info (12128): Elaborating entity "UART_RX" for hierarchy "UART_RX:uart_rx_i" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 236
 Warning (10036): Verilog HDL or VHDL warning at uart_rx.vhd(41): object "rx_parity_check_en" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/uart_rx.vhd Line: 41
-Info (12128): Elaborating entity "UART" for hierarchy "UART:uart" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 250
-Info (12128): Elaborating entity "protocolo" for hierarchy "protocolo:protocolo_rx" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 274
+Info (12128): Elaborating entity "UART" for hierarchy "UART:uart" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 253
+Info (12128): Elaborating entity "protocolo" for hierarchy "protocolo:protocolo_rx" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 277
 Warning (10541): VHDL Signal Declaration warning at protocolo.vhd(19): used implicit default value for signal "fpga_busy_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 19
 Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(75): object "reg_data_in" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 75
 Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(78): object "rdata_en_in" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 78
@@ -1737,7 +1804,7 @@ Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(84): object "rSTAR
 Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(85): object "rSTOP" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 85
 Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(107): object "tx_data_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 107
 Warning (10036): Verilog HDL or VHDL warning at protocolo.vhd(108): object "tx_data_enable_s" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/protocolo.vhd Line: 108
-Info (12128): Elaborating entity "masterCTRL" for hierarchy "masterCTRL:controlador" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 320
+Info (12128): Elaborating entity "masterCTRL" for hierarchy "masterCTRL:controlador" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 323
 Warning (10036): Verilog HDL or VHDL warning at masterCTRL.vhd(73): object "r_chip_select" assigned a value but never read File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 73
 Warning (10631): VHDL Process Statement warning at masterCTRL.vhd(234): inferring latch(es) for signal or variable "busy", which holds its previous value in one or more paths through the process File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 234
 Warning (10492): VHDL Process Statement warning at masterCTRL.vhd(420): signal "r_read_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 420
@@ -1761,9 +1828,32 @@ Info (10041): Inferred latch for "data_bus_out[13]" at masterCTRL.vhd(409) File:
 Info (10041): Inferred latch for "data_bus_out[14]" at masterCTRL.vhd(409) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 409
 Info (10041): Inferred latch for "data_bus_out[15]" at masterCTRL.vhd(409) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 409
 Info (10041): Inferred latch for "busy" at masterCTRL.vhd(234) File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 234
-Info (12128): Elaborating entity "adc_serial_control" for hierarchy "adc_serial_control:adc128s022" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 371
-Info (12128): Elaborating entity "moving_average" for hierarchy "moving_average:channel_0" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 396
-Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:tic_1segundo" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 452
+Info (12128): Elaborating entity "adc_serial_control" for hierarchy "adc_serial_control:adc128s022" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 374
+Info (12128): Elaborating entity "moving_average" for hierarchy "moving_average:channel_0" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 399
+Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:tic_1segundo" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 455
+Info (12128): Elaborating entity "gpio_CTRL" for hierarchy "gpio_CTRL:gpio_controlador" File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 524
+Warning (10541): VHDL Signal Declaration warning at gpio_CTRL.vhd(28): used implicit default value for signal "busy" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 28
+Warning (10492): VHDL Process Statement warning at gpio_CTRL.vhd(211): signal "r_read_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 211
+Warning (10631): VHDL Process Statement warning at gpio_CTRL.vhd(200): inferring latch(es) for signal or variable "data_bus_out", which holds its previous value in one or more paths through the process File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Warning (10631): VHDL Process Statement warning at gpio_CTRL.vhd(200): inferring latch(es) for signal or variable "enable_data_out", which holds its previous value in one or more paths through the process File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Warning (10873): Using initial value X (don't care) for net "RW_REGISTER_BANK[4..6]" at gpio_CTRL.vhd(74) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 74
+Info (10041): Inferred latch for "enable_data_out" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[0]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[1]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[2]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[3]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[4]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[5]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[6]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[7]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[8]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[9]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[10]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[11]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[12]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[13]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[14]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
+Info (10041): Inferred latch for "data_bus_out[15]" at gpio_CTRL.vhd(200) File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 200
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_0924.tdf
     Info (12023): Found entity 1: altsyncram_0924 File: /home/elder/ControleBluetooth_FPGA/quartus/db/altsyncram_0924.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_rsc.tdf
@@ -1786,7 +1876,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
     Info (12023): Found entity 1: cmpr_ngc File: /home/elder/ControleBluetooth_FPGA/quartus/db/cmpr_ngc.tdf Line: 22
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2018.06.14.18:10:09 Progress: Loading sld7e5398e7/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2018.06.15.13:06:04 Progress: Loading sld7e5398e7/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1870,29 +1960,22 @@ Warning (13012): Latch masterCTRL:controlador|data_bus_out[8] has unsafe behavio
     Warning (13013): Ports D and ENA on the latch are fed by the same signal masterCTRL:controlador|RegState.TXData File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 103
 Warning (13012): Latch masterCTRL:controlador|data_bus_out[9] has unsafe behavior File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 409
     Warning (13013): Ports D and ENA on the latch are fed by the same signal masterCTRL:controlador|RegState.TXData File: /home/elder/ControleBluetooth_FPGA/vhdl/masterCTRL.vhd Line: 103
-Info (13000): Registers with preset signals will power-up high File: /home/elder/ControleBluetooth_FPGA/vhdl/ADC128S022.vhd Line: 18
+Info (13000): Registers with preset signals will power-up high File: /home/elder/ControleBluetooth_FPGA/vhdl/gpio_CTRL.vhd Line: 268
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED_OUT[0]" is stuck at GND File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-    Warning (13410): Pin "LED_OUT[1]" is stuck at GND File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-    Warning (13410): Pin "LED_OUT[2]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-    Warning (13410): Pin "LED_OUT[3]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-    Warning (13410): Pin "LED_OUT[4]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
-    Warning (13410): Pin "LED_OUT[5]" is stuck at VCC File: /home/elder/ControleBluetooth_FPGA/vhdl/topo.vhd Line: 35
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 30 registers lost all their fanouts during netlist optimizations.
+Info (17049): 31 registers lost all their fanouts during netlist optimizations.
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 325 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 6129 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 6143 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 7 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 5962 logic cells
+    Info (21061): Implemented 5976 logic cells
     Info (21064): Implemented 146 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 64 warnings
-    Info: Peak virtual memory: 1102 megabytes
-    Info: Processing ended: Thu Jun 14 18:10:21 2018
-    Info: Elapsed time: 00:00:26
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 1107 megabytes
+    Info: Processing ended: Fri Jun 15 13:06:18 2018
+    Info: Elapsed time: 00:00:28
     Info: Total CPU time (on all processors): 00:00:46
 
 

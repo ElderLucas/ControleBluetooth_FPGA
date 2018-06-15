@@ -127,14 +127,17 @@ architecture full of topo is
     signal Enb_To_UartTx             : std_logic := '0';
     signal ADC_Enb_Data_s		     : std_logic_vector(7 downto 0);
 
-    signal avg_adc_ch0: std_logic_vector(11 downto 0);
-    signal avg_adc_ch1: std_logic_vector(11 downto 0);
-    signal avg_adc_ch2: std_logic_vector(11 downto 0);
+    signal avg_adc_ch0               : std_logic_vector(11 downto 0);
+    signal avg_adc_ch1               : std_logic_vector(11 downto 0);
+    signal avg_adc_ch2               : std_logic_vector(11 downto 0);
 
-    signal tx_busy       : std_logic := '0';
-    signal tx_uart       : std_logic := '1';
-    signal rx_uart       : std_logic := '1';
-    signal uart_busy     : std_logic := '1';
+    signal tx_busy                   : std_logic := '0';
+    signal tx_uart                   : std_logic := '1';
+    signal rx_uart                   : std_logic := '1';
+    signal uart_busy                 : std_logic := '1';
+
+    signal r_gpio_out                : std_logic_vector(7 downto 0);
+
 
 
 begin
@@ -518,12 +521,40 @@ begin
         end if;
     end process;
 
+    gpio_controlador : entity work.gpio_CTRL
+    generic map (
+        CLK_DIV   => 100  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(CLK_DIV)
+    )port map (
+        CLK => CLK,
+        RST	=> RST_s,
+
+        -- Entrada de dados
+        data_in         => r_data_bus_out,
+        address_in      => r_Address_bus_out,
+        crud_in         => r_data_bus_crud,
+        enable_data_in  => r_data_bus_en_o,
+        chip_select     => r_data_bus_cs(1),
+
+        -- Saida de dados
+        data_bus_out    => open,
+        enable_data_out => open,
+
+        gpio_out        => r_gpio_out,
+
+        --Sinalização de Busy
+        busy => Busy_s
+
+    );
+
+
     ----------------------------------------------------------------------------
     --
     ----------------------------------------------------------------------------
-    LED_OUT(7) <= timer_1seg_s;
-    LED_OUT(5 downto 2) <= (others => '1');
-    LED_OUT(6) <= CONV_ENB_S;
+    --LED_OUT(7) <= timer_1seg_s;
+    --LED_OUT(5 downto 2) <= (others => '1');
+    --LED_OUT(6) <= CONV_ENB_S;
+
+    LED_OUT<= r_gpio_out;
 
     -- Inversão do Reset para a lógica dos blocos ativos em '1'
     RST_s <= not RST;

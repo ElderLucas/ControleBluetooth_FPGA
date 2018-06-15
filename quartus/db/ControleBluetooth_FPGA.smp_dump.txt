@@ -1,4 +1,17 @@
 
+State Machine - |topo|gpio_CTRL:gpio_controlador|RegState
+Name RegState.EndProcess RegState.TXData RegState.WaitingProcess RegState.DeleteReg RegState.UpdateReg RegState.ReadReg RegState.WriteReg RegState.DecodeCommand RegState.DecodeAddress RegState.Idle 
+RegState.Idle 0 0 0 0 0 0 0 0 0 0 
+RegState.DecodeAddress 0 0 0 0 0 0 0 0 1 1 
+RegState.DecodeCommand 0 0 0 0 0 0 0 1 0 1 
+RegState.WriteReg 0 0 0 0 0 0 1 0 0 1 
+RegState.ReadReg 0 0 0 0 0 1 0 0 0 1 
+RegState.UpdateReg 0 0 0 0 1 0 0 0 0 1 
+RegState.DeleteReg 0 0 0 1 0 0 0 0 0 1 
+RegState.WaitingProcess 0 0 1 0 0 0 0 0 0 1 
+RegState.TXData 0 1 0 0 0 0 0 0 0 1 
+RegState.EndProcess 1 0 0 0 0 0 0 0 0 1 
+
 State Machine - |topo|masterCTRL:controlador|RegState
 Name RegState.EndProcess RegState.TXData RegState.WaitingProcess RegState.DeleteReg RegState.UpdateReg RegState.ReadReg RegState.WriteReg RegState.DecodeCommand RegState.DecodeAddress RegState.Idle 
 RegState.Idle 0 0 0 0 0 0 0 0 0 0 

@@ -551,7 +551,7 @@ begin
 
 				when start_byte=>
 					data_en_out <= '1';
-					data_out <= "10101010";
+					data_out <= "00001111";
 				when lsb=>
 					data_en_out <= '1';
 					data_out <= data_bus_in_s(7 downto 0);

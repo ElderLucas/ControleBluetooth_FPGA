@@ -65,10 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     int bytesAvailable;
                     boolean workDone = false;
 
-                    /*
 
-                    try {
-
+                    /*try {
 
                         final InputStream mmInputStream;
                         mmInputStream = mmSocket.getInputStream();
